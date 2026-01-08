@@ -121,7 +121,8 @@ export default function DashboardPage() {
             <Link
               href="/upload"
               style={{
-                fontSize: 'var(--text-xs)',
+                display: 'flex',
+                alignItems: 'center',
                 color: '#737373',
                 textDecoration: 'none',
                 transition: 'color 0.2s ease'
@@ -129,7 +130,11 @@ export default function DashboardPage() {
               onMouseEnter={(e) => e.currentTarget.style.color = '#a3a3a3'}
               onMouseLeave={(e) => e.currentTarget.style.color = '#737373'}
             >
-              Upload new data
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" y1="3" x2="12" y2="15" />
+              </svg>
             </Link>
           </div>
         </header>
@@ -166,10 +171,10 @@ export default function DashboardPage() {
         {/* Progress Summary */}
         <ProgressSummary workoutData={workoutData} dateRange={dateRange} hideInactive={hideInactive} />
 
-        {/* Section Title */}
-        <h2 className="text-xs font-medium text-[#737373] uppercase tracking-[0.08em]" style={{ marginBottom: '24px' }}>
-          Muscle Group Balance — {dateRangeLabel}
-        </h2>
+        {/* Date Range */}
+        <div className="text-xs text-[#737373]" style={{ marginBottom: '24px' }}>
+          {dateRangeText}
+        </div>
 
         {/* Muscle Group Details */}
         <div id="muscle-groups-container">
@@ -184,11 +189,6 @@ export default function DashboardPage() {
             />
           ))}
         </div>
-
-        {/* Footer */}
-        <footer className="mt-8 pt-6 border-t border-[#1a1a1a] text-center text-xs text-[#737373]">
-          {dateRangeText}
-        </footer>
       </div>
     </div>
   );
