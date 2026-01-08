@@ -1,26 +1,428 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* Design tokens ported from fitbod-dashboard-mockup-v8.html */
+@theme {
+  /* Colors - properly namespaced for Tailwind utilities */
+  --color-progress: #4ade80;
+  --color-stable: #fbbf24;
+  --color-attention: #ef4444;
+  --color-inactive: #737373;
+  --color-gray-bg: #3a3a3a;
+  --color-gray-mid: #a3a3a3;
+  --color-bg-dark: #1a1a1a;
+
+  /* Font family */
+  --font-family-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  /* Spacing Scale (4px base) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+
+  /* Typography */
+  --text-xs: 0.625rem;     /* 10px */
+  --text-sm: 0.8125rem;    /* 13px */
+  --text-base: 0.9375rem;  /* 15px */
+  --text-md: 1rem;         /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.5rem;       /* 24px */
+  --text-2xl: 2.25rem;     /* 36px */
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-family-sans);
+  background: #000000;
+  color: #e5e5e5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dashboard-container {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: var(--space-3xl);
+}
+
+/* Ensure container works */
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+/* === BASE COMPONENT STYLES === */
+
+/* Date Range Selector - Desktop */
+.date-range-selector {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.date-range-label {
+  font-size: var(--text-sm);
+  color: #737373;
+  font-weight: 500;
+}
+
+.date-range-buttons {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.date-range-btn {
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background-color: rgba(255, 255, 255, 0.02);
+  color: #a3a3a3;
+}
+
+.date-range-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.date-range-btn.active {
+  border-color: rgba(74, 222, 128, 0.3);
+  background-color: rgba(74, 222, 128, 0.1);
+  color: #4ade80;
+}
+
+.filter-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-left: auto;
+  font-size: var(--text-sm);
+  color: #a3a3a3;
+}
+
+.filter-toggle input {
+  cursor: pointer;
+}
+
+.filter-toggle label {
+  cursor: pointer;
+}
+
+/* Muscle Group Header - Desktop */
+.muscle-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--space-sm);
+}
+
+.muscle-group-name {
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.muscle-group-summary {
+  font-size: var(--text-sm);
+  color: #737373;
+}
+
+.muscle-group-benchmark {
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-lg);
+}
+
+/* Exercise Grid - Desktop */
+.exercise-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.exercise-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.exercise-name {
+  font-size: var(--text-base);
+  font-weight: 500;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.exercise-status {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-top: var(--space-xs);
+}
+
+/* Exercises list wrapper */
+.exercises-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.exercise-chart {
+  height: 80px;
+}
+
+/* === RESPONSIVE BREAKPOINTS === */
+
+/* Tablet - 768px and below */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  /* Header */
+  h1 {
+    font-size: 1.75rem;
+    letter-spacing: 0.12em;
+  }
+
+  .subtitle {
+    font-size: var(--text-base);
+  }
+
+  /* Date Range Selector */
+  .date-range-selector {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .date-range-buttons {
+    width: 100%;
+    display: flex;
+    gap: var(--space-sm);
+  }
+
+  .date-range-btn {
+    flex: 1;
+    font-size: var(--text-sm);
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .filter-toggle {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* Progress Summary Grid - 2 columns on tablet */
+  .progress-summary-content {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: var(--space-sm);
+  }
+
+  /* Exercise Row - Stack vertically */
+  .exercise-grid {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-md);
+  }
+
+  /* Chart height reduction */
+  .exercise-chart,
+  .h-20 {
+    height: 70px !important;
+  }
+
+  /* Muscle Group Header - Inline layout */
+  .muscle-group-header {
+    display: block;
+  }
+
+  .muscle-group-name {
+    font-size: var(--text-sm);
+    display: inline;
+  }
+
+  .muscle-group-name::after {
+    content: ' • ';
+    font-size: var(--text-xs);
+    color: var(--color-inactive);
+    font-weight: 400;
+    text-transform: none;
+  }
+
+  .muscle-group-summary {
+    display: inline;
+    font-size: var(--text-xs);
+  }
+
+  /* Exercise text sizing */
+  .exercise-name {
+    font-size: var(--text-sm);
+  }
+
+  .exercise-status {
+    font-size: var(--text-xs);
+  }
+}
+
+/* Small phones - 480px and below */
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+  }
+
+  h1::after {
+    width: 32px;
+    height: 2px;
+  }
+
+  .subtitle {
+    font-size: var(--text-sm);
+  }
+
+  .date-range-btn {
+    font-size: var(--text-xs);
+    padding: var(--space-sm);
+  }
+
+  /* Progress Summary - tighter spacing */
+  .progress-summary-content {
+    gap: var(--space-xs);
+  }
+
+  .progress-item {
+    padding: var(--space-xs) 0;
+    gap: var(--space-xs);
+  }
+
+  .progress-item-muscle {
+    font-size: var(--text-xs);
+    letter-spacing: 0.02em;
+  }
+
+  /* Muscle Group Card spacing */
+  .muscle-group-card {
+    margin-bottom: var(--space-2xl);
+    padding-bottom: var(--space-xl);
+  }
+
+  .exercise-grid {
+    gap: var(--space-sm);
+  }
+}
+
+/* Very narrow devices - 375px and below */
+@media (max-width: 375px) {
+  .dashboard-container {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  h1 {
+    font-size: 1.25rem;
+    letter-spacing: 0.08em;
+  }
+
+  h1::after {
+    width: 28px;
+  }
+
+  .subtitle {
+    font-size: 0.75rem;
+  }
+
+  .tagline {
+    font-size: 0.625rem;
+  }
+
+  .date-range-btn {
+    font-size: 0.625rem;
+    padding: var(--space-xs) var(--space-sm);
+    min-height: 44px; /* Touch target */
+  }
+
+  /* Progress Summary */
+  .progress-item {
+    min-height: 44px;
+    gap: 4px;
+  }
+
+  .progress-item-muscle {
+    font-size: 0.625rem;
+    letter-spacing: 0;
+  }
+
+  .progress-item-icon {
+    font-size: 1rem;
+  }
+
+  /* Muscle Group */
+  .muscle-group-name {
+    font-size: 0.75rem;
+  }
+
+  .muscle-group-summary {
+    font-size: 0.625rem;
+  }
+
+  .muscle-group-benchmark {
+    font-size: 0.625rem;
+  }
+
+  /* Exercise */
+  .exercise-name {
+    font-size: 0.75rem;
+  }
+
+  .exercise-status {
+    font-size: 0.625rem;
+  }
 }
