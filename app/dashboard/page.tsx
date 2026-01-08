@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { loadWorkoutData, clearWorkoutData } from '@/lib/storage';
 import { WorkoutData, MUSCLE_GROUPS } from '@/lib/types';
 import ProgressSummary from '@/components/ProgressSummary';
@@ -115,7 +116,22 @@ export default function DashboardPage() {
             Jacked
             <span className="absolute bottom-0 left-0 w-10 h-[3px] bg-[#4ade80] rounded"></span>
           </h1>
-          <div className="text-[#a3a3a3] text-base">Feeling stronger?</div>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div className="text-[#a3a3a3] text-base">Feeling stronger?</div>
+            <Link
+              href="/upload"
+              style={{
+                fontSize: 'var(--text-xs)',
+                color: '#737373',
+                textDecoration: 'none',
+                transition: 'color 0.2s ease'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#a3a3a3'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#737373'}
+            >
+              Upload new data
+            </Link>
+          </div>
         </header>
 
         {/* Date Range Selector */}
