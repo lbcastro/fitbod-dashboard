@@ -13,6 +13,7 @@ export default function DashboardPage() {
   const [workoutData, setWorkoutData] = useState<WorkoutData | null>(null);
   const [dateRange, setDateRange] = useState(365); // Default: last year
   const [hideInactive, setHideInactive] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const stored = loadWorkoutData();
@@ -22,23 +23,6 @@ export default function DashboardPage() {
     }
     setWorkoutData(stored.data);
   }, [router]);
-
-  // Calculate date range for footer
-  const dateRangeText = useMemo(() => {
-    if (!workoutData) return '';
-    const endDate = new Date();
-    const startDate = new Date();
-    startDate.setDate(startDate.getDate() - dateRange);
-    const formatDate = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-    return `${formatDate(startDate)} → ${formatDate(endDate)}`;
-  }, [dateRange, workoutData]);
-
-  // Get date range label for section title
-  const dateRangeLabel = useMemo(() => {
-    if (dateRange === 30) return 'Last month';
-    if (dateRange === 90) return 'Last 3 months';
-    return 'Last year';
-  }, [dateRange]);
 
   // Generate all weeks in the date range for shared X axis
   const allWeeks = useMemo(() => {
@@ -111,37 +95,94 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-black text-white">
       <div className="dashboard-container">
         {/* Header */}
-        <header style={{ marginBottom: '48px', paddingBottom: '24px' }}>
+        <header style={{ marginBottom: '24px' }}>
           <h1 className="text-4xl font-extrabold tracking-[0.15em] uppercase relative inline-block pb-2" style={{ marginBottom: '12px' }}>
             Jacked
             <span className="absolute bottom-0 left-0 w-10 h-[3px] bg-[#4ade80] rounded"></span>
           </h1>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div className="text-[#a3a3a3] text-base">Feeling stronger?</div>
-            <Link
-              href="/upload"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                color: '#737373',
-                textDecoration: 'none',
-                transition: 'color 0.2s ease'
-              }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#a3a3a3'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#737373'}
-            >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="17 8 12 3 7 8" />
-                <line x1="12" y1="3" x2="12" y2="15" />
-              </svg>
-            </Link>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', position: 'relative' }}>
+              <Link
+                href="/upload"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  color: '#737373',
+                  textDecoration: 'none',
+                  transition: 'color 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#a3a3a3'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#737373'}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="17 8 12 3 7 8" />
+                  <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+              </Link>
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'none',
+                  border: 'none',
+                  color: '#737373',
+                  cursor: 'pointer',
+                  padding: 0,
+                  transition: 'color 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#a3a3a3'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#737373'}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="5" r="2" />
+                  <circle cx="12" cy="12" r="2" />
+                  <circle cx="12" cy="19" r="2" />
+                </svg>
+              </button>
+              {menuOpen && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '24px',
+                    right: 0,
+                    background: '#1a1a1a',
+                    border: '1px solid #333',
+                    borderRadius: '6px',
+                    padding: '8px 12px',
+                    minWidth: '200px',
+                    zIndex: 10
+                  }}
+                >
+                  <label
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      fontSize: 'var(--text-sm)',
+                      color: '#e5e5e5',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={hideInactive}
+                      onChange={(e) => setHideInactive(e.target.checked)}
+                      style={{ cursor: 'pointer' }}
+                    />
+                    Hide inactive exercises
+                  </label>
+                </div>
+              )}
+            </div>
           </div>
         </header>
 
         {/* Date Range Selector */}
         <div className="date-range-selector">
-          <span className="date-range-label">Time period:</span>
           <div className="date-range-buttons">
             {[
               { days: 30, label: 'Last month' },
@@ -157,24 +198,10 @@ export default function DashboardPage() {
               </button>
             ))}
           </div>
-          <div className="filter-toggle">
-            <input
-              type="checkbox"
-              id="hide-inactive"
-              checked={hideInactive}
-              onChange={(e) => setHideInactive(e.target.checked)}
-            />
-            <label htmlFor="hide-inactive">Hide inactive exercises</label>
-          </div>
         </div>
 
         {/* Progress Summary */}
         <ProgressSummary workoutData={workoutData} dateRange={dateRange} hideInactive={hideInactive} />
-
-        {/* Date Range */}
-        <div className="text-xs text-[#737373]" style={{ marginBottom: '24px' }}>
-          {dateRangeText}
-        </div>
 
         {/* Muscle Group Details */}
         <div id="muscle-groups-container">
