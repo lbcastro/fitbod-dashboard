@@ -87,8 +87,8 @@ export default function UploadPage() {
             color: '#737373'
           }}
         >
-          <p>Export your workout data from Fitbod app</p>
-          <p style={{ marginTop: 'var(--space-sm)' }}>Settings → Workout History → Export CSV</p>
+          <p>Export your workout data from Fitbod</p>
+          <p style={{ marginTop: 'var(--space-sm)' }}>Log → Settings → Export Workout Data</p>
           <p style={{ marginTop: 'var(--space-xl)', fontSize: 'var(--text-xs)', color: '#737373' }}>
             Starting with Fitbod. More apps coming soon
           </p>
