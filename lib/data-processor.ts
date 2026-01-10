@@ -102,9 +102,14 @@ export function processCSVRows(rows: FitbodCSVRow[]): WorkoutData {
 
     // Update week data (aggregate metrics)
     const weekData = workoutData[exercise].weeks[weekStart];
-    weekData.max = Math.max(weekData.max, weight);
+    if (weight > weekData.max) {
+      weekData.max = weight;
+      weekData.maxReps = reps;
+    } else if (weight === weekData.max) {
+      weekData.maxReps = Math.max(weekData.maxReps, reps);
+    }
+
     weekData.sets += 1;
-    weekData.maxReps = Math.max(weekData.maxReps, reps);
     weekData.load = Math.round((weekData.load + setLoad) * 10) / 10;  // Round to 1 decimal
   });
 
