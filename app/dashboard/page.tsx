@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { loadWorkoutData, clearWorkoutData } from '@/lib/storage';
 import { WorkoutData, MUSCLE_GROUPS } from '@/lib/types';
@@ -28,6 +28,7 @@ function formatWorkoutDateRange(oldest?: string, mostRecent?: string): string {
 
 export default function DashboardPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [workoutData, setWorkoutData] = useState<WorkoutData | null>(null);
   const [dateRange, setDateRange] = useState(365); // Default: last year
   const [hideInactive, setHideInactive] = useState(true);
@@ -40,7 +41,7 @@ export default function DashboardPage() {
       return;
     }
     setWorkoutData(stored.data);
-  }, [router]);
+  }, [router, searchParams]);
 
   // Generate all weeks in the date range for shared X axis
   const allWeeks = useMemo(() => {
