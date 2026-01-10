@@ -35,7 +35,7 @@ export default function UploadPage() {
 
       // Navigate to dashboard
       setTimeout(() => {
-        router.push(`/dashboard?uploaded=${Date.now()}`);
+        window.location.assign('/dashboard');
       }, 500);
 
     } catch (err) {
