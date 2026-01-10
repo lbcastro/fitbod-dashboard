@@ -157,14 +157,14 @@ export default function MuscleGroupCard({ muscle, workoutData, dateRange, hideIn
           marginBottom: 'var(--space-3xl)',
         }}
       >
-        <div className="flex justify-between items-baseline mb-2">
+        <div className="muscle-group-header">
           <h3
             className="font-medium uppercase tracking-wider"
             style={{ fontSize: 'var(--text-md)', color: '#ffffff', letterSpacing: '0.05em' }}
           >
             {muscle}
           </h3>
-          <span className="text-sm" style={{ color: '#737373' }}>
+          <span className="muscle-group-summary">
             {allExercises.length} exercises
           </span>
         </div>

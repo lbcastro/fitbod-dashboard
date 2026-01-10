@@ -8,6 +8,24 @@ import { WorkoutData, MUSCLE_GROUPS } from '@/lib/types';
 import ProgressSummary from '@/components/ProgressSummary';
 import MuscleGroupCard from '@/components/MuscleGroupCard';
 
+function formatWorkoutDateRange(oldest?: string, mostRecent?: string): string {
+  if (!oldest || !mostRecent) return '';
+
+  const formatDate = (dateStr: string) =>
+    new Date(`${dateStr}T00:00:00`).toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+    });
+
+  const oldestLabel = formatDate(oldest);
+  const mostRecentLabel = formatDate(mostRecent);
+
+  if (oldest === mostRecent) return oldestLabel;
+
+  return `${oldestLabel} – ${mostRecentLabel}`;
+}
+
 export default function DashboardPage() {
   const router = useRouter();
   const [workoutData, setWorkoutData] = useState<WorkoutData | null>(null);
@@ -83,6 +101,27 @@ export default function DashboardPage() {
       .map(({ muscle }) => muscle);
   }, [workoutData, dateRange]);
 
+  const overallDateRangeLabel = useMemo(() => {
+    if (!workoutData) return '';
+
+    const cutoffDate = new Date();
+    cutoffDate.setDate(cutoffDate.getDate() - dateRange);
+    const cutoffStr = cutoffDate.toISOString().split('T')[0];
+
+    const workoutDates = new Set<string>();
+    Object.values(workoutData).forEach(exerciseData => {
+      Object.keys(exerciseData.weeks)
+        .filter(weekStart => weekStart >= cutoffStr)
+        .forEach(weekStart => workoutDates.add(weekStart));
+    });
+
+    const sortedWorkoutDates = Array.from(workoutDates).sort();
+    return formatWorkoutDateRange(
+      sortedWorkoutDates[0],
+      sortedWorkoutDates[sortedWorkoutDates.length - 1]
+    );
+  }, [workoutData, dateRange]);
+
   if (!workoutData) {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
@@ -96,10 +135,15 @@ export default function DashboardPage() {
       <div className="dashboard-container">
         {/* Header */}
         <header style={{ marginBottom: '24px' }}>
-          <h1 className="text-4xl font-extrabold tracking-[0.15em] uppercase relative inline-block pb-2" style={{ marginBottom: '12px' }}>
-            Jacked
-            <span className="absolute bottom-0 left-0 w-10 h-[3px] bg-[#4ade80] rounded"></span>
-          </h1>
+          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+            <h1 className="text-4xl font-extrabold tracking-[0.15em] uppercase relative inline-block pb-2" style={{ marginBottom: '12px' }}>
+              Jacked
+              <span className="absolute bottom-0 left-0 w-10 h-[3px] bg-[#4ade80] rounded"></span>
+            </h1>
+            {overallDateRangeLabel ? (
+              <span className="muscle-group-summary">{overallDateRangeLabel}</span>
+            ) : null}
+          </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div className="text-[#a3a3a3] text-base">Feeling stronger?</div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', position: 'relative' }}>
