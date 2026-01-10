@@ -33,7 +33,7 @@ export interface FitbodCSVRow {
 export interface WeekData {
   max: number;          // Max weight that week
   sets: number;         // Total sets
-  maxReps: number;      // Max reps in single set
+  maxReps: number;      // Max reps at the max weight
   load: number;         // Sum of (weight × reps × multiplier)
 }
 
