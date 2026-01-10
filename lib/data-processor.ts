@@ -1,7 +1,7 @@
 // Data processing logic (ported from Python process_archetype_data.py)
 
 import Papa from 'papaparse';
-import { FitbodCSVRow, WorkoutData, ExerciseData, WeekData } from './types';
+import { FitbodCSVRow, WorkoutData, ExerciseData, WeekData, WorkoutDateRange } from './types';
 import { EXERCISE_MUSCLE_MAP } from './constants';
 
 /**
@@ -46,9 +46,16 @@ export function parseCSV(csvText: string): Promise<FitbodCSVRow[]> {
  * Process CSV rows into WorkoutData structure.
  * Ported from Python process_csv() function.
  */
-export function processCSVRows(rows: FitbodCSVRow[]): WorkoutData {
+export interface ProcessedWorkoutData {
+  workoutData: WorkoutData;
+  dateRange: WorkoutDateRange;
+}
+
+export function processCSVRows(rows: FitbodCSVRow[]): ProcessedWorkoutData {
   const workoutData: WorkoutData = {};
   let unknownExercises = new Set<string>();
+  let oldestDate: string | null = null;
+  let mostRecentDate: string | null = null;
 
   rows.forEach(row => {
     // Skip warmup sets (exact match to Python)
@@ -65,6 +72,11 @@ export function processCSVRows(rows: FitbodCSVRow[]): WorkoutData {
 
     // Validate parsed values
     if (isNaN(weight) || isNaN(reps) || isNaN(multiplier)) {
+      return;
+    }
+
+    const datePart = row.Date?.split(' ')[0];
+    if (!datePart) {
       return;
     }
 
@@ -111,6 +123,13 @@ export function processCSVRows(rows: FitbodCSVRow[]): WorkoutData {
 
     weekData.sets += 1;
     weekData.load = Math.round((weekData.load + setLoad) * 10) / 10;  // Round to 1 decimal
+
+    if (!oldestDate || datePart < oldestDate) {
+      oldestDate = datePart;
+    }
+    if (!mostRecentDate || datePart > mostRecentDate) {
+      mostRecentDate = datePart;
+    }
   });
 
   // Log unknown exercises
@@ -118,24 +137,33 @@ export function processCSVRows(rows: FitbodCSVRow[]): WorkoutData {
     console.warn(`Unknown exercises (${unknownExercises.size}):`, Array.from(unknownExercises).join(', '));
   }
 
-  return workoutData;
+  return {
+    workoutData,
+    dateRange: {
+      oldest: oldestDate ?? '',
+      mostRecent: mostRecentDate ?? '',
+    },
+  };
 }
 
 /**
  * Main processing pipeline: CSV text -> WorkoutData
  */
-export async function processWorkoutCSV(csvText: string): Promise<WorkoutData> {
+export async function processWorkoutCSV(csvText: string): Promise<ProcessedWorkoutData> {
   const rows = await parseCSV(csvText);
 
   if (rows.length === 0) {
     throw new Error('CSV file is empty');
   }
 
-  const workoutData = processCSVRows(rows);
+  const { workoutData, dateRange } = processCSVRows(rows);
 
   if (Object.keys(workoutData).length === 0) {
     throw new Error('No valid exercise data found. Check that CSV contains non-warmup sets with known exercises.');
   }
 
-  return workoutData;
+  return {
+    workoutData,
+    dateRange,
+  };
 }
