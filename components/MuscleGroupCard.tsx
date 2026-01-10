@@ -130,9 +130,7 @@ export default function MuscleGroupCard({ muscle, workoutData, dateRange, hideIn
     return (
       <div
         id={`muscle-${muscle.toLowerCase().replace(/\s+/g, '-')}`}
-        style={{
-          marginBottom: 'var(--space-3xl)',
-        }}
+        className="muscle-group-card"
       >
         <h3
           className="font-medium uppercase tracking-wider"
@@ -153,9 +151,7 @@ export default function MuscleGroupCard({ muscle, workoutData, dateRange, hideIn
     return (
       <div
         id={`muscle-${muscle.toLowerCase().replace(/\s+/g, '-')}`}
-        style={{
-          marginBottom: 'var(--space-3xl)',
-        }}
+        className="muscle-group-card"
       >
         <div className="flex justify-between items-baseline mb-2">
           <h3
@@ -190,9 +186,7 @@ export default function MuscleGroupCard({ muscle, workoutData, dateRange, hideIn
   return (
     <div
       id={`muscle-${muscle.toLowerCase().replace(/\s+/g, '-')}`}
-      style={{
-        marginBottom: 'var(--space-3xl)',
-      }}
+      className="muscle-group-card"
     >
       <div className="muscle-group-header">
         <h3 className="muscle-group-name">

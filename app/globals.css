@@ -151,6 +151,15 @@ body {
   cursor: pointer;
 }
 
+/* Muscle Group Card */
+.muscle-group-card {
+  padding: var(--space-lg) 0;
+}
+
+.muscle-group-card:not(:last-child) {
+  border-bottom: 1px solid #262626;
+}
+
 /* Muscle Group Header - Desktop */
 .muscle-group-header {
   display: flex;
@@ -351,8 +360,7 @@ body {
 
   /* Muscle Group Card spacing */
   .muscle-group-card {
-    margin-bottom: var(--space-2xl);
-    padding-bottom: var(--space-xl);
+    padding: var(--space-md) 0;
   }
 
   .exercise-grid {
