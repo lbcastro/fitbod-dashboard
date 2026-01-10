@@ -42,7 +42,8 @@ function calculateExerciseStatus(weeks: Record<string, any>, dateRange: number):
 
   if (weightChange > 0) return 'Adding max weight';
   if (repsChange > 0) return 'Adding max reps';
-  if (weightChange < 0 || repsChange < 0) return 'Declining performance';
+  if (weightChange < 0) return 'Declining performance (↓ weight)';
+  if (weightChange === 0 && repsChange < 0) return 'Declining performance (↓ reps; same weight)';
   return 'Stable performance';
 }
 
