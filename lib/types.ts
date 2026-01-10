@@ -51,6 +51,12 @@ export type WorkoutData = Record<string, ExerciseData>;
 export interface StoredWorkoutData {
   version: string;          // "1.0"
   data: WorkoutData;
+  dateRange?: WorkoutDateRange;
   uploadedAt: string;       // ISO timestamp
   fileName: string;
+}
+
+export interface WorkoutDateRange {
+  oldest: string;       // YYYY-MM-DD
+  mostRecent: string;   // YYYY-MM-DD
 }

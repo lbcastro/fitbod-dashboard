@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { loadWorkoutData, clearWorkoutData } from '@/lib/storage';
-import { WorkoutData, MUSCLE_GROUPS } from '@/lib/types';
+import { WorkoutData, MUSCLE_GROUPS, WorkoutDateRange } from '@/lib/types';
 import ProgressSummary from '@/components/ProgressSummary';
 import MuscleGroupCard from '@/components/MuscleGroupCard';
 
@@ -29,6 +29,7 @@ function formatWorkoutDateRange(oldest?: string, mostRecent?: string): string {
 export default function DashboardPage() {
   const router = useRouter();
   const [workoutData, setWorkoutData] = useState<WorkoutData | null>(null);
+  const [storedDateRange, setStoredDateRange] = useState<WorkoutDateRange | null>(null);
   const [dateRange, setDateRange] = useState(365); // Default: last year
   const [hideInactive, setHideInactive] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -40,6 +41,7 @@ export default function DashboardPage() {
       return;
     }
     setWorkoutData(stored.data);
+    setStoredDateRange(stored.dateRange ?? null);
   }, [router]);
 
   // Generate all weeks in the date range for shared X axis
@@ -116,11 +118,22 @@ export default function DashboardPage() {
     });
 
     const sortedWorkoutDates = Array.from(workoutDates).sort();
-    return formatWorkoutDateRange(
-      sortedWorkoutDates[0],
-      sortedWorkoutDates[sortedWorkoutDates.length - 1]
-    );
-  }, [workoutData, dateRange]);
+    let oldest = sortedWorkoutDates[0];
+    let mostRecent = sortedWorkoutDates[sortedWorkoutDates.length - 1];
+
+    if (storedDateRange?.oldest) {
+      if (!oldest || storedDateRange.oldest >= cutoffStr) {
+        oldest = storedDateRange.oldest;
+      }
+    }
+    if (storedDateRange?.mostRecent) {
+      if (!mostRecent || storedDateRange.mostRecent >= cutoffStr) {
+        mostRecent = storedDateRange.mostRecent;
+      }
+    }
+
+    return formatWorkoutDateRange(oldest, mostRecent);
+  }, [workoutData, dateRange, storedDateRange]);
 
   if (!workoutData) {
     return (

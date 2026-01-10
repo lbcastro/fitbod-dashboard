@@ -24,12 +24,12 @@ export default function UploadPage() {
       setProgress('Processing workout data...');
 
       // Process data
-      const workoutData = await processWorkoutCSV(csvText);
+      const { workoutData, dateRange } = await processWorkoutCSV(csvText);
 
       setProgress('Saving to storage...');
 
       // Save to localStorage
-      saveWorkoutData(workoutData, file.name);
+      saveWorkoutData(workoutData, file.name, dateRange);
 
       setProgress('Redirecting to dashboard...');
 

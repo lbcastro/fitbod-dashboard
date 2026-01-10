@@ -1,6 +1,6 @@
 // localStorage wrapper for workout data persistence
 
-import { WorkoutData, StoredWorkoutData } from './types';
+import { WorkoutData, StoredWorkoutData, WorkoutDateRange } from './types';
 
 const STORAGE_KEY = 'fitbod_workout_data';
 const STORAGE_VERSION = '1.0';
@@ -8,11 +8,12 @@ const STORAGE_VERSION = '1.0';
 /**
  * Save workout data to localStorage
  */
-export function saveWorkoutData(data: WorkoutData, fileName: string): void {
+export function saveWorkoutData(data: WorkoutData, fileName: string, dateRange?: WorkoutDateRange): void {
   try {
     const stored: StoredWorkoutData = {
       version: STORAGE_VERSION,
       data,
+      dateRange,
       uploadedAt: new Date().toISOString(),
       fileName
     };
