@@ -101,17 +101,6 @@ export default function FileDropzone({ onFileSelect, isProcessing }: FileDropzon
           </p>
         </div>
 
-        <div
-          style={{
-            fontSize: 'var(--text-xs)',
-            color: '#737373',
-            textTransform: 'uppercase',
-            letterSpacing: '0.05em',
-            fontWeight: 500
-          }}
-        >
-          Accepted format: CSV
-        </div>
       </div>
     </div>
   );
