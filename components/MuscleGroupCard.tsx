@@ -47,8 +47,8 @@ function calculateExerciseStatus(weeks: Record<string, any>, dateRange: number):
   return 'Stable performance';
 }
 
-// Get workout-to-workout comparisons for an exercise
-function getWorkoutComparisons(weeks: Record<string, any>, dateRange: number): { progress: number; decline: number; stable: number } {
+// Calculate linear regression slope for exercise performance over time
+function calculateTrendSlope(weeks: Record<string, any>, dateRange: number): { slope: number; workoutCount: number } {
   const cutoffDate = new Date();
   cutoffDate.setDate(cutoffDate.getDate() - dateRange);
   const cutoffStr = cutoffDate.toISOString().split('T')[0];
@@ -58,31 +58,29 @@ function getWorkoutComparisons(weeks: Record<string, any>, dateRange: number): {
     .sort(([a], [b]) => a.localeCompare(b));
 
   if (filteredWeeks.length < 2) {
-    return { progress: 0, decline: 0, stable: 0 };
+    return { slope: 0, workoutCount: filteredWeeks.length };
   }
 
-  let progress = 0;
-  let decline = 0;
-  let stable = 0;
+  // Convert dates to numeric values (days since first workout)
+  const firstDate = new Date(filteredWeeks[0][0]);
+  const dataPoints = filteredWeeks.map(([weekStart, data]) => {
+    const date = new Date(weekStart);
+    const daysSinceStart = (date.getTime() - firstDate.getTime()) / (1000 * 60 * 60 * 24);
+    // Use max weight as primary metric
+    return { x: daysSinceStart, y: data.max };
+  });
 
-  // Compare each consecutive workout pair
-  for (let i = 1; i < filteredWeeks.length; i++) {
-    const [, prevWeek] = filteredWeeks[i - 1];
-    const [, currWeek] = filteredWeeks[i];
+  // Calculate linear regression: y = mx + b
+  const n = dataPoints.length;
+  const sumX = dataPoints.reduce((sum, p) => sum + p.x, 0);
+  const sumY = dataPoints.reduce((sum, p) => sum + p.y, 0);
+  const sumXY = dataPoints.reduce((sum, p) => sum + p.x * p.y, 0);
+  const sumX2 = dataPoints.reduce((sum, p) => sum + p.x * p.x, 0);
 
-    const weightChange = currWeek.max - prevWeek.max;
-    const repsChange = currWeek.maxReps - prevWeek.maxReps;
+  // Slope formula: m = (n*sumXY - sumX*sumY) / (n*sumX2 - sumX^2)
+  const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
 
-    if (weightChange > 0 || (weightChange === 0 && repsChange > 0)) {
-      progress++;
-    } else if (weightChange < 0 || (weightChange === 0 && repsChange < 0)) {
-      decline++;
-    } else {
-      stable++;
-    }
-  }
-
-  return { progress, decline, stable };
+  return { slope, workoutCount: n };
 }
 
 function calculateMuscleGroupBenchmark(exercises: [string, any][], dateRange: number): { text: string; color: string } {
@@ -90,33 +88,36 @@ function calculateMuscleGroupBenchmark(exercises: [string, any][], dateRange: nu
     return { text: 'No recent activity', color: '#737373' };
   }
 
-  let totalProgress = 0;
-  let totalDecline = 0;
-  let totalStable = 0;
+  let weightedSlopeSum = 0;
+  let totalWorkouts = 0;
 
-  // Aggregate all workout-to-workout comparisons across all exercises
+  // Calculate frequency-weighted average slope across all exercises
   exercises.forEach(([, data]) => {
-    const comparisons = getWorkoutComparisons(data.weeks, dateRange);
-    totalProgress += comparisons.progress;
-    totalDecline += comparisons.decline;
-    totalStable += comparisons.stable;
+    const { slope, workoutCount } = calculateTrendSlope(data.weeks, dateRange);
+    weightedSlopeSum += slope * workoutCount;
+    totalWorkouts += workoutCount;
   });
 
-  const totalComparisons = totalProgress + totalDecline + totalStable;
-
-  if (totalComparisons === 0) {
+  if (totalWorkouts === 0) {
     return { text: 'No recent activity', color: '#737373' };
   }
 
-  const progressRatio = totalProgress / totalComparisons;
-  const decliningRatio = totalDecline / totalComparisons;
+  // Average slope weighted by workout frequency
+  const avgSlope = weightedSlopeSum / totalWorkouts;
 
-  if (progressRatio >= 0.5) {
-    return { text: 'Making steady progress', color: '#4ade80' };
-  } else if (decliningRatio >= 0.3) {
-    return { text: 'Needs attention', color: '#ef4444' };
-  } else if (progressRatio > 0) {
-    return { text: 'Breaking PRs consistently', color: '#4ade80' };
+  // Thresholds for slope interpretation (kg per day)
+  // Positive slope = improving, negative = declining
+  const significantProgress = 0.1;  // ~0.7kg per week
+  const significantDecline = -0.1;  // ~-0.7kg per week
+
+  if (avgSlope >= significantProgress) {
+    return { text: 'Trending stronger', color: '#4ade80' };
+  } else if (avgSlope <= significantDecline) {
+    return { text: 'Trending weaker', color: '#ef4444' };
+  } else if (avgSlope > 0) {
+    return { text: 'Slight upward trend', color: '#4ade80' };
+  } else if (avgSlope < 0) {
+    return { text: 'Slight downward trend', color: '#fbbf24' };
   } else {
     return { text: 'Maintaining strength', color: '#fbbf24' };
   }
