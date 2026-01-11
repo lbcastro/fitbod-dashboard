@@ -57,30 +57,48 @@ function calculateTrendSlope(weeks: Record<string, any>, dateRange: number): { s
     .filter(([weekStart]) => weekStart >= cutoffStr)
     .sort(([a], [b]) => a.localeCompare(b));
 
-  if (filteredWeeks.length < 2) {
+  // Minimum 3 workouts required for trend calculation
+  if (filteredWeeks.length < 3) {
     return { slope: 0, workoutCount: filteredWeeks.length };
   }
 
   // Convert dates to numeric values (days since first workout)
   const firstDate = new Date(filteredWeeks[0][0]);
+  const lastDate = new Date(filteredWeeks[filteredWeeks.length - 1][0]);
+  const totalDays = (lastDate.getTime() - firstDate.getTime()) / (1000 * 60 * 60 * 24);
+  const midpoint = totalDays / 2;
+
   const dataPoints = filteredWeeks.map(([weekStart, data]) => {
     const date = new Date(weekStart);
     const daysSinceStart = (date.getTime() - firstDate.getTime()) / (1000 * 60 * 60 * 24);
-    // Use max weight as primary metric
-    return { x: daysSinceStart, y: data.max };
+
+    // Use volume (weight × reps) instead of just weight
+    const volume = data.max * data.maxReps;
+
+    // Recency weight: 2x for workouts in the second half of the period
+    const recencyWeight = daysSinceStart >= midpoint ? 2 : 1;
+
+    return { x: daysSinceStart, y: volume, weight: recencyWeight };
   });
 
-  // Calculate linear regression: y = mx + b
-  const n = dataPoints.length;
-  const sumX = dataPoints.reduce((sum, p) => sum + p.x, 0);
-  const sumY = dataPoints.reduce((sum, p) => sum + p.y, 0);
-  const sumXY = dataPoints.reduce((sum, p) => sum + p.x * p.y, 0);
-  const sumX2 = dataPoints.reduce((sum, p) => sum + p.x * p.x, 0);
+  // Weighted linear regression: y = mx + b
+  const sumW = dataPoints.reduce((sum, p) => sum + p.weight, 0);
+  const sumWX = dataPoints.reduce((sum, p) => sum + p.weight * p.x, 0);
+  const sumWY = dataPoints.reduce((sum, p) => sum + p.weight * p.y, 0);
+  const sumWXY = dataPoints.reduce((sum, p) => sum + p.weight * p.x * p.y, 0);
+  const sumWX2 = dataPoints.reduce((sum, p) => sum + p.weight * p.x * p.x, 0);
 
-  // Slope formula: m = (n*sumXY - sumX*sumY) / (n*sumX2 - sumX^2)
-  const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+  // Weighted slope formula: m = (sumW*sumWXY - sumWX*sumWY) / (sumW*sumWX2 - sumWX^2)
+  const numerator = sumW * sumWXY - sumWX * sumWY;
+  const denominator = sumW * sumWX2 - sumWX * sumWX;
 
-  return { slope, workoutCount: n };
+  if (denominator === 0) {
+    return { slope: 0, workoutCount: filteredWeeks.length };
+  }
+
+  const slope = numerator / denominator;
+
+  return { slope, workoutCount: filteredWeeks.length };
 }
 
 function calculateMuscleGroupBenchmark(exercises: [string, any][], dateRange: number): { text: string; color: string } {
@@ -105,10 +123,10 @@ function calculateMuscleGroupBenchmark(exercises: [string, any][], dateRange: nu
   // Average slope weighted by workout frequency
   const avgSlope = weightedSlopeSum / totalWorkouts;
 
-  // Thresholds for slope interpretation (kg per day)
-  // Positive slope = improving, negative = declining
-  const significantProgress = 0.1;  // ~0.7kg per week
-  const significantDecline = -0.1;  // ~-0.7kg per week
+  // Thresholds for slope interpretation (volume per day: kg × reps per day)
+  // Positive slope = improving volume, negative = declining volume
+  const significantProgress = 5;   // ~35 volume per week (e.g., 5kg or 5 reps gained)
+  const significantDecline = -5;   // ~-35 volume per week
 
   if (avgSlope >= significantProgress) {
     return { text: 'Trending stronger', color: '#4ade80' };
