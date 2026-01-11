@@ -434,3 +434,27 @@ body {
     font-size: 0.625rem;
   }
 }
+
+.progress-item-icon-highlight {
+  position: relative;
+}
+
+.progress-item-icon-highlight::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border: 1px solid var(--highlight-color, transparent);
+  border-radius: var(--radius-md);
+  opacity: 0.85;
+  pointer-events: none;
+  animation: muscle-highlight-fade 3s linear forwards;
+}
+
+@keyframes muscle-highlight-fade {
+  from {
+    opacity: 0.85;
+  }
+  to {
+    opacity: 0;
+  }
+}

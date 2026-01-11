@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import { WorkoutData, MUSCLE_GROUPS, MuscleGroup } from '@/lib/types';
 
 interface ProgressSummaryProps {
@@ -160,10 +161,57 @@ const statusColors: Record<Status, string> = {
   inactive: '#737373',
 };
 
+const highlightDurationMs = 3000;
+
 export default function ProgressSummary({ workoutData, dateRange, hideInactive }: ProgressSummaryProps) {
   const muscleStatuses = MUSCLE_GROUPS.map((muscle) =>
     calculateMuscleStatus(workoutData, muscle, dateRange, hideInactive)
   );
+  const [changeHighlights, setChangeHighlights] = useState<Record<string, { color: string; id: number }>>({});
+  const prevStatusesRef = useRef<Record<string, Status>>({});
+  const highlightTimeoutsRef = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
+
+  useEffect(() => {
+    const nextStatuses = muscleStatuses.reduce<Record<string, Status>>((acc, { muscle, status }) => {
+      acc[muscle] = status;
+      return acc;
+    }, {});
+
+    const updates: Record<string, { color: string; id: number }> = {};
+
+    muscleStatuses.forEach(({ muscle, status }) => {
+      const prevStatus = prevStatusesRef.current[muscle];
+      if (prevStatus && prevStatus !== status) {
+        const color = statusColors[prevStatus];
+        const id = Date.now();
+        updates[muscle] = { color, id };
+
+        if (highlightTimeoutsRef.current[muscle]) {
+          clearTimeout(highlightTimeoutsRef.current[muscle]);
+        }
+
+        highlightTimeoutsRef.current[muscle] = setTimeout(() => {
+          setChangeHighlights((current) => {
+            if (!current[muscle]) return current;
+            const { [muscle]: _, ...rest } = current;
+            return rest;
+          });
+        }, highlightDurationMs);
+      }
+    });
+
+    if (Object.keys(updates).length > 0) {
+      setChangeHighlights((current) => ({ ...current, ...updates }));
+    }
+
+    prevStatusesRef.current = nextStatuses;
+  }, [muscleStatuses]);
+
+  useEffect(() => {
+    return () => {
+      Object.values(highlightTimeoutsRef.current).forEach((timeout) => clearTimeout(timeout));
+    };
+  }, []);
 
   const handleMuscleClick = (muscle: MuscleGroup) => {
     const id = `muscle-${muscle.toLowerCase().replace(/\s+/g, '-')}`;
@@ -222,11 +270,16 @@ export default function ProgressSummary({ workoutData, dateRange, hideInactive }
             }}
           >
             <div
-              className="flex items-center justify-center flex-shrink-0 progress-item-icon"
+              key={`${muscle}-${changeHighlights[muscle]?.id ?? 'base'}`}
+              className={`flex items-center justify-center flex-shrink-0 progress-item-icon${
+                changeHighlights[muscle] ? ' progress-item-icon-highlight' : ''
+              }`}
               style={{
                 width: '24px',
+                height: '24px',
                 fontSize: '1.25rem',
                 color: statusColors[status],
+                ['--highlight-color' as string]: changeHighlights[muscle]?.color,
               }}
             >
               {statusIcons[status]}
