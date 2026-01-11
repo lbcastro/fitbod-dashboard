@@ -22,8 +22,7 @@ export async function POST(request: NextRequest) {
   const uploadedAt = new Date().toISOString();
   const timestamp = uploadedAt.replace(/[:.]/g, '-');
   const uuid = crypto.randomUUID();
-  const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-  const pathname = `uploads/${timestamp}-${uuid}-${safeName}`;
+  const pathname = `uploads/${timestamp}-${uuid}.csv`;
 
   const { url } = await put(pathname, file, {
     access: 'public',
