@@ -72,13 +72,13 @@ function calculateTrendSlope(weeks: Record<string, any>, dateRange: number): { s
     const date = new Date(weekStart);
     const daysSinceStart = (date.getTime() - firstDate.getTime()) / (1000 * 60 * 60 * 24);
 
-    // Use volume (weight × reps) instead of just weight
-    const volume = data.max * data.maxReps;
+    // Use max weight as primary metric
+    const weight = data.max;
 
     // Recency weight: 2x for workouts in the second half of the period
     const recencyWeight = daysSinceStart >= midpoint ? 2 : 1;
 
-    return { x: daysSinceStart, y: volume, weight: recencyWeight };
+    return { x: daysSinceStart, y: weight, weight: recencyWeight };
   });
 
   // Weighted linear regression: y = mx + b
@@ -123,10 +123,10 @@ function calculateMuscleGroupBenchmark(exercises: [string, any][], dateRange: nu
   // Average slope weighted by workout frequency
   const avgSlope = weightedSlopeSum / totalWorkouts;
 
-  // Thresholds for slope interpretation (volume per day: kg × reps per day)
-  // Positive slope = improving volume, negative = declining volume
-  const significantProgress = 5;   // ~35 volume per week (e.g., 5kg or 5 reps gained)
-  const significantDecline = -5;   // ~-35 volume per week
+  // Thresholds for slope interpretation (kg per day)
+  // Positive slope = improving, negative = declining
+  const significantProgress = 0.1;   // ~0.7kg per week
+  const significantDecline = -0.1;   // ~-0.7kg per week
 
   if (avgSlope >= significantProgress) {
     return { text: 'Trending stronger', color: '#4ade80' };
