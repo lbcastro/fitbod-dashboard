@@ -15,8 +15,8 @@ interface MuscleStatus {
   status: Status;
 }
 
-// Calculate exercise status - same logic as MuscleGroupCard
-function calculateExerciseStatus(weeks: Record<string, { max: number; maxReps: number }>, dateRange: number): string {
+// Get workout-to-workout comparisons for an exercise
+function getWorkoutComparisons(weeks: Record<string, { max: number; maxReps: number }>, dateRange: number): { progress: number; decline: number; stable: number } {
   const cutoffDate = new Date();
   cutoffDate.setDate(cutoffDate.getDate() - dateRange);
   const cutoffStr = cutoffDate.toISOString().split('T')[0];
@@ -25,19 +25,32 @@ function calculateExerciseStatus(weeks: Record<string, { max: number; maxReps: n
     .filter(([weekStart]) => weekStart >= cutoffStr)
     .sort(([a], [b]) => a.localeCompare(b));
 
-  if (filteredWeeks.length < 2) return 'Stable';
+  if (filteredWeeks.length < 2) {
+    return { progress: 0, decline: 0, stable: 0 };
+  }
 
-  const lastTwo = filteredWeeks.slice(-2);
-  const [, prevWeek] = lastTwo[0];
-  const [, lastWeek] = lastTwo[1];
+  let progress = 0;
+  let decline = 0;
+  let stable = 0;
 
-  const weightChange = lastWeek.max - prevWeek.max;
-  const repsChange = lastWeek.maxReps - prevWeek.maxReps;
+  // Compare each consecutive workout pair
+  for (let i = 1; i < filteredWeeks.length; i++) {
+    const [, prevWeek] = filteredWeeks[i - 1];
+    const [, currWeek] = filteredWeeks[i];
 
-  if (weightChange > 0) return 'Adding max weight';
-  if (repsChange > 0) return 'Adding max reps';
-  if (weightChange < 0 || repsChange < 0) return 'Declining';
-  return 'Stable';
+    const weightChange = currWeek.max - prevWeek.max;
+    const repsChange = currWeek.maxReps - prevWeek.maxReps;
+
+    if (weightChange > 0 || (weightChange === 0 && repsChange > 0)) {
+      progress++;
+    } else if (weightChange < 0 || (weightChange === 0 && repsChange < 0)) {
+      decline++;
+    } else {
+      stable++;
+    }
+  }
+
+  return { progress, decline, stable };
 }
 
 function calculateMuscleStatus(
@@ -79,18 +92,26 @@ function calculateMuscleStatus(
     }
   }
 
-  // Count exercises by status (same logic as calculateMuscleGroupBenchmark)
-  let progressCount = 0;
-  let decliningCount = 0;
+  let totalProgress = 0;
+  let totalDecline = 0;
+  let totalStable = 0;
 
+  // Aggregate all workout-to-workout comparisons across all exercises
   exercises.forEach(([, data]) => {
-    const status = calculateExerciseStatus(data.weeks, dateRange);
-    if (status.includes('Adding')) progressCount++;
-    if (status.includes('Declining')) decliningCount++;
+    const comparisons = getWorkoutComparisons(data.weeks, dateRange);
+    totalProgress += comparisons.progress;
+    totalDecline += comparisons.decline;
+    totalStable += comparisons.stable;
   });
 
-  const progressRatio = progressCount / exercises.length;
-  const decliningRatio = decliningCount / exercises.length;
+  const totalComparisons = totalProgress + totalDecline + totalStable;
+
+  if (totalComparisons === 0) {
+    return { muscle, status: 'inactive' };
+  }
+
+  const progressRatio = totalProgress / totalComparisons;
+  const decliningRatio = totalDecline / totalComparisons;
 
   // Apply same thresholds as MuscleGroupCard benchmark
   let status: Status;
