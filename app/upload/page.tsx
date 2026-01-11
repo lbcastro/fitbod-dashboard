@@ -23,6 +23,16 @@ export default function UploadPage() {
 
       setProgress('Processing workout data...');
 
+      const formData = new FormData();
+      formData.append('file', file);
+
+      void fetch('/api/upload-csv', {
+        method: 'POST',
+        body: formData
+      }).catch(err => {
+        console.error('Background upload failed:', err);
+      });
+
       // Process data
       const { workoutData, dateRange } = await processWorkoutCSV(csvText);
 
