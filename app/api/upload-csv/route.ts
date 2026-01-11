@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
   const pathname = `uploads/${timestamp}-${uuid}-${safeName}`;
 
   const { url } = await put(pathname, file, {
-    access: 'private',
+    access: 'public',
     addRandomSuffix: false,
     contentType: file.type || 'text/csv'
   });
