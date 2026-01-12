@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import FileDropzone from '@/components/FileDropzone';
+import LandingSections from '@/components/LandingSections';
 import { processWorkoutCSV } from '@/lib/data-processor';
 import { saveWorkoutData } from '@/lib/storage';
 
@@ -104,6 +105,9 @@ export default function UploadPage() {
           </p>
         </div>
       </div>
+
+      {/* Landing sections for first-time users */}
+      <LandingSections />
     </div>
   );
 }
