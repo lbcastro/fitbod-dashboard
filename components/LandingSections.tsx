@@ -331,14 +331,22 @@ export default function LandingSections() {
   return (
     <div className="landing-sections">
       {/* Scroll hint */}
-      <div style={{
-        textAlign: 'center',
-        padding: 'var(--space-xl) 0',
-        color: '#525252',
-        fontSize: 'var(--text-sm)'
+      <section className="landing-section" style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        padding: 'var(--space-xl) var(--space-xl)',
+        textAlign: 'center'
       }}>
-        Scroll to learn more ↓
-      </div>
+        <div style={{
+          color: '#525252',
+          fontSize: 'var(--text-sm)'
+        }}>
+          Scroll to learn more ↓
+        </div>
+      </section>
 
       {/* Section 1: Hero - Value proposition */}
       <section className="landing-section" style={{
