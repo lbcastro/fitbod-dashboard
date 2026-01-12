@@ -330,16 +330,6 @@ export default function LandingSections() {
 
   return (
     <div className="landing-sections">
-      {/* Scroll hint */}
-      <div style={{
-        textAlign: 'center',
-        padding: 'var(--space-xl) 0',
-        color: '#525252',
-        fontSize: 'var(--text-sm)'
-      }}>
-        Scroll to learn more ↓
-      </div>
-
       {/* Section 1: Hero - Value proposition */}
       <section className="landing-section" style={{
         minHeight: '100vh',
