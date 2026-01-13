@@ -58,7 +58,13 @@ export default function UploadPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <section style={{ minHeight: '100vh', position: 'relative', paddingBottom: 'var(--space-3xl)' }}>
+      <section
+        style={{
+          minHeight: '100svh',
+          position: 'relative',
+          paddingBottom: 'calc(var(--space-3xl) + env(safe-area-inset-bottom, 0px))'
+        }}
+      >
         <div className="dashboard-container" style={{ maxWidth: '800px' }}>
           {/* Header - matching dashboard */}
           <header style={{ marginBottom: '48px', paddingBottom: '24px' }}>
@@ -110,7 +116,7 @@ export default function UploadPage() {
         <div
           style={{
             position: 'absolute',
-            bottom: 'var(--space-xl)',
+            bottom: 'calc(var(--space-xl) + env(safe-area-inset-bottom, 0px))',
             left: '50%',
             transform: 'translateX(-50%)',
             color: '#525252',
