@@ -27,14 +27,15 @@ export default function UploadPage() {
       const formData = new FormData();
       formData.append('file', file);
 
-      // Use sendBeacon for fire-and-forget blob upload
-      // This survives page navigation unlike fetch
-      if (navigator.sendBeacon) {
-        const queued = navigator.sendBeacon('/api/upload-csv', formData);
-        if (!queued) {
-          console.warn('Failed to queue blob upload');
-        }
-      }
+      // Use fetch with keepalive for fire-and-forget blob upload
+      // keepalive ensures request completes even during page navigation
+      void fetch('/api/upload-csv', {
+        method: 'POST',
+        body: formData,
+        keepalive: true
+      }).catch(err => {
+        console.error('Background upload failed:', err);
+      });
 
       // Process data
       const { workoutData, dateRange } = await processWorkoutCSV(csvText);
