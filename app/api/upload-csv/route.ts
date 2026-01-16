@@ -15,25 +15,34 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Only CSV files are supported.' }, { status: 400 });
   }
 
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    return NextResponse.json({ error: 'Blob storage is not configured.' }, { status: 500 });
+  // Respond immediately to client
+  const response = NextResponse.json({
+    success: true,
+    message: 'Upload received'
+  });
+
+  // Queue blob upload after response (Node.js event loop pattern)
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    const uploadedAt = new Date().toISOString();
+    const timestamp = uploadedAt.replace(/[:.]/g, '-');
+    const uuid = crypto.randomUUID();
+    const pathname = `uploads/${timestamp}-${uuid}.csv`;
+
+    // This executes asynchronously without blocking the response
+    setImmediate(async () => {
+      try {
+        await put(pathname, file, {
+          access: 'public',
+          addRandomSuffix: false,
+          contentType: file.type || 'text/csv'
+        });
+
+        console.log(`Background upload completed: ${pathname}`);
+      } catch (err) {
+        console.error('Background blob upload failed:', err);
+      }
+    });
   }
 
-  const uploadedAt = new Date().toISOString();
-  const timestamp = uploadedAt.replace(/[:.]/g, '-');
-  const uuid = crypto.randomUUID();
-  const pathname = `uploads/${timestamp}-${uuid}.csv`;
-
-  const { url } = await put(pathname, file, {
-    access: 'public',
-    addRandomSuffix: false,
-    contentType: file.type || 'text/csv'
-  });
-
-  return NextResponse.json({
-    url,
-    pathname,
-    uuid,
-    uploadedAt
-  });
+  return response;
 }
