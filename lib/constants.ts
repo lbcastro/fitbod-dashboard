@@ -70,6 +70,7 @@ export const EXERCISE_MUSCLE_MAP: Record<string, ExerciseMapping> = {
   'Cable Rope Overhead Triceps Extension': { muscle: 'Triceps', secondary: [] },
   'Overhead Triceps Extension': { muscle: 'Triceps', secondary: [] },
   'Cable Triceps Pushdown': { muscle: 'Triceps', secondary: [] },
+  'Cable Tricep Pushdown': { muscle: 'Triceps', secondary: [] },
   'Close-Grip Bench Press': { muscle: 'Triceps', secondary: ['Chest'] },
   'Dip': { muscle: 'Triceps', secondary: ['Chest'] },
   'Cable Rope Tricep Extension': { muscle: 'Triceps', secondary: [] },
@@ -345,6 +346,7 @@ export const EXERCISE_MUSCLE_MAP: Record<string, ExerciseMapping> = {
   'Mini Loop Band Plank with Straight Leg Kickback': { muscle: 'Core', secondary: ['Glutes'] },
   'Mini Loop Band Mountain Climber': { muscle: 'Core', secondary: ['Cardio'] },
   'Mini Loop Band Alternating Leg Raises': { muscle: 'Core', secondary: [] },
+  'Mini Loop Band Leg Raise': { muscle: 'Core', secondary: [] },
   'Mini Loop Band Toe Touch': { muscle: 'Core', secondary: [] },
   'Mini Loop Band Around the World Plank': { muscle: 'Core', secondary: [] },
 
