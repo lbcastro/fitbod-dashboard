@@ -164,7 +164,7 @@ const statusColors: Record<Status, string> = {
 const highlightDurationMs = 3000;
 
 export default function ProgressSummary({ workoutData, dateRange, hideInactive }: ProgressSummaryProps) {
-  const muscleStatuses = MUSCLE_GROUPS.map((muscle) =>
+  const muscleStatuses = MUSCLE_GROUPS.filter(m => m !== 'Cardio').map((muscle) =>
     calculateMuscleStatus(workoutData, muscle, dateRange, hideInactive)
   );
   const [changeHighlights, setChangeHighlights] = useState<Record<string, { color: string; id: number }>>({});

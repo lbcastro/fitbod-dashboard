@@ -68,13 +68,13 @@ export default function DashboardPage() {
 
   // Sort muscle groups by workout frequency (descending) - primary muscles only
   const sortedMuscleGroups = useMemo(() => {
-    if (!workoutData) return MUSCLE_GROUPS;
+    if (!workoutData) return MUSCLE_GROUPS.filter(m => m !== 'Cardio');
 
     const cutoffDate = new Date();
     cutoffDate.setDate(cutoffDate.getDate() - dateRange);
     const cutoffStr = cutoffDate.toISOString().split('T')[0];
 
-    const muscleWorkoutCounts = MUSCLE_GROUPS.map((muscle) => {
+    const muscleWorkoutCounts = MUSCLE_GROUPS.filter(m => m !== 'Cardio').map((muscle) => {
       const workoutDates = new Set<string>();
 
       Object.entries(workoutData)
