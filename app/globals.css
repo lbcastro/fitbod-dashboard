@@ -59,9 +59,16 @@ body {
 }
 
 .dashboard-container {
+  width: 100%;
   max-width: 1024px;
   margin: 0 auto;
   padding: var(--space-3xl);
+}
+
+img,
+svg,
+canvas {
+  max-width: 100%;
 }
 
 /* Ensure container works */
