@@ -17,6 +17,7 @@ import {
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { Chart } from 'react-chartjs-2';
 import { WeekData } from '@/lib/types';
+import { useCallback, useEffect, useRef } from 'react';
 
 ChartJS.register(
   CategoryScale,
@@ -41,6 +42,35 @@ interface ExerciseChartProps {
 }
 
 export default function ExerciseChart({ exerciseName, weeks, dateRange, allWeeks, status }: ExerciseChartProps) {
+  const chartRef = useRef<ChartJS<'bar' | 'line'> | null>(null);
+
+  const hideTooltip = useCallback(() => {
+    const chart = chartRef.current;
+    if (!chart) {
+      return;
+    }
+    chart.tooltip?.setActiveElements([], { x: 0, y: 0 });
+    chart.update('none');
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const chart = chartRef.current;
+      if (!chart) {
+        return;
+      }
+      if (chart.canvas?.matches(':hover')) {
+        return;
+      }
+      hideTooltip();
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [hideTooltip]);
+
   // Use shared X axis (allWeeks) for consistent alignment across all charts
   if (allWeeks.length === 0) {
     return (
@@ -154,7 +184,7 @@ export default function ExerciseChart({ exerciseName, weeks, dateRange, allWeeks
 
   return (
     <div style={{ height: '100%' }}>
-      <Chart type="bar" data={chartData} options={options} />
+      <Chart ref={chartRef} type="bar" data={chartData} options={options} />
     </div>
   );
 }
