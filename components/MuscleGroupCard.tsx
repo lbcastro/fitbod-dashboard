@@ -279,6 +279,12 @@ export default function MuscleGroupCard({ muscle, workoutData, dateRange, hideIn
       <div className="exercises-list">
         {exercises.map(([exerciseName, exerciseData]) => {
           const status = calculateExerciseStatus(exerciseData.weeks, dateRange);
+          const latestWeekStart = Object.keys(exerciseData.weeks)
+            .filter(weekStart => weekStart >= cutoffStr)
+            .sort()
+            .pop();
+          const latestWeek = latestWeekStart ? exerciseData.weeks[latestWeekStart] : null;
+          const formatWeight = (value: number) => (Number.isInteger(value) ? value.toString() : value.toFixed(1));
 
           // Determine status color
           let statusColor = '#4ade80'; // progress (green)
@@ -288,7 +294,14 @@ export default function MuscleGroupCard({ muscle, workoutData, dateRange, hideIn
           return (
             <div key={exerciseName} className="exercise-grid">
               <div className="exercise-info">
-                <span className="exercise-name">{exerciseName}</span>
+                <div className="exercise-header">
+                  <span className="exercise-name">{exerciseName}</span>
+                  {latestWeek && (
+                    <span className="exercise-metrics muscle-group-summary">
+                      {formatWeight(latestWeek.max)} kg • {latestWeek.maxReps} reps
+                    </span>
+                  )}
+                </div>
                 <span className="exercise-status" style={{ color: statusColor }}>
                   {status}
                 </span>
