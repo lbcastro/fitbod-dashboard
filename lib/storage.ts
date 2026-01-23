@@ -4,6 +4,7 @@ import { WorkoutData, StoredWorkoutData, WorkoutDateRange } from './types';
 
 const STORAGE_KEY = 'fitbod_workout_data';
 const STORAGE_VERSION = '1.0';
+const DATE_RANGE_KEY = 'fitbod_date_range_days';
 
 /**
  * Save workout data to localStorage
@@ -54,4 +55,23 @@ export function clearWorkoutData(): void {
  */
 export function hasWorkoutData(): boolean {
   return localStorage.getItem(STORAGE_KEY) !== null;
+}
+
+/**
+ * Save selected date range (in days) to localStorage
+ */
+export function saveDateRangeSelection(days: number): void {
+  localStorage.setItem(DATE_RANGE_KEY, String(days));
+}
+
+/**
+ * Load selected date range (in days) from localStorage
+ */
+export function loadDateRangeSelection(): number | null {
+  const stored = localStorage.getItem(DATE_RANGE_KEY);
+  if (!stored) {
+    return null;
+  }
+  const parsed = Number(stored);
+  return Number.isFinite(parsed) ? parsed : null;
 }

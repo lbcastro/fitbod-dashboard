@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { loadWorkoutData, clearWorkoutData } from '@/lib/storage';
+import { loadWorkoutData, loadDateRangeSelection, saveDateRangeSelection } from '@/lib/storage';
 import { WorkoutData, MUSCLE_GROUPS, WorkoutDateRange } from '@/lib/types';
 import ProgressSummary from '@/components/ProgressSummary';
 import MuscleGroupCard from '@/components/MuscleGroupCard';
@@ -35,6 +35,10 @@ export default function DashboardPage() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
+    const storedRange = loadDateRangeSelection();
+    if (storedRange !== null) {
+      setDateRange(storedRange);
+    }
     const stored = loadWorkoutData();
     if (!stored) {
       router.push('/upload');
@@ -43,6 +47,10 @@ export default function DashboardPage() {
     setWorkoutData(stored.data);
     setStoredDateRange(stored.dateRange ?? null);
   }, [router]);
+
+  useEffect(() => {
+    saveDateRangeSelection(dateRange);
+  }, [dateRange]);
 
   // Generate all weeks in the date range for shared X axis
   const allWeeks = useMemo(() => {
