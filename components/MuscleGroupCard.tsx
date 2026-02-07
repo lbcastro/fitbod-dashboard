@@ -2,6 +2,11 @@
 
 import dynamic from 'next/dynamic';
 import { WorkoutData, MuscleGroup } from '@/lib/types';
+import {
+  calculateMuscleFrequencyPerWeek,
+  formatFrequencyPerWeek,
+  getFrequencyStepColor,
+} from '@/lib/frequency';
 
 // Dynamic import to prevent SSR issues with Chart.js
 const ExerciseChart = dynamic(() => import('./ExerciseChart'), {
@@ -246,6 +251,9 @@ export default function MuscleGroupCard({ muscle, workoutData, dateRange, hideIn
       .forEach(weekStart => workoutDates.add(weekStart));
   });
   const totalWorkouts = workoutDates.size;
+  const workoutsPerWeek = calculateMuscleFrequencyPerWeek(workoutData, muscle, dateRange);
+  const workoutsPerWeekLabel = formatFrequencyPerWeek(workoutsPerWeek, 1);
+  const workoutsPerWeekColor = getFrequencyStepColor(workoutsPerWeek);
 
   // Calculate benchmark for the muscle group
   const benchmark = calculateMuscleGroupBenchmark(allExercises, dateRange);
@@ -260,7 +268,8 @@ export default function MuscleGroupCard({ muscle, workoutData, dateRange, hideIn
           {muscle}
         </h3>
         <span className="muscle-group-summary">
-          {allExercises.length} exercises • {totalWorkouts} workouts
+          <span>{totalWorkouts} workouts • </span>
+          <span style={{ color: workoutsPerWeekColor }}>{workoutsPerWeekLabel}/week</span>
         </span>
       </div>
 

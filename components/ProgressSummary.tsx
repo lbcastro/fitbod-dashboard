@@ -1,7 +1,12 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { WorkoutData, MUSCLE_GROUPS, MuscleGroup } from '@/lib/types';
+import {
+  calculateMuscleFrequencyPerWeek,
+  formatFrequencyPerWeek,
+  getFrequencyStepColor,
+} from '@/lib/frequency';
 
 interface ProgressSummaryProps {
   workoutData: WorkoutData;
@@ -14,6 +19,10 @@ type Status = 'progress' | 'stable' | 'attention' | 'inactive';
 interface MuscleStatus {
   muscle: MuscleGroup;
   status: Status;
+}
+
+interface MuscleOverviewItem extends MuscleStatus {
+  frequencyPerWeek: number;
 }
 
 // Calculate linear regression slope for exercise performance over time
@@ -147,6 +156,19 @@ function calculateMuscleStatus(
   return { muscle, status };
 }
 
+function capStableIndicatorColor(color: string, status: Status): string {
+  if (status !== 'stable') {
+    return color;
+  }
+
+  // Stable/right arrow should never render as green.
+  if (color.toLowerCase() === '#4ade80') {
+    return '#facc15';
+  }
+
+  return color;
+}
+
 const statusIcons: Record<Status, string> = {
   progress: '↑',
   stable: '→',
@@ -164,22 +186,28 @@ const statusColors: Record<Status, string> = {
 const highlightDurationMs = 3000;
 
 export default function ProgressSummary({ workoutData, dateRange, hideInactive }: ProgressSummaryProps) {
-  const muscleStatuses = MUSCLE_GROUPS.filter(m => m !== 'Cardio').map((muscle) =>
-    calculateMuscleStatus(workoutData, muscle, dateRange, hideInactive)
+  const muscleOverview = useMemo<MuscleOverviewItem[]>(
+    () =>
+      MUSCLE_GROUPS.filter((m) => m !== 'Cardio').map((muscle) => ({
+        muscle,
+        status: calculateMuscleStatus(workoutData, muscle, dateRange, hideInactive).status,
+        frequencyPerWeek: calculateMuscleFrequencyPerWeek(workoutData, muscle, dateRange),
+      })),
+    [workoutData, dateRange, hideInactive]
   );
   const [changeHighlights, setChangeHighlights] = useState<Record<string, { color: string; id: number }>>({});
   const prevStatusesRef = useRef<Record<string, Status>>({});
   const highlightTimeoutsRef = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
 
   useEffect(() => {
-    const nextStatuses = muscleStatuses.reduce<Record<string, Status>>((acc, { muscle, status }) => {
+    const nextStatuses = muscleOverview.reduce<Record<string, Status>>((acc, { muscle, status }) => {
       acc[muscle] = status;
       return acc;
     }, {});
 
     const updates: Record<string, { color: string; id: number }> = {};
 
-    muscleStatuses.forEach(({ muscle, status }) => {
+    muscleOverview.forEach(({ muscle, status }) => {
       const prevStatus = prevStatusesRef.current[muscle];
       if (prevStatus && prevStatus !== status) {
         const color = statusColors[prevStatus];
@@ -193,8 +221,9 @@ export default function ProgressSummary({ workoutData, dateRange, hideInactive }
         highlightTimeoutsRef.current[muscle] = setTimeout(() => {
           setChangeHighlights((current) => {
             if (!current[muscle]) return current;
-            const { [muscle]: _, ...rest } = current;
-            return rest;
+            const next = { ...current };
+            delete next[muscle];
+            return next;
           });
         }, highlightDurationMs);
       }
@@ -205,7 +234,7 @@ export default function ProgressSummary({ workoutData, dateRange, hideInactive }
     }
 
     prevStatusesRef.current = nextStatuses;
-  }, [muscleStatuses]);
+  }, [muscleOverview]);
 
   useEffect(() => {
     return () => {
@@ -250,52 +279,62 @@ export default function ProgressSummary({ workoutData, dateRange, hideInactive }
       <div
         className="grid progress-summary-content"
         style={{
-          gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+          gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
           gap: 'var(--space-md)',
           marginTop: 'var(--space-lg)',
         }}
       >
-        {muscleStatuses.map(({ muscle, status }) => (
-          <div
-            key={muscle}
-            onClick={() => handleMuscleClick(muscle)}
-            className="flex items-center border-b transition-all hover:bg-white/10 cursor-pointer progress-item"
-            style={{
-              gap: 'var(--space-sm)',
-              paddingTop: 'var(--space-sm)',
-              paddingBottom: 'var(--space-sm)',
-              borderColor: 'rgba(255, 255, 255, 0.08)',
-              minHeight: '44px',
-              opacity: status === 'inactive' ? 0.4 : 1,
-            }}
-          >
+        {muscleOverview.map(({ muscle, status, frequencyPerWeek }) => {
+          const frequencyLabel = formatFrequencyPerWeek(frequencyPerWeek, 1);
+          const rawFrequencyIndicatorColor = getFrequencyStepColor(frequencyPerWeek);
+          const frequencyIndicatorColor = capStableIndicatorColor(rawFrequencyIndicatorColor, status);
+
+          return (
             <div
-              key={`${muscle}-${changeHighlights[muscle]?.id ?? 'base'}`}
-              className={`flex items-center justify-center flex-shrink-0 progress-item-icon${
-                changeHighlights[muscle] ? ' progress-item-icon-highlight' : ''
-              }`}
+              key={muscle}
+              onClick={() => handleMuscleClick(muscle)}
+              className="flex items-center transition-all hover:bg-white/10 cursor-pointer progress-item"
               style={{
-                width: '24px',
-                height: '24px',
-                fontSize: '1.25rem',
-                color: statusColors[status],
-                ['--highlight-color' as string]: changeHighlights[muscle]?.color,
+                gap: 'var(--space-sm)',
+                padding: 'var(--space-sm)',
+                minHeight: '44px',
+                opacity: status === 'inactive' ? 0.4 : 1,
               }}
             >
-              {statusIcons[status]}
+              <div
+                key={`${muscle}-${changeHighlights[muscle]?.id ?? 'base'}`}
+                className={`flex items-center justify-center flex-shrink-0 progress-item-icon${
+                  changeHighlights[muscle] ? ' progress-item-icon-highlight' : ''
+                }`}
+                style={{
+                  width: '24px',
+                  height: '24px',
+                  fontSize: '1.25rem',
+                  lineHeight: 1,
+                  background: 'transparent',
+                  color: frequencyIndicatorColor,
+                  ['--highlight-color' as string]: changeHighlights[muscle]?.color,
+                }}
+              >
+                {statusIcons[status]}
+              </div>
+
+              <span
+                className="flex-1 font-medium uppercase tracking-wider progress-item-muscle"
+                style={{
+                  fontSize: 'var(--text-sm)',
+                  color: '#ffffff',
+                  letterSpacing: '0.05em',
+                  lineHeight: 1,
+                }}
+                title={`${frequencyLabel} workouts/week`}
+                aria-label={`${muscle}: ${frequencyLabel} workouts per week`}
+              >
+                {muscle}
+              </span>
             </div>
-            <span
-              className="flex-1 font-medium uppercase tracking-wider progress-item-muscle"
-              style={{
-                fontSize: 'var(--text-sm)',
-                color: '#ffffff',
-                letterSpacing: '0.05em',
-              }}
-            >
-              {muscle}
-            </span>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
