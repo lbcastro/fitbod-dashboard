@@ -484,3 +484,12 @@ canvas {
     opacity: 0;
   }
 }
+
+/* CTA Button Hover Effect */
+.cta-button {
+  transition: background 0.2s ease;
+}
+
+.cta-button:hover {
+  background: #22c55e !important;
+}

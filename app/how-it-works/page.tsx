@@ -289,6 +289,7 @@ export default function HowItWorks() {
               </h3>
               <a
                 href="/"
+                className="cta-button"
                 style={{
                   display: 'inline-block',
                   padding: 'var(--space-md) var(--space-xl)',
@@ -296,11 +297,8 @@ export default function HowItWorks() {
                   color: '#000000',
                   fontWeight: 600,
                   borderRadius: 'var(--radius-sm)',
-                  textDecoration: 'none',
-                  transition: 'background 0.2s ease'
+                  textDecoration: 'none'
                 }}
-                onMouseEnter={(e) => e.currentTarget.style.background = '#22c55e'}
-                onMouseLeave={(e) => e.currentTarget.style.background = '#4ade80'}
               >
                 Upload your Fitbod data
               </a>
