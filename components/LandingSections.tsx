@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import ExerciseChart from './ExerciseChart';
 import ProgressSummary from './ProgressSummary';
+import FAQ from './FAQ';
 import { WorkoutData, MuscleGroup } from '@/lib/types';
 
 // Import status calculation logic for consistency
@@ -127,16 +128,16 @@ function calculateMuscleStatus(
 // Three message variations - randomly selected on each page load
 const heroMessages = [
   {
-    headline: 'Stop guessing. Start knowing.',
-    subheadline: 'See exactly which muscle groups are getting stronger and which need attention. One dashboard. No more "did I do enough?" Just clear proof you\'re on track.'
+    headline: 'Training hard but not seeing results? Here\'s why.',
+    subheadline: 'Most people train chest 2x/week but never see it grow because they\'re not actually getting stronger. Upload your Fitbod data in 30 seconds and see which muscle groups are progressing - and which ones have been stuck for months.'
   },
   {
-    headline: 'One dashboard. Every muscle group. Zero guesswork.',
-    subheadline: 'Track your max weight week-over-week for all 9 muscle groups in one place. Finally know what\'s working without comparing programs or second-guessing your routine.'
+    headline: 'You\'ve tried switching programs. Nothing works.',
+    subheadline: 'Because you can\'t see which muscles are actually responding. Jacked shows you in 30 seconds which muscle groups are progressing, stuck, or declining. Know what to fix.'
   },
   {
-    headline: 'Minimal workouts. Maximum confidence.',
-    subheadline: 'Know you\'re hitting every muscle group effectively without living in the gym. Track what matters most: are you getting stronger week-over-week, or leaving gains on the table?'
+    headline: 'Stop wondering why nothing\'s changing. See exactly which muscles aren\'t growing.',
+    subheadline: 'Upload your Fitbod export. See week-over-week trends for each muscle group. Know immediately which muscles are responding to your training and which need different exercises, more frequency, or heavier weight.'
   }
 ];
 
@@ -560,7 +561,529 @@ export default function LandingSections() {
         }} />
       </section>
 
-      {/* Section 4: Upload process */}
+      {/* Section 1.5: Fitbod Complement - Not Replacement */}
+      <section className="landing-section" style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 'var(--space-3xl) var(--space-lg)'
+      }}>
+        <div style={{ maxWidth: '900px', width: '100%' }}>
+          <h3 style={{
+            fontSize: 'var(--text-xl)',
+            fontWeight: 600,
+            color: '#ffffff',
+            marginBottom: 'var(--space-sm)',
+            textAlign: 'center'
+          }}>
+            Fitbod tracks exercises. Jacked shows which muscles are growing.
+          </h3>
+
+          <p style={{
+            fontSize: 'var(--text-base)',
+            color: '#a3a3a3',
+            textAlign: 'center',
+            marginBottom: 'var(--space-3xl)',
+            maxWidth: '600px',
+            margin: '0 auto var(--space-3xl)'
+          }}>
+            Keep using Fitbod for your workouts. Use Jacked to see the bigger picture.
+          </p>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: 'var(--space-xl)'
+          }}>
+            {/* Fitbod Column */}
+            <div style={{
+              padding: 'var(--space-xl)',
+              background: 'rgba(115, 115, 115, 0.05)',
+              border: '1px solid rgba(115, 115, 115, 0.2)',
+              borderRadius: 'var(--radius-md)'
+            }}>
+              <div style={{
+                fontSize: 'var(--text-lg)',
+                fontWeight: 600,
+                color: '#a3a3a3',
+                marginBottom: 'var(--space-lg)'
+              }}>
+                What Fitbod shows
+              </div>
+
+              <ul style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 'var(--space-md)'
+              }}>
+                <li style={{ color: '#d4d4d4', fontSize: 'var(--text-base)' }}>
+                  ✓ Individual exercise logs
+                </li>
+                <li style={{ color: '#d4d4d4', fontSize: 'var(--text-base)' }}>
+                  ✓ Daily workout summaries
+                </li>
+                <li style={{ color: '#d4d4d4', fontSize: 'var(--text-base)' }}>
+                  ✓ Personal records per exercise
+                </li>
+                <li style={{ color: '#737373', fontSize: 'var(--text-base)' }}>
+                  ✗ Muscle group trends
+                </li>
+                <li style={{ color: '#737373', fontSize: 'var(--text-base)' }}>
+                  ✗ Lagging body part detection
+                </li>
+                <li style={{ color: '#737373', fontSize: 'var(--text-base)' }}>
+                  ✗ Cross-exercise muscle analysis
+                </li>
+              </ul>
+            </div>
+
+            {/* Jacked Column */}
+            <div style={{
+              padding: 'var(--space-xl)',
+              background: 'rgba(74, 222, 128, 0.05)',
+              border: '1px solid rgba(74, 222, 128, 0.2)',
+              borderRadius: 'var(--radius-md)'
+            }}>
+              <div style={{
+                fontSize: 'var(--text-lg)',
+                fontWeight: 600,
+                color: '#4ade80',
+                marginBottom: 'var(--space-lg)'
+              }}>
+                What Jacked shows
+              </div>
+
+              <ul style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 'var(--space-md)'
+              }}>
+                <li style={{ color: '#4ade80', fontSize: 'var(--text-base)' }}>
+                  ✓ All muscle groups at once
+                </li>
+                <li style={{ color: '#4ade80', fontSize: 'var(--text-base)' }}>
+                  ✓ Week-over-week strength trends
+                </li>
+                <li style={{ color: '#4ade80', fontSize: 'var(--text-base)' }}>
+                  ✓ Progressing vs declining indicators
+                </li>
+                <li style={{ color: '#4ade80', fontSize: 'var(--text-base)' }}>
+                  ✓ Training frequency per muscle
+                </li>
+                <li style={{ color: '#4ade80', fontSize: 'var(--text-base)' }}>
+                  ✓ Lagging body part identification
+                </li>
+                <li style={{ color: '#4ade80', fontSize: 'var(--text-base)' }}>
+                  ✓ Muscle-level progress proof
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div style={{
+            marginTop: 'var(--space-2xl)',
+            padding: 'var(--space-lg)',
+            background: 'rgba(74, 222, 128, 0.05)',
+            border: '1px solid rgba(74, 222, 128, 0.2)',
+            borderRadius: 'var(--radius-sm)',
+            textAlign: 'center'
+          }}>
+            <p style={{
+              fontSize: 'var(--text-base)',
+              color: '#d4d4d4',
+              margin: 0
+            }}>
+              Keep using Fitbod for workouts. Use Jacked to see if they're working.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 2.5: Failed Alternatives - Empathy */}
+      <section className="landing-section" style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 'var(--space-3xl) var(--space-lg)'
+      }}>
+        <div style={{ maxWidth: '900px', width: '100%' }}>
+          <h3 style={{
+            fontSize: 'var(--text-xl)',
+            fontWeight: 600,
+            color: '#ffffff',
+            marginBottom: 'var(--space-sm)',
+            textAlign: 'center'
+          }}>
+            You've tried everything. This is different.
+          </h3>
+
+          <p style={{
+            fontSize: 'var(--text-base)',
+            color: '#a3a3a3',
+            textAlign: 'center',
+            marginBottom: 'var(--space-3xl)',
+            maxWidth: '600px',
+            margin: '0 auto var(--space-3xl)'
+          }}>
+            Switching programs, manual tracking, hoping for the best - none of them show you which muscles are actually responding.
+          </p>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: 'var(--space-xl)'
+          }}>
+            {/* Column 1: What You've Tried */}
+            <div style={{
+              padding: 'var(--space-xl)',
+              background: 'rgba(239, 68, 68, 0.05)',
+              border: '1px solid rgba(239, 68, 68, 0.2)',
+              borderRadius: 'var(--radius-md)'
+            }}>
+              <div style={{
+                fontSize: 'var(--text-lg)',
+                fontWeight: 600,
+                color: '#ef4444',
+                marginBottom: 'var(--space-lg)'
+              }}>
+                What you've tried
+              </div>
+
+              <ul style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 'var(--space-md)'
+              }}>
+                <li style={{ color: '#d4d4d4', fontSize: 'var(--text-base)' }}>
+                  ✗ Switched programs (didn't know what to change)
+                </li>
+                <li style={{ color: '#d4d4d4', fontSize: 'var(--text-base)' }}>
+                  ✗ Tracked PRs manually (too complex, missed patterns)
+                </li>
+                <li style={{ color: '#d4d4d4', fontSize: 'var(--text-base)' }}>
+                  ✗ Hoped for the best (anxiety, no results)
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 2: The Problem */}
+            <div style={{
+              padding: 'var(--space-xl)',
+              background: 'rgba(251, 191, 36, 0.05)',
+              border: '1px solid rgba(251, 191, 36, 0.2)',
+              borderRadius: 'var(--radius-md)'
+            }}>
+              <div style={{
+                fontSize: 'var(--text-lg)',
+                fontWeight: 600,
+                color: '#fbbf24',
+                marginBottom: 'var(--space-lg)'
+              }}>
+                The problem
+              </div>
+
+              <ul style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 'var(--space-md)'
+              }}>
+                <li style={{ color: '#d4d4d4', fontSize: 'var(--text-base)' }}>
+                  You can't see which MUSCLES are progressing
+                </li>
+                <li style={{ color: '#d4d4d4', fontSize: 'var(--text-base)' }}>
+                  Exercise PRs ≠ muscle group progress
+                </li>
+                <li style={{ color: '#d4d4d4', fontSize: 'var(--text-base)' }}>
+                  Takes months to realize something isn't working
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: What Jacked Does */}
+            <div style={{
+              padding: 'var(--space-xl)',
+              background: 'rgba(74, 222, 128, 0.05)',
+              border: '1px solid rgba(74, 222, 128, 0.2)',
+              borderRadius: 'var(--radius-md)'
+            }}>
+              <div style={{
+                fontSize: 'var(--text-lg)',
+                fontWeight: 600,
+                color: '#4ade80',
+                marginBottom: 'var(--space-lg)'
+              }}>
+                What Jacked does
+              </div>
+
+              <ul style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 'var(--space-md)'
+              }}>
+                <li style={{ color: '#4ade80', fontSize: 'var(--text-base)' }}>
+                  ✓ Shows all muscle groups in 30 seconds
+                </li>
+                <li style={{ color: '#4ade80', fontSize: 'var(--text-base)' }}>
+                  ✓ Week-over-week trends you can trust
+                </li>
+                <li style={{ color: '#4ade80', fontSize: 'var(--text-base)' }}>
+                  ✓ Know what to fix before wasting more months
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div style={{
+            marginTop: 'var(--space-2xl)',
+            padding: 'var(--space-lg)',
+            background: 'rgba(74, 222, 128, 0.05)',
+            border: '1px solid rgba(74, 222, 128, 0.2)',
+            borderRadius: 'var(--radius-sm)',
+            textAlign: 'center'
+          }}>
+            <p style={{
+              fontSize: 'var(--text-base)',
+              color: '#d4d4d4',
+              margin: 0
+            }}>
+              Your data. Simple math. Immediate action. That's why it works.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3.5: Trust/Transparency - How It Works */}
+      <section className="landing-section" style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 'var(--space-3xl) var(--space-lg)'
+      }}>
+        <div style={{ maxWidth: '800px', width: '100%' }}>
+          <h3 style={{
+            fontSize: 'var(--text-xl)',
+            fontWeight: 600,
+            color: '#ffffff',
+            marginBottom: 'var(--space-sm)',
+            textAlign: 'center'
+          }}>
+            Your data. Simple math. Insights you can verify.
+          </h3>
+
+          <p style={{
+            fontSize: 'var(--text-base)',
+            color: '#a3a3a3',
+            textAlign: 'center',
+            marginBottom: 'var(--space-3xl)',
+            maxWidth: '600px',
+            margin: '0 auto var(--space-3xl)'
+          }}>
+            No black box algorithms. Just straightforward trend analysis on your actual workout history.
+          </p>
+
+          <div style={{
+            padding: 'var(--space-2xl)',
+            background: 'rgba(74, 222, 128, 0.05)',
+            border: '1px solid rgba(74, 222, 128, 0.2)',
+            borderRadius: 'var(--radius-md)',
+            marginBottom: 'var(--space-2xl)'
+          }}>
+            <h4 style={{
+              fontSize: 'var(--text-lg)',
+              fontWeight: 600,
+              color: '#4ade80',
+              marginBottom: 'var(--space-lg)',
+              textAlign: 'center'
+            }}>
+              How Jacked calculates progress
+            </h4>
+
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 'var(--space-lg)',
+              color: '#d4d4d4',
+              fontSize: 'var(--text-base)'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--space-md)',
+                padding: 'var(--space-md)',
+                background: 'rgba(255, 255, 255, 0.03)',
+                borderRadius: 'var(--radius-sm)'
+              }}>
+                <span style={{
+                  fontSize: 'var(--text-2xl)',
+                  fontWeight: 700,
+                  color: '#4ade80',
+                  minWidth: '40px'
+                }}>
+                  1
+                </span>
+                <div>
+                  <strong style={{ color: '#ffffff' }}>Week 1:</strong> You bench 60kg for 8 reps
+                </div>
+              </div>
+
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--space-md)',
+                padding: 'var(--space-md)',
+                background: 'rgba(255, 255, 255, 0.03)',
+                borderRadius: 'var(--radius-sm)'
+              }}>
+                <span style={{
+                  fontSize: 'var(--text-2xl)',
+                  fontWeight: 700,
+                  color: '#4ade80',
+                  minWidth: '40px'
+                }}>
+                  2
+                </span>
+                <div>
+                  <strong style={{ color: '#ffffff' }}>Week 4:</strong> You bench 62.5kg for 8 reps
+                </div>
+              </div>
+
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--space-md)',
+                padding: 'var(--space-md)',
+                background: 'rgba(74, 222, 128, 0.1)',
+                borderRadius: 'var(--radius-sm)',
+                border: '1px solid rgba(74, 222, 128, 0.3)'
+              }}>
+                <span style={{
+                  fontSize: 'var(--text-2xl)',
+                  fontWeight: 700,
+                  color: '#4ade80',
+                  minWidth: '40px'
+                }}>
+                  ✓
+                </span>
+                <div>
+                  <strong style={{ color: '#4ade80' }}>Result:</strong> Chest is progressing (+4% max weight)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: 'var(--space-lg)'
+          }}>
+            <div style={{
+              padding: 'var(--space-lg)',
+              background: 'rgba(255, 255, 255, 0.03)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: 'var(--radius-md)'
+            }}>
+              <div style={{
+                fontSize: 'var(--text-base)',
+                fontWeight: 600,
+                color: '#ffffff',
+                marginBottom: 'var(--space-sm)'
+              }}>
+                100% your data
+              </div>
+              <div style={{
+                fontSize: 'var(--text-sm)',
+                color: '#a3a3a3',
+                lineHeight: 1.6
+              }}>
+                Not generic advice. Every insight is based on YOUR actual workout history from Fitbod.
+              </div>
+            </div>
+
+            <div style={{
+              padding: 'var(--space-lg)',
+              background: 'rgba(255, 255, 255, 0.03)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: 'var(--radius-md)'
+            }}>
+              <div style={{
+                fontSize: 'var(--text-base)',
+                fontWeight: 600,
+                color: '#ffffff',
+                marginBottom: 'var(--space-sm)'
+              }}>
+                Transparent calculations
+              </div>
+              <div style={{
+                fontSize: 'var(--text-sm)',
+                color: '#a3a3a3',
+                lineHeight: 1.6
+              }}>
+                Click any muscle group to see the exact exercises and weights used. Verify the math yourself.
+              </div>
+            </div>
+
+            <div style={{
+              padding: 'var(--space-lg)',
+              background: 'rgba(255, 255, 255, 0.03)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: 'var(--radius-md)'
+            }}>
+              <div style={{
+                fontSize: 'var(--text-base)',
+                fontWeight: 600,
+                color: '#ffffff',
+                marginBottom: 'var(--space-sm)'
+              }}>
+                Immediate action
+              </div>
+              <div style={{
+                fontSize: 'var(--text-sm)',
+                color: '#a3a3a3',
+                lineHeight: 1.6
+              }}>
+                See what's not working, adjust your training immediately. No waiting months to realize a problem.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Section 4: FAQ */}
+      <section className="landing-section" style={{
+        minHeight: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 'var(--space-3xl) var(--space-lg)'
+      }}>
+        <FAQ />
+      </section>
+
+
+      {/* Section 5: Upload process */}
       <section className="landing-section" style={{
         minHeight: '100vh',
         display: 'flex',

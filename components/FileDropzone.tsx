@@ -101,6 +101,15 @@ export default function FileDropzone({ onFileSelect, isProcessing }: FileDropzon
           </p>
         </div>
 
+        {!isProcessing && (
+          <p style={{
+            fontSize: 'var(--text-xs)',
+            color: '#737373',
+            marginTop: 'var(--space-md)'
+          }}>
+            Your data stays on your device. We never see it.
+          </p>
+        )}
       </div>
     </div>
   );

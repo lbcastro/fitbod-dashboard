@@ -22,7 +22,7 @@ export default function UploadPage() {
       // Read file as text
       const csvText = await file.text();
 
-      setProgress('Processing workout data...');
+      setProgress('Processing workout data... this is going to be cool.');
 
       const formData = new FormData();
       formData.append('file', file);
@@ -46,7 +46,7 @@ export default function UploadPage() {
       // Save to localStorage
       saveWorkoutData(workoutData, file.name, dateRange);
 
-      setProgress('Redirecting to dashboard...');
+      setProgress('All done! Taking you to your dashboard...');
 
       // Navigate to dashboard
       setTimeout(() => {
