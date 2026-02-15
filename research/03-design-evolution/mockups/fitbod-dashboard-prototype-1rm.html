@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitbod Intelligence Dashboard - Prototype: 1RM Analysis</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: #000000;
+      color: #e5e5e5;
+      -webkit-font-smoothing: antialiased;
+      padding: 48px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 48px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 500;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #737373;
+      font-size: 0.875rem;
+    }
+
+    .tagline {
+      color: #4ade80;
+      font-size: 0.875rem;
+      margin-top: 4px;
+    }
+
+    /* Version indicator */
+    .version-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: rgba(74, 222, 128, 0.1);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: #4ade80;
+      margin-left: 12px;
+    }
+
+    .prototype-badge {
+      background: rgba(96, 165, 250, 0.1);
+      border-color: rgba(96, 165, 250, 0.3);
+      color: #60a5fa;
+    }
+
+    /* Chart card containers */
+    .chart-card {
+      margin-bottom: 32px;
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid #1a1a1a;
+      border-radius: 8px;
+    }
+
+    .chart-card-header {
+      margin-bottom: 20px;
+    }
+
+    .chart-card-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .chart-card-subtitle {
+      font-size: 0.8125rem;
+      color: #737373;
+    }
+
+    .chart-card-body {
+      position: relative;
+      height: 150px;
+    }
+
+    .chart-card-body canvas {
+      height: 150px !important;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 24px 16px;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      .chart-card-body {
+        height: 120px;
+      }
+
+      .chart-card-body canvas {
+        height: 120px !important;
+      }
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid #1a1a1a;
+      text-align: center;
+      color: #737373;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>
+        Fitbod Intelligence Dashboard
+        <span class="version-badge prototype-badge">Prototype: 1RM Analysis</span>
+      </h1>
+      <div class="subtitle">Barbell Incline Bench Press</div>
+      <div class="tagline">Exploring estimated 1-rep max tracking</div>
+    </header>
+
+    <div id="charts-container">
+      <!-- Chart 1: Weight & Reps -->
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <div class="chart-card-title">Weight & Reps Progression</div>
+          <div class="chart-card-subtitle">Maximum weight (line) and maximum reps (bars) per workout</div>
+        </div>
+        <div class="chart-card-body">
+          <canvas id="chart-weight-reps"></canvas>
+        </div>
+      </div>
+
+      <!-- Chart 2: 1RM Estimation -->
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <div class="chart-card-title">Estimated 1-Rep Max</div>
+          <div class="chart-card-subtitle">Calculated using Brzycki formula: 1RM = weight × (36 / (37 - reps))</div>
+        </div>
+        <div class="chart-card-body">
+          <canvas id="chart-1rm"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      Prototype • Barbell Incline Bench Press • Brzycki formula: 1RM = weight × (36 / (37 - reps))
+    </footer>
+  </div>
+
+  <script>
+    // Disable datalabels plugin globally (we'll enable per dataset)
+    Chart.defaults.plugins.datalabels = {
+      display: false
+    };
+
+    // Your 2025 workout data (pre-processed with all exercises)
+    const WORKOUT_DATA = {"Barbell Incline Bench Press":{"muscle":"Chest","secondary":["Triceps","Shoulders"],"weeks":{"2025-01-06":{"max":40.0,"sets":4,"maxReps":8,"load":320.0},"2025-01-13":{"max":30.0,"sets":4,"maxReps":16,"load":480.0},"2025-01-27":{"max":30.0,"sets":3,"maxReps":14,"load":420.0},"2025-02-03":{"max":30.0,"sets":4,"maxReps":13,"load":390.0},"2025-02-10":{"max":50.0,"sets":5,"maxReps":6,"load":300.0},"2025-02-24":{"max":50.0,"sets":3,"maxReps":7,"load":350.0},"2025-03-03":{"max":50.0,"sets":4,"maxReps":5,"load":250.0},"2025-03-10":{"max":40.0,"sets":4,"maxReps":10,"load":400.0},"2025-04-21":{"max":40.0,"sets":3,"maxReps":10,"load":400.0},"2025-05-12":{"max":50.0,"sets":5,"maxReps":6,"load":300.0},"2025-05-26":{"max":30.0,"sets":3,"maxReps":13,"load":390.0},"2025-06-02":{"max":40.0,"sets":4,"maxReps":10,"load":400.0},"2025-06-16":{"max":30.0,"sets":4,"maxReps":15,"load":450.0},"2025-06-23":{"max":40.0,"sets":2,"maxReps":12,"load":480.0},"2025-06-30":{"max":40.0,"sets":2,"maxReps":12,"load":480.0},"2025-07-07":{"max":30.0,"sets":3,"maxReps":16,"load":480.0},"2025-07-14":{"max":40.0,"sets":3,"maxReps":10,"load":400.0},"2025-08-11":{"max":50.0,"sets":3,"maxReps":6,"load":300.0},"2025-08-18":{"max":50.0,"sets":3,"maxReps":7,"load":350.0},"2025-08-25":{"max":50.0,"sets":3,"maxReps":4,"load":200.0},"2025-09-01":{"max":40.0,"sets":3,"maxReps":9,"load":360.0},"2025-09-15":{"max":30.0,"sets":3,"maxReps":14,"load":420.0},"2025-09-22":{"max":50.0,"sets":4,"maxReps":7,"load":350.0},"2025-10-06":{"max":50.0,"sets":3,"maxReps":6,"load":300.0},"2025-10-27":{"max":40.0,"sets":4,"maxReps":11,"load":440.0},"2025-11-03":{"max":30.0,"sets":4,"maxReps":17,"load":510.0},"2025-11-17":{"max":50.0,"sets":4,"maxReps":5,"load":250.0},"2025-11-24":{"max":50.0,"sets":4,"maxReps":6,"load":300.0},"2025-12-15":{"max":40.0,"sets":4,"maxReps":8,"load":320.0},"2025-12-22":{"max":70.0,"sets":3,"maxReps":2,"load":140.0},"2025-12-29":{"max":60.0,"sets":3,"maxReps":6,"load":360.0}}},"Dumbbell Incline Fly":{"muscle":"Chest","secondary":["Shoulders"],"weeks":{"2025-04-21":{"max":24.0,"sets":2,"maxReps":8,"load":192.0},"2025-05-26":{"max":20.0,"sets":3,"maxReps":16,"load":320.0},"2025-11-24":{"max":24.0,"sets":3,"maxReps":10,"load":240.0},"2025-12-22":{"max":28.0,"sets":2,"maxReps":8,"load":224.0},"2025-12-29":{"max":28.0,"sets":4,"maxReps":12,"load":336.0}}},"Bent Over Barbell Row":{"muscle":"Back","secondary":["Biceps"],"weeks":{"2025-01-27":{"max":40.0,"sets":2,"maxReps":14,"load":560.0},"2025-03-10":{"max":40.0,"sets":3,"maxReps":15,"load":600.0},"2025-06-16":{"max":40.0,"sets":2,"maxReps":12,"load":480.0},"2025-11-10":{"max":40.0,"sets":7,"maxReps":12,"load":480.0},"2025-12-15":{"max":45.0,"sets":4,"maxReps":7,"load":315.0},"2025-12-29":{"max":50.0,"sets":4,"maxReps":9,"load":450.0}}},"Barbell Shoulder Press":{"muscle":"Shoulders","secondary":["Triceps"],"weeks":{"2025-02-10":{"max":20.0,"sets":3,"maxReps":8,"load":160.0},"2025-09-29":{"max":20.0,"sets":3,"maxReps":10,"load":200.0},"2025-10-13":{"max":20.0,"sets":4,"maxReps":14,"load":280.0},"2025-11-10":{"max":20.0,"sets":8,"maxReps":8,"load":160.0},"2025-11-17":{"max":20.0,"sets":4,"maxReps":9,"load":180.0},"2025-11-24":{"max":20.0,"sets":4,"maxReps":9,"load":180.0},"2025-12-01":{"max":25.0,"sets":3,"maxReps":6,"load":150.0},"2025-12-15":{"max":20.0,"sets":4,"maxReps":8,"load":160.0},"2025-12-29":{"max":25.0,"sets":3,"maxReps":8,"load":200.0}}},"Romanian Deadlift":{"muscle":"Hamstrings","secondary":["Back","Glutes"],"weeks":{"2025-01-13":{"max":50.0,"sets":4,"maxReps":8,"load":400.0},"2025-01-27":{"max":30.0,"sets":4,"maxReps":16,"load":480.0},"2025-03-03":{"max":40.0,"sets":5,"maxReps":14,"load":560.0},"2025-03-17":{"max":30.0,"sets":1,"maxReps":8,"load":240.0},"2025-12-29":{"max":60.0,"sets":3,"maxReps":10,"load":600.0}}},"Barbell Curl":{"muscle":"Biceps","secondary":[],"weeks":{"2025-01-27":{"max":10.0,"sets":4,"maxReps":13,"load":130.0},"2025-02-24":{"max":20.0,"sets":4,"maxReps":10,"load":200.0},"2025-04-28":{"max":20.0,"sets":4,"maxReps":8,"load":160.0},"2025-05-26":{"max":20.0,"sets":4,"maxReps":12,"load":240.0},"2025-06-23":{"max":20.0,"sets":2,"maxReps":10,"load":200.0},"2025-11-24":{"max":20.0,"sets":4,"maxReps":9,"load":180.0},"2025-12-22":{"max":25.0,"sets":4,"maxReps":6,"load":150.0}}},"Incline Dumbbell Curl":{"muscle":"Biceps","secondary":[],"weeks":{"2025-03-17":{"max":28.0,"sets":3,"maxReps":10,"load":280.0},"2025-04-28":{"max":24.0,"sets":3,"maxReps":12,"load":288.0},"2025-05-26":{"max":24.0,"sets":3,"maxReps":12,"load":288.0},"2025-06-09":{"max":24.0,"sets":4,"maxReps":10,"load":240.0},"2025-09-01":{"max":24.0,"sets":5,"maxReps":12,"load":288.0},"2025-11-03":{"max":24.0,"sets":4,"maxReps":13,"load":312.0},"2025-12-22":{"max":28.0,"sets":4,"maxReps":6,"load":168.0}}},"Cable Rope Overhead Triceps Extension":{"muscle":"Triceps","secondary":[],"weeks":{"2025-04-14":{"max":40.0,"sets":3,"maxReps":12,"load":480.0},"2025-06-16":{"max":35.0,"sets":4,"maxReps":10,"load":350.0},"2025-06-23":{"max":45.0,"sets":2,"maxReps":7,"load":315.0},"2025-06-30":{"max":40.0,"sets":2,"maxReps":10,"load":400.0},"2025-09-08":{"max":40.0,"sets":4,"maxReps":9,"load":360.0},"2025-10-13":{"max":40.0,"sets":3,"maxReps":6,"load":240.0},"2025-10-20":{"max":40.0,"sets":4,"maxReps":6,"load":240.0},"2025-12-22":{"max":50.0,"sets":4,"maxReps":3,"load":150.0}}},"Trap Bar Deadlift":{"muscle":"Hamstrings","secondary":["Back","Glutes"],"weeks":{"2025-11-10":{"max":50.0,"sets":6,"maxReps":14,"load":700.0},"2025-11-17":{"max":50.0,"sets":4,"maxReps":13,"load":650.0},"2025-11-24":{"max":60.0,"sets":4,"maxReps":12,"load":720.0},"2025-12-22":{"max":70.0,"sets":3,"maxReps":8,"load":560.0}}},"Leg Extension":{"muscle":"Quadriceps","secondary":[],"weeks":{"2025-01-13":{"max":80.0,"sets":2,"maxReps":8,"load":640.0},"2025-01-27":{"max":50.0,"sets":2,"maxReps":15,"load":750.0},"2025-02-10":{"max":60.0,"sets":3,"maxReps":14,"load":840.0},"2025-03-17":{"max":65.0,"sets":4,"maxReps":12,"load":780.0},"2025-03-31":{"max":60.0,"sets":3,"maxReps":16,"load":960.0},"2025-04-14":{"max":45.0,"sets":3,"maxReps":18,"load":810.0},"2025-04-28":{"max":65.0,"sets":4,"maxReps":16,"load":1040.0},"2025-05-19":{"max":40.0,"sets":3,"maxReps":19,"load":760.0},"2025-06-02":{"max":45.0,"sets":4,"maxReps":20,"load":900.0},"2025-06-23":{"max":60.0,"sets":2,"maxReps":14,"load":840.0},"2025-06-30":{"max":50.0,"sets":2,"maxReps":20,"load":1000.0},"2025-07-07":{"max":50.0,"sets":3,"maxReps":17,"load":850.0},"2025-07-14":{"max":50.0,"sets":4,"maxReps":13,"load":650.0},"2025-07-21":{"max":45.0,"sets":4,"maxReps":18,"load":810.0},"2025-08-11":{"max":55.0,"sets":4,"maxReps":12,"load":660.0},"2025-08-18":{"max":55.0,"sets":4,"maxReps":11,"load":605.0},"2025-09-08":{"max":45.0,"sets":4,"maxReps":15,"load":675.0},"2025-09-15":{"max":45.0,"sets":4,"maxReps":20,"load":900.0},"2025-09-22":{"max":50.0,"sets":4,"maxReps":13,"load":650.0},"2025-09-29":{"max":40.0,"sets":4,"maxReps":18,"load":720.0},"2025-10-06":{"max":50.0,"sets":3,"maxReps":15,"load":750.0},"2025-10-20":{"max":50.0,"sets":8,"maxReps":16,"load":800.0},"2025-10-27":{"max":45.0,"sets":4,"maxReps":15,"load":675.0},"2025-11-03":{"max":50.0,"sets":4,"maxReps":11,"load":550.0},"2025-11-24":{"max":65.0,"sets":4,"maxReps":9,"load":585.0},"2025-12-01":{"max":65.0,"sets":3,"maxReps":11,"load":715.0},"2025-12-15":{"max":70.0,"sets":3,"maxReps":9,"load":630.0},"2025-12-22":{"max":80.0,"sets":3,"maxReps":6,"load":480.0}}},"Lat Pulldown":{"muscle":"Back","secondary":["Biceps"],"weeks":{"2025-01-06":{"max":45.0,"sets":3,"maxReps":12,"load":540.0},"2025-03-10":{"max":45.0,"sets":4,"maxReps":12,"load":540.0},"2025-04-14":{"max":45.0,"sets":4,"maxReps":18,"load":810.0},"2025-05-19":{"max":50.0,"sets":5,"maxReps":10,"load":500.0},"2025-06-16":{"max":50.0,"sets":4,"maxReps":16,"load":800.0},"2025-07-07":{"max":60.0,"sets":2,"maxReps":3,"load":180.0},"2025-07-14":{"max":50.0,"sets":2,"maxReps":9,"load":450.0},"2025-08-11":{"max":50.0,"sets":2,"maxReps":8,"load":400.0},"2025-09-08":{"max":40.0,"sets":3,"maxReps":17,"load":680.0},"2025-09-29":{"max":60.0,"sets":4,"maxReps":6,"load":360.0},"2025-10-20":{"max":50.0,"sets":5,"maxReps":9,"load":450.0},"2025-12-15":{"max":60.0,"sets":4,"maxReps":6,"load":360.0}}},"Seated Back Extension":{"muscle":"Hamstrings","secondary":["Back","Glutes"],"weeks":{"2025-03-17":{"max":70.0,"sets":2,"maxReps":18,"load":1260.0},"2025-04-28":{"max":80.0,"sets":3,"maxReps":16,"load":1280.0},"2025-06-30":{"max":80.0,"sets":3,"maxReps":20,"load":1600.0},"2025-10-20":{"max":70.0,"sets":3,"maxReps":16,"load":1120.0},"2025-12-15":{"max":90.0,"sets":3,"maxReps":12,"load":1080.0}}},"Machine Hip Adductor":{"muscle":"Glutes","secondary":[],"weeks":{"2025-09-08":{"max":25.0,"sets":4,"maxReps":24,"load":600.0},"2025-09-15":{"max":25.0,"sets":2,"maxReps":20,"load":500.0},"2025-09-22":{"max":60.0,"sets":3,"maxReps":12,"load":720.0},"2025-10-06":{"max":30.0,"sets":3,"maxReps":17,"load":510.0},"2025-10-20":{"max":35.0,"sets":3,"maxReps":11,"load":385.0},"2025-10-27":{"max":50.0,"sets":3,"maxReps":11,"load":550.0},"2025-12-15":{"max":40.0,"sets":3,"maxReps":12,"load":480.0}}},"Machine Hip Abductor":{"muscle":"Glutes","secondary":[],"weeks":{"2025-09-08":{"max":50.0,"sets":3,"maxReps":20,"load":1000.0},"2025-09-15":{"max":55.0,"sets":2,"maxReps":13,"load":715.0},"2025-09-22":{"max":60.0,"sets":3,"maxReps":16,"load":960.0},"2025-10-06":{"max":60.0,"sets":3,"maxReps":14,"load":840.0},"2025-10-20":{"max":60.0,"sets":3,"maxReps":14,"load":840.0},"2025-10-27":{"max":65.0,"sets":3,"maxReps":11,"load":715.0},"2025-12-15":{"max":65.0,"sets":3,"maxReps":12,"load":780.0}}},"Close-Grip Bench Press":{"muscle":"Triceps","secondary":["Chest"],"weeks":{"2025-02-10":{"max":30.0,"sets":4,"maxReps":15,"load":450.0},"2025-12-15":{"max":50.0,"sets":3,"maxReps":4,"load":200.0}}},"Deadlift":{"muscle":"Hamstrings","secondary":["Back","Glutes"],"weeks":{"2025-02-03":{"max":30.0,"sets":4,"maxReps":16,"load":480.0},"2025-12-15":{"max":50.0,"sets":4,"maxReps":10,"load":500.0}}},"Barbell Bicep Drag Curl":{"muscle":"Biceps","secondary":[],"weeks":{"2025-02-17":{"max":30.0,"sets":3,"maxReps":12,"load":360.0},"2025-06-09":{"max":20.0,"sets":3,"maxReps":14,"load":280.0},"2025-12-15":{"max":20.0,"sets":4,"maxReps":11,"load":220.0}}},"Seated Machine Calf Press":{"muscle":"Calves","secondary":[],"weeks":{"2025-11-24":{"max":120.0,"sets":4,"maxReps":13,"load":1560.0}}},"Glute Kickback Machine":{"muscle":"Glutes","secondary":[],"weeks":{"2025-11-24":{"max":70.0,"sets":3,"maxReps":9,"load":630.0}}},"Calf Press":{"muscle":"Calves","secondary":[],"weeks":{"2025-10-20":{"max":100.0,"sets":4,"maxReps":19,"load":1900.0},"2025-11-03":{"max":120.0,"sets":3,"maxReps":18,"load":2160.0}}},"Barbell Bench Press":{"muscle":"Chest","secondary":["Triceps","Shoulders"],"weeks":{"2025-01-06":{"max":60.0,"sets":4,"maxReps":4,"load":240.0},"2025-04-21":{"max":60.0,"sets":4,"maxReps":8,"load":480.0},"2025-08-11":{"max":50.0,"sets":3,"maxReps":10,"load":500.0}}},"Dumbbell Shoulder Press":{"muscle":"Shoulders","secondary":["Triceps"],"weeks":{"2025-05-12":{"max":20.0,"sets":4,"maxReps":19,"load":380.0},"2025-06-09":{"max":24.0,"sets":3,"maxReps":13,"load":312.0},"2025-06-23":{"max":24.0,"sets":3,"maxReps":18,"load":432.0}}},"Dumbbell Bench Press":{"muscle":"Chest","secondary":["Triceps","Shoulders"],"weeks":{"2025-02-03":{"max":56.0,"sets":3,"maxReps":8,"load":448.0},"2025-03-03":{"max":48.0,"sets":2,"maxReps":9,"load":432.0}}}};
+
+    // Calculate global date range for time-aligned charts
+    const ALL_WEEKS = new Set();
+    Object.values(WORKOUT_DATA).forEach(ex => {
+      Object.keys(ex.weeks).forEach(week => ALL_WEEKS.add(week));
+    });
+    const sortedWeeks = Array.from(ALL_WEEKS).sort();
+    const YEAR_START = sortedWeeks[0];
+    const YEAR_END = sortedWeeks[sortedWeeks.length - 1];
+
+    // Calculate estimated 1-Rep Max using Brzycki formula
+    function calculate1RM(weight, reps) {
+      if (!weight || !reps || weight <= 0 || reps <= 0) return null;
+      if (reps >= 37) return null; // Formula undefined
+
+      const oneRM = weight * (36 / (37 - reps));
+      return Math.round(oneRM * 10) / 10; // Round to 1 decimal
+    }
+
+    // Extract exercise data
+    function getExerciseData(exerciseName) {
+      const exData = WORKOUT_DATA[exerciseName];
+      if (!exData) return null;
+
+      const weekEntries = Object.entries(exData.weeks).sort((a, b) =>
+        new Date(a[0]) - new Date(b[0])
+      );
+
+      return weekEntries.map(([weekStart, weekData]) => ({
+        weekStart,
+        maxWeight: weekData.max,
+        maxReps: weekData.maxReps,
+        estimated1RM: calculate1RM(weekData.max, weekData.maxReps)
+      }));
+    }
+
+    // Create time-aligned data
+    function createTimelineData(exerciseWeeks, metric) {
+      const data = [];
+      const exerciseMap = new Map(exerciseWeeks.map(w => [w.weekStart, w[metric]]));
+
+      const [startYear, startMonth, startDay] = YEAR_START.split('-').map(Number);
+      const [endYear, endMonth, endDay] = YEAR_END.split('-').map(Number);
+
+      let currentDate = new Date(Date.UTC(startYear, startMonth - 1, startDay));
+      const endDateObj = new Date(Date.UTC(endYear, endMonth - 1, endDay));
+
+      while (currentDate <= endDateObj) {
+        const weekStr = currentDate.toISOString().split('T')[0];
+        data.push(exerciseMap.get(weekStr) || null);
+        currentDate.setUTCDate(currentDate.getUTCDate() + 7);
+      }
+
+      return data;
+    }
+
+    function createTimelineLabels() {
+      const labels = [];
+      const [startYear, startMonth, startDay] = YEAR_START.split('-').map(Number);
+      const [endYear, endMonth, endDay] = YEAR_END.split('-').map(Number);
+
+      let currentDate = new Date(Date.UTC(startYear, startMonth - 1, startDay));
+      const endDateObj = new Date(Date.UTC(endYear, endMonth - 1, endDay));
+
+      while (currentDate <= endDateObj) {
+        labels.push(formatWeekDate(currentDate.toISOString().split('T')[0]));
+        currentDate.setUTCDate(currentDate.getUTCDate() + 7);
+      }
+
+      return labels;
+    }
+
+    // Chart 1: Weight & Reps
+    function renderWeightRepsChart(exerciseWeeks) {
+      const ctx = document.getElementById('chart-weight-reps');
+      const labels = createTimelineLabels();
+      const weightData = createTimelineData(exerciseWeeks, 'maxWeight');
+      const repsData = createTimelineData(exerciseWeeks, 'maxReps');
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Reps',
+              type: 'bar',
+              data: repsData,
+              backgroundColor: '#3a3a3a',
+              borderColor: 'transparent',
+              barThickness: 'flex',
+              maxBarThickness: 12,
+              yAxisID: 'y-reps',
+              order: 2,
+              datalabels: { display: false }
+            },
+            {
+              label: 'Weight (kg)',
+              type: 'line',
+              data: weightData,
+              borderColor: '#4ade80',
+              backgroundColor: 'transparent',
+              borderWidth: 2.5,
+              pointRadius: 3,
+              pointBackgroundColor: '#4ade80',
+              pointHoverRadius: 5,
+              tension: 0.2,
+              spanGaps: true,
+              yAxisID: 'y-weight',
+              order: 1,
+              datalabels: {
+                display: true,
+                align: 'top',
+                anchor: 'end',
+                color: '#4ade80',
+                font: { size: 9, weight: 500 },
+                formatter: (value) => value ? `${value}kg` : null
+              }
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(0, 0, 0, 0.95)',
+              padding: 12,
+              borderColor: 'rgba(255, 255, 255, 0.1)',
+              borderWidth: 1,
+              callbacks: {
+                title: (items) => items[0].label,
+                label: (ctx) => {
+                  if (!ctx.parsed.y) return null;
+                  return ctx.dataset.label === 'Weight (kg)'
+                    ? `Weight: ${ctx.parsed.y}kg`
+                    : `Reps: ${ctx.parsed.y}`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: { display: false, grid: { display: false } },
+            'y-weight': { display: false, position: 'left', grid: { display: false } },
+            'y-reps': { display: false, position: 'right', grid: { display: false } }
+          }
+        }
+      });
+    }
+
+    // Chart 2: Estimated 1RM
+    function render1RMChart(exerciseWeeks) {
+      const ctx = document.getElementById('chart-1rm');
+      const labels = createTimelineLabels();
+      const oneRMData = createTimelineData(exerciseWeeks, 'estimated1RM');
+
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: 'Estimated 1RM (kg)',
+              data: oneRMData,
+              borderColor: '#4ade80',
+              backgroundColor: 'transparent',
+              borderWidth: 2.5,
+              pointRadius: 3,
+              pointBackgroundColor: '#4ade80',
+              pointHoverRadius: 5,
+              tension: 0.2,
+              spanGaps: true,
+              datalabels: {
+                display: true,
+                align: 'top',
+                anchor: 'end',
+                color: '#4ade80',
+                font: { size: 9, weight: 500 },
+                formatter: (value) => value ? `${value}kg` : null
+              }
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(0, 0, 0, 0.95)',
+              padding: 12,
+              borderColor: 'rgba(255, 255, 255, 0.1)',
+              borderWidth: 1,
+              callbacks: {
+                title: (items) => items[0].label,
+                label: (ctx) => {
+                  if (!ctx.parsed.y) return null;
+                  return `Estimated 1RM: ${ctx.parsed.y}kg`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: { display: false, grid: { display: false } },
+            y: { display: false, grid: { display: false } }
+          }
+        }
+      });
+    }
+
+    // Format week date
+    function formatWeekDate(dateStr) {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    // Initialize dashboard
+    window.addEventListener('DOMContentLoaded', function() {
+      const exerciseWeeks = getExerciseData("Barbell Incline Bench Press");
+
+      if (exerciseWeeks) {
+        renderWeightRepsChart(exerciseWeeks);
+        render1RMChart(exerciseWeeks);
+      } else {
+        document.getElementById('charts-container').innerHTML = '<p style="color: #737373; text-align: center;">Exercise data not found</p>';
+      }
+    });
+
+    // Chart.js defaults
+    Chart.defaults.color = '#737373';
+    Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif';
+  </script>
+</body>
+</html>

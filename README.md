@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jacked
 
-## Getting Started
+**Fitbod Intelligence Dashboard**
 
-First, run the development server:
+A Next.js web application that provides muscle group-level progress tracking and analysis for Fitbod users.
+
+## Overview
+
+**Status**: Active development
+**Original research**: January 2026
+**Current focus**: Building MLP (Muscle group Progress dashboard)
+
+### Core Value Proposition
+
+"See what Fitbod doesn't show you"
+
+Addresses validated pain points:
+- **Self-Doubt Sufficiency** (83% of target audience): "Can't shake the feeling if I did enough"
+- **Aesthetic Confidence** (47% of target audience): "Specific body parts lagging, can't see changes"
+
+### Target Market
+
+1M+ Fitbod users looking for muscle group-level progress insights
+
+## Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Key Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**MLP (v4 design)**:
+- Single scrollable dashboard with all 9 muscle groups
+- Status indicators: Progressing (↑) / Plateau (→) / Declining (↓) / Not trained (○)
+- Click any muscle group → drill into exercise-level trends
+- Upload Fitbod CSV export → instant analysis
+- Mobile-responsive design
 
-## Learn More
+**User Flow**:
+1. Export CSV from Fitbod (Settings → Export Workout Data)
+2. Upload to web app (or click "Load Demo Data")
+3. See overview: Which muscle groups progressing/plateauing/neglected?
+4. Click muscle group → drill into specific exercise trends
 
-To learn more about Next.js, take a look at the following resources:
+## Research & Context
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All research, analysis, design iterations, and data sources are organized in the `research/` directory:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Research Structure
 
-## Deploy on Vercel
+```
+research/
+├── 00-overview/          # Project overview and context
+├── 01-market-analysis/   # 30-video analysis, competitive research
+├── 02-product-definition/ # Strategy, positioning, use cases
+├── 03-design-evolution/  # Design decisions, mockups (v1-v8)
+├── 04-data-sources/      # Raw data, processing scripts
+└── 05-user-archetypes/   # Behavioral research, prototypes
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Key research documents**:
+- `research/00-overview/README.md` - Complete project history and build plan
+- `research/02-product-definition/executive-summary.md` - Strategic overview
+- `research/02-product-definition/product-definition.md` - Full product vision
+- `research/03-design-evolution/v4-design-decisions.md` - Current design rationale
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Tech Stack
+
+- **Framework**: Next.js 15 (App Router)
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Charts**: Recharts
+- **Deployment**: Vercel
+
+## Project Structure
+
+```
+jacked/
+├── app/              # Next.js app router pages
+├── components/       # React components
+├── lib/              # Utilities and helpers
+├── public/           # Static assets
+├── research/         # All research and analysis
+└── README.md         # This file
+```
+
+## Positioning Strategy
+
+**Primary**: "Fitbod Intelligence Layer"
+- Tagline: "See what Fitbod doesn't show you"
+- Marketing: "Fitbod tracks your workouts. We show you what's actually working."
+
+**Emotional**: For lifters with self-doubt
+- "Finally know if you're making real progress"
+- "Built this because I couldn't tell if my legs were lagging"
+
+## Monetization
+
+**Validated WTP**: $20-30/month range
+
+**Launch strategy**:
+- Week 1: Build MLP, deploy, get 10-20 beta testers
+- Week 2: Iterate based on feedback, add "Pay What You Want" ($0-50)
+- Week 3: Analyze payment data, decide to scale or pivot
+
+## License
+
+Private project - Not open source

@@ -1,0 +1,4257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitbod Intelligence Dashboard - Archetype 3: Time-Constrained</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: #000000;
+      color: #e5e5e5;
+      -webkit-font-smoothing: antialiased;
+      padding: 48px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 48px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 500;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #737373;
+      font-size: 0.875rem;
+    }
+
+    .tagline {
+      color: #4ade80;
+      font-size: 0.875rem;
+      margin-top: 4px;
+    }
+
+    /* Progress Summary Card */
+    .progress-summary-card {
+      margin-bottom: 48px;
+      padding: 24px;
+      background: rgba(74, 222, 128, 0.05);
+      border: 1px solid rgba(74, 222, 128, 0.2);
+      border-radius: 8px;
+    }
+
+    .progress-summary-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .progress-summary-icon {
+      font-size: 1.5rem;
+    }
+
+    .progress-summary-title {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #4ade80;
+    }
+
+    .progress-summary-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .progress-item {
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 6px;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+    }
+
+    .progress-item.status-progressing {
+      border-left-color: #4ade80;
+    }
+
+    .progress-item.status-plateau {
+      border-left-color: #fbbf24;
+    }
+
+    .progress-item.status-declining {
+      border-left-color: #ef4444;
+    }
+
+    .progress-item.status-neglected {
+      border-left-color: #525252;
+      opacity: 0.5;
+    }
+
+    .progress-item-muscle {
+      display: block;
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 0.875rem;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .progress-item-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8125rem;
+    }
+
+    .progress-item-icon {
+      font-size: 0.875rem;
+    }
+
+    .progress-item-status.status-progressing {
+      color: #4ade80;
+    }
+
+    .progress-item-status.status-plateau {
+      color: #fbbf24;
+    }
+
+    .progress-item-status.status-declining {
+      color: #ef4444;
+    }
+
+    .progress-item-status.status-neglected {
+      color: #737373;
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-bottom: 24px;
+      color: #d4d4d4;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Muscle Group Cards */
+    .muscle-group-card {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .muscle-group-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .muscle-group-name {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .muscle-group-summary {
+      font-size: 0.8125rem;
+      color: #737373;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .muscle-group-benchmark {
+      font-size: 0.8125rem;
+      color: #4ade80;
+      margin-bottom: 20px;
+    }
+
+    /* Neglected muscle group state */
+    .muscle-group-card.neglected {
+      opacity: 0.5;
+    }
+
+    .neglected-message {
+      padding: 20px 24px;
+      background: rgba(239, 68, 68, 0.05);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .neglected-icon {
+      font-size: 1.5rem;
+      color: #ef4444;
+    }
+
+    .neglected-text {
+      flex: 1;
+    }
+
+    .neglected-title {
+      font-size: 0.9375rem;
+      color: #ef4444;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .neglected-subtitle {
+      font-size: 0.8125rem;
+      color: #a3a3a3;
+    }
+
+    /* Exercise rows */
+    .exercises-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .exercise-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .exercise-row.inactive {
+      opacity: 0.3;
+    }
+
+    .exercise-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .exercise-name {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+
+    .exercise-status {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .exercise-subtext {
+      font-size: 0.75rem;
+      color: #a3a3a3;
+      margin-top: 2px;
+    }
+
+    .exercise-chart-container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .exercise-chart {
+      flex: 1;
+      height: 60px;
+      position: relative;
+    }
+
+    .exercise-chart canvas {
+      height: 60px !important;
+    }
+
+    /* Filter toggle */
+    .filter-toggle {
+      margin-bottom: 24px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.875rem;
+      color: #a3a3a3;
+    }
+
+    .filter-toggle input[type="checkbox"] {
+      cursor: pointer;
+    }
+
+    .filter-toggle label {
+      cursor: pointer;
+    }
+
+    /* Version indicator */
+    .version-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: rgba(74, 222, 128, 0.1);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: #4ade80;
+      margin-left: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 24px 16px;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      .progress-summary-content {
+        grid-template-columns: 1fr;
+      }
+
+      .exercise-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .exercise-chart {
+        height: 50px;
+      }
+
+      .exercise-chart canvas {
+        height: 50px !important;
+      }
+
+      .muscle-group-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid #1a1a1a;
+      text-align: center;
+      color: #737373;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>
+        Fitbod Intelligence Dashboard
+        <span class="version-badge">Archetype 3: Time-Constrained</span>
+      </h1>
+      <div class="subtitle">Pattern: Efficient, minimal, consistent training</div>
+      <div class="tagline">Data profile: Gets in, does the work, gets out — no time wasted</div>
+    </header>
+
+    <!-- Progress Summary -->
+    <div class="progress-summary-card" id="progress-summary">
+      <!-- Will be populated by JS -->
+    </div>
+
+    <h2 class="section-title">Muscle Group Balance — 2025 Data (Sorted by frequency)</h2>
+
+    <div class="filter-toggle">
+      <input type="checkbox" id="hide-inactive" checked>
+      <label for="hide-inactive">Hide exercises not performed in last 10 weeks</label>
+    </div>
+
+    <div id="muscle-groups-container">
+      <!-- Muscle groups will be rendered here -->
+    </div>
+
+    <footer>
+      2025-2026 archetype data • Archetype 3: Time-Constrained: Pattern: Efficient, minimal, consistent training
+    </footer>
+  </div>
+
+  <script>
+    // Disable datalabels plugin globally (we'll enable per dataset)
+    Chart.defaults.plugins.datalabels = {
+      display: false
+    };
+
+    // Your 2025 workout data (pre-processed with all exercises)
+    const WORKOUT_DATA = {
+    "Barbell Bench Press": {
+        "muscle": "Chest",
+        "secondary": [
+            "Triceps",
+            "Shoulders"
+        ],
+        "weeks": {
+            "2025-01-06": {
+                "max": 50.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1000.0
+            },
+            "2025-01-13": {
+                "max": 52.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2075.0
+            },
+            "2025-01-27": {
+                "max": 55.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2175.0
+            },
+            "2025-02-03": {
+                "max": 56.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1125.0
+            },
+            "2025-02-10": {
+                "max": 57.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1150.0
+            },
+            "2025-02-17": {
+                "max": 60.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2375.0
+            },
+            "2025-03-03": {
+                "max": 62.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2475.0
+            },
+            "2025-03-17": {
+                "max": 65.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2575.0
+            },
+            "2025-03-24": {
+                "max": 66.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1325.0
+            },
+            "2025-03-31": {
+                "max": 67.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1350.0
+            },
+            "2025-04-07": {
+                "max": 70.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2775.0
+            },
+            "2025-04-21": {
+                "max": 72.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2875.0
+            },
+            "2025-04-28": {
+                "max": 73.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1475.0
+            },
+            "2025-05-05": {
+                "max": 75.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1500.0
+            },
+            "2025-05-12": {
+                "max": 77.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3075.0
+            },
+            "2025-05-26": {
+                "max": 80.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3175.0
+            },
+            "2025-06-09": {
+                "max": 82.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3275.0
+            },
+            "2025-06-16": {
+                "max": 83.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1675.0
+            },
+            "2025-06-23": {
+                "max": 85.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1700.0
+            },
+            "2025-06-30": {
+                "max": 87.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3475.0
+            },
+            "2025-07-14": {
+                "max": 90.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3575.0
+            },
+            "2025-07-21": {
+                "max": 91.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1825.0
+            },
+            "2025-07-28": {
+                "max": 92.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1850.0
+            },
+            "2025-08-04": {
+                "max": 95.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3775.0
+            },
+            "2025-08-18": {
+                "max": 97.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3875.0
+            },
+            "2025-09-01": {
+                "max": 100.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3975.0
+            },
+            "2025-09-08": {
+                "max": 101.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2025.0
+            },
+            "2025-09-15": {
+                "max": 102.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2050.0
+            },
+            "2025-09-22": {
+                "max": 105.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 4175.0
+            },
+            "2025-10-06": {
+                "max": 107.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 4275.0
+            },
+            "2025-10-13": {
+                "max": 108.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2175.0
+            },
+            "2025-10-20": {
+                "max": 110.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2200.0
+            },
+            "2025-10-27": {
+                "max": 112.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 4475.0
+            },
+            "2025-11-10": {
+                "max": 115.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 4575.0
+            },
+            "2025-11-24": {
+                "max": 117.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 4675.0
+            },
+            "2025-12-01": {
+                "max": 118.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2375.0
+            },
+            "2025-12-08": {
+                "max": 120.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2400.0
+            },
+            "2025-12-15": {
+                "max": 122.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 4875.0
+            },
+            "2025-12-29": {
+                "max": 123.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2475.0
+            }
+        }
+    },
+    "Bent Over Barbell Row": {
+        "muscle": "Back",
+        "secondary": [
+            "Biceps"
+        ],
+        "weeks": {
+            "2025-01-06": {
+                "max": 40.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 800.0
+            },
+            "2025-01-13": {
+                "max": 42.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 1675.0
+            },
+            "2025-01-27": {
+                "max": 45.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 1775.0
+            },
+            "2025-02-03": {
+                "max": 46.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 925.0
+            },
+            "2025-02-10": {
+                "max": 47.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 950.0
+            },
+            "2025-02-17": {
+                "max": 50.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 1975.0
+            },
+            "2025-03-03": {
+                "max": 52.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2075.0
+            },
+            "2025-03-17": {
+                "max": 55.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2175.0
+            },
+            "2025-03-24": {
+                "max": 56.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1125.0
+            },
+            "2025-03-31": {
+                "max": 57.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1150.0
+            },
+            "2025-04-07": {
+                "max": 60.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2375.0
+            },
+            "2025-04-21": {
+                "max": 62.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2475.0
+            },
+            "2025-04-28": {
+                "max": 63.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1275.0
+            },
+            "2025-05-05": {
+                "max": 65.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1300.0
+            },
+            "2025-05-12": {
+                "max": 67.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2675.0
+            },
+            "2025-05-26": {
+                "max": 70.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2775.0
+            },
+            "2025-06-09": {
+                "max": 72.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2875.0
+            },
+            "2025-06-16": {
+                "max": 73.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1475.0
+            },
+            "2025-06-23": {
+                "max": 75.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1500.0
+            },
+            "2025-06-30": {
+                "max": 77.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3075.0
+            },
+            "2025-07-14": {
+                "max": 80.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3175.0
+            },
+            "2025-07-21": {
+                "max": 81.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1625.0
+            },
+            "2025-07-28": {
+                "max": 82.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1650.0
+            },
+            "2025-08-04": {
+                "max": 85.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3375.0
+            },
+            "2025-08-18": {
+                "max": 87.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3475.0
+            },
+            "2025-09-01": {
+                "max": 90.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3575.0
+            },
+            "2025-09-08": {
+                "max": 91.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1825.0
+            },
+            "2025-09-15": {
+                "max": 92.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1850.0
+            },
+            "2025-09-22": {
+                "max": 95.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3775.0
+            },
+            "2025-10-06": {
+                "max": 97.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3875.0
+            },
+            "2025-10-13": {
+                "max": 98.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1975.0
+            },
+            "2025-10-20": {
+                "max": 100.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2000.0
+            },
+            "2025-10-27": {
+                "max": 102.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 4075.0
+            },
+            "2025-11-10": {
+                "max": 105.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 4175.0
+            },
+            "2025-11-24": {
+                "max": 107.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 4275.0
+            },
+            "2025-12-01": {
+                "max": 108.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2175.0
+            },
+            "2025-12-08": {
+                "max": 110.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2200.0
+            },
+            "2025-12-15": {
+                "max": 112.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 4475.0
+            },
+            "2025-12-29": {
+                "max": 113.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2275.0
+            }
+        }
+    },
+    "Dumbbell Shoulder Press": {
+        "muscle": "Shoulders",
+        "secondary": [
+            "Triceps"
+        ],
+        "weeks": {
+            "2025-01-06": {
+                "max": 16.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 768.0
+            },
+            "2025-01-13": {
+                "max": 18.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 1716.0
+            },
+            "2025-01-27": {
+                "max": 21.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 1956.0
+            },
+            "2025-02-03": {
+                "max": 22.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1068.0
+            },
+            "2025-02-10": {
+                "max": 23.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1128.0
+            },
+            "2025-02-17": {
+                "max": 26.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 2436.0
+            },
+            "2025-03-03": {
+                "max": 28.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 2676.0
+            },
+            "2025-03-17": {
+                "max": 31.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 2916.0
+            },
+            "2025-03-24": {
+                "max": 32.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1548.0
+            },
+            "2025-03-31": {
+                "max": 33.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1608.0
+            },
+            "2025-04-07": {
+                "max": 36.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 3396.0
+            },
+            "2025-04-21": {
+                "max": 38.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 3636.0
+            },
+            "2025-04-28": {
+                "max": 39.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1908.0
+            },
+            "2025-05-05": {
+                "max": 41.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1968.0
+            },
+            "2025-05-12": {
+                "max": 43.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 4116.0
+            },
+            "2025-05-26": {
+                "max": 46.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 4356.0
+            },
+            "2025-06-09": {
+                "max": 48.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 4596.0
+            },
+            "2025-06-16": {
+                "max": 49.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2388.0
+            },
+            "2025-06-23": {
+                "max": 51.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2448.0
+            },
+            "2025-06-30": {
+                "max": 53.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 5076.0
+            },
+            "2025-07-14": {
+                "max": 56.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 5316.0
+            },
+            "2025-07-21": {
+                "max": 57.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2748.0
+            },
+            "2025-07-28": {
+                "max": 58.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2808.0
+            },
+            "2025-08-04": {
+                "max": 61.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 5796.0
+            },
+            "2025-08-18": {
+                "max": 63.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 6036.0
+            },
+            "2025-09-01": {
+                "max": 66.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 6276.0
+            },
+            "2025-09-08": {
+                "max": 67.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3228.0
+            },
+            "2025-09-15": {
+                "max": 68.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3288.0
+            },
+            "2025-09-22": {
+                "max": 71.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 6756.0
+            },
+            "2025-10-06": {
+                "max": 73.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 6996.0
+            },
+            "2025-10-13": {
+                "max": 74.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3588.0
+            },
+            "2025-10-20": {
+                "max": 76.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3648.0
+            },
+            "2025-10-27": {
+                "max": 78.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 7476.0
+            },
+            "2025-11-10": {
+                "max": 81.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 7716.0
+            },
+            "2025-11-24": {
+                "max": 83.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 7956.0
+            },
+            "2025-12-01": {
+                "max": 84.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4068.0
+            },
+            "2025-12-08": {
+                "max": 86.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4128.0
+            },
+            "2025-12-15": {
+                "max": 88.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 8436.0
+            },
+            "2025-12-29": {
+                "max": 89.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4308.0
+            }
+        }
+    },
+    "Dip": {
+        "muscle": "Triceps",
+        "secondary": [
+            "Chest"
+        ],
+        "weeks": {
+            "2025-01-06": {
+                "max": 0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 0.0
+            },
+            "2025-01-13": {
+                "max": 2.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 90.0
+            },
+            "2025-01-27": {
+                "max": 5.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 210.0
+            },
+            "2025-02-03": {
+                "max": 6.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 150.0
+            },
+            "2025-02-10": {
+                "max": 7.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 180.0
+            },
+            "2025-02-17": {
+                "max": 10.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 450.0
+            },
+            "2025-03-03": {
+                "max": 12.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 570.0
+            },
+            "2025-03-17": {
+                "max": 15.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 690.0
+            },
+            "2025-03-24": {
+                "max": 16.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 390.0
+            },
+            "2025-03-31": {
+                "max": 17.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 420.0
+            },
+            "2025-04-07": {
+                "max": 20.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 930.0
+            },
+            "2025-04-21": {
+                "max": 22.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 1050.0
+            },
+            "2025-04-28": {
+                "max": 23.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 570.0
+            },
+            "2025-05-05": {
+                "max": 25.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 600.0
+            },
+            "2025-05-12": {
+                "max": 27.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 1290.0
+            },
+            "2025-05-26": {
+                "max": 30.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 1410.0
+            },
+            "2025-06-09": {
+                "max": 32.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 1530.0
+            },
+            "2025-06-16": {
+                "max": 33.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 810.0
+            },
+            "2025-06-23": {
+                "max": 35.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 840.0
+            },
+            "2025-06-30": {
+                "max": 37.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 1770.0
+            },
+            "2025-07-14": {
+                "max": 40.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 1890.0
+            },
+            "2025-07-21": {
+                "max": 41.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 990.0
+            },
+            "2025-07-28": {
+                "max": 42.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1020.0
+            },
+            "2025-08-04": {
+                "max": 45.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 2130.0
+            },
+            "2025-08-18": {
+                "max": 47.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 2250.0
+            },
+            "2025-09-01": {
+                "max": 50.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 2370.0
+            },
+            "2025-09-08": {
+                "max": 51.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1230.0
+            },
+            "2025-09-15": {
+                "max": 52.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1260.0
+            },
+            "2025-09-22": {
+                "max": 55.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 2610.0
+            },
+            "2025-10-06": {
+                "max": 57.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 2730.0
+            },
+            "2025-10-13": {
+                "max": 58.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1410.0
+            },
+            "2025-10-20": {
+                "max": 60.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1440.0
+            },
+            "2025-10-27": {
+                "max": 62.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 2970.0
+            },
+            "2025-11-10": {
+                "max": 65.0,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 3090.0
+            },
+            "2025-11-24": {
+                "max": 67.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 3210.0
+            },
+            "2025-12-01": {
+                "max": 68.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1650.0
+            },
+            "2025-12-08": {
+                "max": 70.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1680.0
+            },
+            "2025-12-15": {
+                "max": 72.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 3450.0
+            },
+            "2025-12-29": {
+                "max": 73.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1770.0
+            }
+        }
+    },
+    "Barbell Back Squat": {
+        "muscle": "Quadriceps",
+        "secondary": [
+            "Hamstrings",
+            "Glutes"
+        ],
+        "weeks": {
+            "2025-01-06": {
+                "max": 66.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 2100.0
+            },
+            "2025-01-20": {
+                "max": 68.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 2180.0
+            },
+            "2025-01-27": {
+                "max": 70.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1120.0
+            },
+            "2025-02-03": {
+                "max": 71.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1140.0
+            },
+            "2025-02-10": {
+                "max": 72.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1160.0
+            },
+            "2025-02-17": {
+                "max": 73.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1180.0
+            },
+            "2025-02-24": {
+                "max": 76.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 2420.0
+            },
+            "2025-03-03": {
+                "max": 77.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1240.0
+            },
+            "2025-03-10": {
+                "max": 78.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1260.0
+            },
+            "2025-03-17": {
+                "max": 80.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1280.0
+            },
+            "2025-03-24": {
+                "max": 81.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1300.0
+            },
+            "2025-03-31": {
+                "max": 83.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 2660.0
+            },
+            "2025-04-14": {
+                "max": 86.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 2740.0
+            },
+            "2025-04-21": {
+                "max": 87.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1400.0
+            },
+            "2025-04-28": {
+                "max": 88.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1420.0
+            },
+            "2025-05-05": {
+                "max": 90.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1440.0
+            },
+            "2025-05-12": {
+                "max": 91.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1460.0
+            },
+            "2025-05-19": {
+                "max": 93.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 2980.0
+            },
+            "2025-05-26": {
+                "max": 95.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1520.0
+            },
+            "2025-06-02": {
+                "max": 96.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1540.0
+            },
+            "2025-06-09": {
+                "max": 97.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1560.0
+            },
+            "2025-06-16": {
+                "max": 98.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1580.0
+            },
+            "2025-06-23": {
+                "max": 101.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 3220.0
+            },
+            "2025-07-07": {
+                "max": 103.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 3300.0
+            },
+            "2025-07-14": {
+                "max": 105.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1680.0
+            },
+            "2025-07-21": {
+                "max": 106.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1700.0
+            },
+            "2025-07-28": {
+                "max": 107.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1720.0
+            },
+            "2025-08-04": {
+                "max": 108.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1740.0
+            },
+            "2025-08-11": {
+                "max": 111.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 3540.0
+            },
+            "2025-08-18": {
+                "max": 112.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1800.0
+            },
+            "2025-08-25": {
+                "max": 113.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1820.0
+            },
+            "2025-09-01": {
+                "max": 115.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1840.0
+            },
+            "2025-09-08": {
+                "max": 116.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1860.0
+            },
+            "2025-09-15": {
+                "max": 118.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 3780.0
+            },
+            "2025-09-29": {
+                "max": 121.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 3860.0
+            },
+            "2025-10-06": {
+                "max": 122.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1960.0
+            },
+            "2025-10-13": {
+                "max": 123.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1980.0
+            },
+            "2025-10-20": {
+                "max": 125.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2000.0
+            },
+            "2025-10-27": {
+                "max": 126.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2020.0
+            },
+            "2025-11-03": {
+                "max": 128.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 4100.0
+            },
+            "2025-11-10": {
+                "max": 130.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2080.0
+            },
+            "2025-11-17": {
+                "max": 131.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2100.0
+            },
+            "2025-11-24": {
+                "max": 132.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2120.0
+            },
+            "2025-12-01": {
+                "max": 133.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2140.0
+            },
+            "2025-12-08": {
+                "max": 136.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 4340.0
+            },
+            "2025-12-22": {
+                "max": 138.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 4420.0
+            }
+        }
+    },
+    "Romanian Deadlift": {
+        "muscle": "Hamstrings",
+        "secondary": [
+            "Back",
+            "Glutes"
+        ],
+        "weeks": {
+            "2025-01-06": {
+                "max": 46.25,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 1825.0
+            },
+            "2025-01-20": {
+                "max": 48.75,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 1925.0
+            },
+            "2025-01-27": {
+                "max": 50.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1000.0
+            },
+            "2025-02-03": {
+                "max": 51.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1025.0
+            },
+            "2025-02-10": {
+                "max": 52.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1050.0
+            },
+            "2025-02-17": {
+                "max": 53.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1075.0
+            },
+            "2025-02-24": {
+                "max": 56.25,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2225.0
+            },
+            "2025-03-03": {
+                "max": 57.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1150.0
+            },
+            "2025-03-10": {
+                "max": 58.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1175.0
+            },
+            "2025-03-17": {
+                "max": 60.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1200.0
+            },
+            "2025-03-24": {
+                "max": 61.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1225.0
+            },
+            "2025-03-31": {
+                "max": 63.75,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2525.0
+            },
+            "2025-04-14": {
+                "max": 66.25,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2625.0
+            },
+            "2025-04-21": {
+                "max": 67.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1350.0
+            },
+            "2025-04-28": {
+                "max": 68.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1375.0
+            },
+            "2025-05-05": {
+                "max": 70.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1400.0
+            },
+            "2025-05-12": {
+                "max": 71.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1425.0
+            },
+            "2025-05-19": {
+                "max": 73.75,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2925.0
+            },
+            "2025-05-26": {
+                "max": 75.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1500.0
+            },
+            "2025-06-02": {
+                "max": 76.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1525.0
+            },
+            "2025-06-09": {
+                "max": 77.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1550.0
+            },
+            "2025-06-16": {
+                "max": 78.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1575.0
+            },
+            "2025-06-23": {
+                "max": 81.25,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3225.0
+            },
+            "2025-07-07": {
+                "max": 83.75,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3325.0
+            },
+            "2025-07-14": {
+                "max": 85.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1700.0
+            },
+            "2025-07-21": {
+                "max": 86.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1725.0
+            },
+            "2025-07-28": {
+                "max": 87.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1750.0
+            },
+            "2025-08-04": {
+                "max": 88.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1775.0
+            },
+            "2025-08-11": {
+                "max": 91.25,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3625.0
+            },
+            "2025-08-18": {
+                "max": 92.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1850.0
+            },
+            "2025-08-25": {
+                "max": 93.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1875.0
+            },
+            "2025-09-01": {
+                "max": 95.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1900.0
+            },
+            "2025-09-08": {
+                "max": 96.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1925.0
+            },
+            "2025-09-15": {
+                "max": 98.75,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3925.0
+            },
+            "2025-09-29": {
+                "max": 101.25,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 4025.0
+            },
+            "2025-10-06": {
+                "max": 102.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2050.0
+            },
+            "2025-10-13": {
+                "max": 103.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2075.0
+            },
+            "2025-10-20": {
+                "max": 105.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2100.0
+            },
+            "2025-10-27": {
+                "max": 106.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2125.0
+            },
+            "2025-11-03": {
+                "max": 108.75,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 4325.0
+            },
+            "2025-11-10": {
+                "max": 110.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2200.0
+            },
+            "2025-11-17": {
+                "max": 111.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2225.0
+            },
+            "2025-11-24": {
+                "max": 112.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2250.0
+            },
+            "2025-12-01": {
+                "max": 113.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 2275.0
+            },
+            "2025-12-08": {
+                "max": 116.25,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 4625.0
+            },
+            "2025-12-22": {
+                "max": 118.75,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 4725.0
+            }
+        }
+    },
+    "Leg Press": {
+        "muscle": "Quadriceps",
+        "secondary": [],
+        "weeks": {
+            "2025-01-06": {
+                "max": 131.25,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 6270.0
+            },
+            "2025-01-20": {
+                "max": 133.75,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 6390.0
+            },
+            "2025-01-27": {
+                "max": 135.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3240.0
+            },
+            "2025-02-03": {
+                "max": 136.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3270.0
+            },
+            "2025-02-10": {
+                "max": 137.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3300.0
+            },
+            "2025-02-17": {
+                "max": 138.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3330.0
+            },
+            "2025-02-24": {
+                "max": 141.25,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 6750.0
+            },
+            "2025-03-03": {
+                "max": 142.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3420.0
+            },
+            "2025-03-10": {
+                "max": 143.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3450.0
+            },
+            "2025-03-17": {
+                "max": 145.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3480.0
+            },
+            "2025-03-24": {
+                "max": 146.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3510.0
+            },
+            "2025-03-31": {
+                "max": 148.75,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 7110.0
+            },
+            "2025-04-14": {
+                "max": 151.25,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 7230.0
+            },
+            "2025-04-21": {
+                "max": 152.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3660.0
+            },
+            "2025-04-28": {
+                "max": 153.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3690.0
+            },
+            "2025-05-05": {
+                "max": 155.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3720.0
+            },
+            "2025-05-12": {
+                "max": 156.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3750.0
+            },
+            "2025-05-19": {
+                "max": 158.75,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 7590.0
+            },
+            "2025-05-26": {
+                "max": 160.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3840.0
+            },
+            "2025-06-02": {
+                "max": 161.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3870.0
+            },
+            "2025-06-09": {
+                "max": 162.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3900.0
+            },
+            "2025-06-16": {
+                "max": 163.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 3930.0
+            },
+            "2025-06-23": {
+                "max": 166.25,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 7950.0
+            },
+            "2025-07-07": {
+                "max": 168.75,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 8070.0
+            },
+            "2025-07-14": {
+                "max": 170.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4080.0
+            },
+            "2025-07-21": {
+                "max": 171.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4110.0
+            },
+            "2025-07-28": {
+                "max": 172.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4140.0
+            },
+            "2025-08-04": {
+                "max": 173.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4170.0
+            },
+            "2025-08-11": {
+                "max": 176.25,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 8430.0
+            },
+            "2025-08-18": {
+                "max": 177.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4260.0
+            },
+            "2025-08-25": {
+                "max": 178.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4290.0
+            },
+            "2025-09-01": {
+                "max": 180.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4320.0
+            },
+            "2025-09-08": {
+                "max": 181.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4350.0
+            },
+            "2025-09-15": {
+                "max": 183.75,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 8790.0
+            },
+            "2025-09-29": {
+                "max": 186.25,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 8910.0
+            },
+            "2025-10-06": {
+                "max": 187.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4500.0
+            },
+            "2025-10-13": {
+                "max": 188.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4530.0
+            },
+            "2025-10-20": {
+                "max": 190.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4560.0
+            },
+            "2025-10-27": {
+                "max": 191.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4590.0
+            },
+            "2025-11-03": {
+                "max": 193.75,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 9270.0
+            },
+            "2025-11-10": {
+                "max": 195.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4680.0
+            },
+            "2025-11-17": {
+                "max": 196.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4710.0
+            },
+            "2025-11-24": {
+                "max": 197.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4740.0
+            },
+            "2025-12-01": {
+                "max": 198.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 4770.0
+            },
+            "2025-12-08": {
+                "max": 201.25,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 9630.0
+            },
+            "2025-12-22": {
+                "max": 203.75,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 9750.0
+            }
+        }
+    },
+    "Standing Calf Raise": {
+        "muscle": "Calves",
+        "secondary": [],
+        "weeks": {
+            "2025-01-06": {
+                "max": 71.25,
+                "sets": 4,
+                "maxReps": 15,
+                "load": 4237.5
+            },
+            "2025-01-20": {
+                "max": 73.75,
+                "sets": 4,
+                "maxReps": 15,
+                "load": 4387.5
+            },
+            "2025-01-27": {
+                "max": 75.0,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 2250.0
+            },
+            "2025-02-03": {
+                "max": 76.25,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 2287.5
+            },
+            "2025-02-10": {
+                "max": 77.5,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 2325.0
+            },
+            "2025-02-17": {
+                "max": 78.75,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 2362.5
+            },
+            "2025-02-24": {
+                "max": 81.25,
+                "sets": 4,
+                "maxReps": 15,
+                "load": 4837.5
+            },
+            "2025-03-03": {
+                "max": 82.5,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 2475.0
+            },
+            "2025-03-10": {
+                "max": 83.75,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 2512.5
+            },
+            "2025-03-17": {
+                "max": 85.0,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 2550.0
+            },
+            "2025-03-24": {
+                "max": 86.25,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 2587.5
+            },
+            "2025-03-31": {
+                "max": 88.75,
+                "sets": 4,
+                "maxReps": 15,
+                "load": 5287.5
+            },
+            "2025-04-14": {
+                "max": 91.25,
+                "sets": 4,
+                "maxReps": 15,
+                "load": 5437.5
+            },
+            "2025-04-21": {
+                "max": 92.5,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 2775.0
+            },
+            "2025-04-28": {
+                "max": 93.75,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 2812.5
+            },
+            "2025-05-05": {
+                "max": 95.0,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 2850.0
+            },
+            "2025-05-12": {
+                "max": 96.25,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 2887.5
+            },
+            "2025-05-19": {
+                "max": 98.75,
+                "sets": 4,
+                "maxReps": 15,
+                "load": 5887.5
+            },
+            "2025-05-26": {
+                "max": 100.0,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3000.0
+            },
+            "2025-06-02": {
+                "max": 101.25,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3037.5
+            },
+            "2025-06-09": {
+                "max": 102.5,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3075.0
+            },
+            "2025-06-16": {
+                "max": 103.75,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3112.5
+            },
+            "2025-06-23": {
+                "max": 106.25,
+                "sets": 4,
+                "maxReps": 15,
+                "load": 6337.5
+            },
+            "2025-07-07": {
+                "max": 108.75,
+                "sets": 4,
+                "maxReps": 15,
+                "load": 6487.5
+            },
+            "2025-07-14": {
+                "max": 110.0,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3300.0
+            },
+            "2025-07-21": {
+                "max": 111.25,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3337.5
+            },
+            "2025-07-28": {
+                "max": 112.5,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3375.0
+            },
+            "2025-08-04": {
+                "max": 113.75,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3412.5
+            },
+            "2025-08-11": {
+                "max": 116.25,
+                "sets": 4,
+                "maxReps": 15,
+                "load": 6937.5
+            },
+            "2025-08-18": {
+                "max": 117.5,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3525.0
+            },
+            "2025-08-25": {
+                "max": 118.75,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3562.5
+            },
+            "2025-09-01": {
+                "max": 120.0,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3600.0
+            },
+            "2025-09-08": {
+                "max": 121.25,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3637.5
+            },
+            "2025-09-15": {
+                "max": 123.75,
+                "sets": 4,
+                "maxReps": 15,
+                "load": 7387.5
+            },
+            "2025-09-29": {
+                "max": 126.25,
+                "sets": 4,
+                "maxReps": 15,
+                "load": 7537.5
+            },
+            "2025-10-06": {
+                "max": 127.5,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3825.0
+            },
+            "2025-10-13": {
+                "max": 128.75,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3862.5
+            },
+            "2025-10-20": {
+                "max": 130.0,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3900.0
+            },
+            "2025-10-27": {
+                "max": 131.25,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 3937.5
+            },
+            "2025-11-03": {
+                "max": 133.75,
+                "sets": 4,
+                "maxReps": 15,
+                "load": 7987.5
+            },
+            "2025-11-10": {
+                "max": 135.0,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 4050.0
+            },
+            "2025-11-17": {
+                "max": 136.25,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 4087.5
+            },
+            "2025-11-24": {
+                "max": 137.5,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 4125.0
+            },
+            "2025-12-01": {
+                "max": 138.75,
+                "sets": 2,
+                "maxReps": 15,
+                "load": 4162.5
+            },
+            "2025-12-08": {
+                "max": 141.25,
+                "sets": 4,
+                "maxReps": 15,
+                "load": 8437.5
+            },
+            "2025-12-22": {
+                "max": 143.75,
+                "sets": 4,
+                "maxReps": 15,
+                "load": 8587.5
+            }
+        }
+    },
+    "Barbell Deadlift": {
+        "muscle": "Hamstrings",
+        "secondary": [
+            "Back",
+            "Glutes"
+        ],
+        "weeks": {
+            "2025-01-06": {
+                "max": 85.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1360.0
+            },
+            "2025-01-13": {
+                "max": 86.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1380.0
+            },
+            "2025-01-20": {
+                "max": 88.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 2820.0
+            },
+            "2025-02-03": {
+                "max": 91.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 2900.0
+            },
+            "2025-02-10": {
+                "max": 92.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1480.0
+            },
+            "2025-02-17": {
+                "max": 93.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1500.0
+            },
+            "2025-02-24": {
+                "max": 95.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1520.0
+            },
+            "2025-03-03": {
+                "max": 96.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1540.0
+            },
+            "2025-03-10": {
+                "max": 98.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 3140.0
+            },
+            "2025-03-17": {
+                "max": 100.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1600.0
+            },
+            "2025-03-24": {
+                "max": 101.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1620.0
+            },
+            "2025-03-31": {
+                "max": 102.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1640.0
+            },
+            "2025-04-07": {
+                "max": 103.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1660.0
+            },
+            "2025-04-14": {
+                "max": 106.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 3380.0
+            },
+            "2025-04-28": {
+                "max": 108.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 3460.0
+            },
+            "2025-05-05": {
+                "max": 110.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1760.0
+            },
+            "2025-05-12": {
+                "max": 111.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1780.0
+            },
+            "2025-05-19": {
+                "max": 112.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1800.0
+            },
+            "2025-05-26": {
+                "max": 113.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1820.0
+            },
+            "2025-06-02": {
+                "max": 116.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 3700.0
+            },
+            "2025-06-09": {
+                "max": 117.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1880.0
+            },
+            "2025-06-16": {
+                "max": 118.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1900.0
+            },
+            "2025-06-23": {
+                "max": 120.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1920.0
+            },
+            "2025-06-30": {
+                "max": 121.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1940.0
+            },
+            "2025-07-07": {
+                "max": 123.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 3940.0
+            },
+            "2025-07-21": {
+                "max": 126.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 4020.0
+            },
+            "2025-07-28": {
+                "max": 127.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2040.0
+            },
+            "2025-08-04": {
+                "max": 128.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2060.0
+            },
+            "2025-08-11": {
+                "max": 130.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2080.0
+            },
+            "2025-08-18": {
+                "max": 131.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2100.0
+            },
+            "2025-08-25": {
+                "max": 133.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 4260.0
+            },
+            "2025-09-01": {
+                "max": 135.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2160.0
+            },
+            "2025-09-08": {
+                "max": 136.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2180.0
+            },
+            "2025-09-15": {
+                "max": 137.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2200.0
+            },
+            "2025-09-22": {
+                "max": 138.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2220.0
+            },
+            "2025-09-29": {
+                "max": 141.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 4500.0
+            },
+            "2025-10-13": {
+                "max": 143.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 4580.0
+            },
+            "2025-10-20": {
+                "max": 145.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2320.0
+            },
+            "2025-10-27": {
+                "max": 146.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2340.0
+            },
+            "2025-11-03": {
+                "max": 147.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2360.0
+            },
+            "2025-11-10": {
+                "max": 148.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2380.0
+            },
+            "2025-11-17": {
+                "max": 151.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 4820.0
+            },
+            "2025-11-24": {
+                "max": 152.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2440.0
+            },
+            "2025-12-01": {
+                "max": 153.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2460.0
+            },
+            "2025-12-08": {
+                "max": 155.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2480.0
+            },
+            "2025-12-15": {
+                "max": 156.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 2500.0
+            },
+            "2025-12-22": {
+                "max": 158.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 5060.0
+            }
+        }
+    },
+    "Pull Up": {
+        "muscle": "Back",
+        "secondary": [
+            "Biceps"
+        ],
+        "weeks": {
+            "2025-01-06": {
+                "max": 0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 0.0
+            },
+            "2025-01-13": {
+                "max": 1.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 20.0
+            },
+            "2025-01-20": {
+                "max": 3.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 100.0
+            },
+            "2025-02-03": {
+                "max": 6.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 180.0
+            },
+            "2025-02-10": {
+                "max": 7.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 120.0
+            },
+            "2025-02-17": {
+                "max": 8.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 140.0
+            },
+            "2025-02-24": {
+                "max": 10.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 160.0
+            },
+            "2025-03-03": {
+                "max": 11.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 180.0
+            },
+            "2025-03-10": {
+                "max": 13.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 420.0
+            },
+            "2025-03-17": {
+                "max": 15.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 240.0
+            },
+            "2025-03-24": {
+                "max": 16.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 260.0
+            },
+            "2025-03-31": {
+                "max": 17.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 280.0
+            },
+            "2025-04-07": {
+                "max": 18.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 300.0
+            },
+            "2025-04-14": {
+                "max": 21.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 660.0
+            },
+            "2025-04-28": {
+                "max": 23.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 740.0
+            },
+            "2025-05-05": {
+                "max": 25.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 400.0
+            },
+            "2025-05-12": {
+                "max": 26.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 420.0
+            },
+            "2025-05-19": {
+                "max": 27.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 440.0
+            },
+            "2025-05-26": {
+                "max": 28.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 460.0
+            },
+            "2025-06-02": {
+                "max": 31.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 980.0
+            },
+            "2025-06-09": {
+                "max": 32.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 520.0
+            },
+            "2025-06-16": {
+                "max": 33.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 540.0
+            },
+            "2025-06-23": {
+                "max": 35.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 560.0
+            },
+            "2025-06-30": {
+                "max": 36.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 580.0
+            },
+            "2025-07-07": {
+                "max": 38.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 1220.0
+            },
+            "2025-07-21": {
+                "max": 41.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 1300.0
+            },
+            "2025-07-28": {
+                "max": 42.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 680.0
+            },
+            "2025-08-04": {
+                "max": 43.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 700.0
+            },
+            "2025-08-11": {
+                "max": 45.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 720.0
+            },
+            "2025-08-18": {
+                "max": 46.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 740.0
+            },
+            "2025-08-25": {
+                "max": 48.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 1540.0
+            },
+            "2025-09-01": {
+                "max": 50.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 800.0
+            },
+            "2025-09-08": {
+                "max": 51.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 820.0
+            },
+            "2025-09-15": {
+                "max": 52.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 840.0
+            },
+            "2025-09-22": {
+                "max": 53.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 860.0
+            },
+            "2025-09-29": {
+                "max": 56.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 1780.0
+            },
+            "2025-10-13": {
+                "max": 58.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 1860.0
+            },
+            "2025-10-20": {
+                "max": 60.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 960.0
+            },
+            "2025-10-27": {
+                "max": 61.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 980.0
+            },
+            "2025-11-03": {
+                "max": 62.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1000.0
+            },
+            "2025-11-10": {
+                "max": 63.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1020.0
+            },
+            "2025-11-17": {
+                "max": 66.25,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 2100.0
+            },
+            "2025-11-24": {
+                "max": 67.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1080.0
+            },
+            "2025-12-01": {
+                "max": 68.75,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1100.0
+            },
+            "2025-12-08": {
+                "max": 70.0,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1120.0
+            },
+            "2025-12-15": {
+                "max": 71.25,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 1140.0
+            },
+            "2025-12-22": {
+                "max": 73.75,
+                "sets": 4,
+                "maxReps": 8,
+                "load": 2340.0
+            }
+        }
+    },
+    "Leg Curl": {
+        "muscle": "Hamstrings",
+        "secondary": [],
+        "weeks": {
+            "2025-01-06": {
+                "max": 40.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 960.0
+            },
+            "2025-01-13": {
+                "max": 41.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 990.0
+            },
+            "2025-01-20": {
+                "max": 43.75,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 2070.0
+            },
+            "2025-02-03": {
+                "max": 46.25,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 2190.0
+            },
+            "2025-02-10": {
+                "max": 47.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1140.0
+            },
+            "2025-02-17": {
+                "max": 48.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1170.0
+            },
+            "2025-02-24": {
+                "max": 50.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1200.0
+            },
+            "2025-03-03": {
+                "max": 51.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1230.0
+            },
+            "2025-03-10": {
+                "max": 53.75,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 2550.0
+            },
+            "2025-03-17": {
+                "max": 55.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1320.0
+            },
+            "2025-03-24": {
+                "max": 56.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1350.0
+            },
+            "2025-03-31": {
+                "max": 57.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1380.0
+            },
+            "2025-04-07": {
+                "max": 58.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1410.0
+            },
+            "2025-04-14": {
+                "max": 61.25,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 2910.0
+            },
+            "2025-04-28": {
+                "max": 63.75,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 3030.0
+            },
+            "2025-05-05": {
+                "max": 65.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1560.0
+            },
+            "2025-05-12": {
+                "max": 66.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1590.0
+            },
+            "2025-05-19": {
+                "max": 67.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1620.0
+            },
+            "2025-05-26": {
+                "max": 68.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1650.0
+            },
+            "2025-06-02": {
+                "max": 71.25,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 3390.0
+            },
+            "2025-06-09": {
+                "max": 72.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1740.0
+            },
+            "2025-06-16": {
+                "max": 73.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1770.0
+            },
+            "2025-06-23": {
+                "max": 75.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1800.0
+            },
+            "2025-06-30": {
+                "max": 76.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1830.0
+            },
+            "2025-07-07": {
+                "max": 78.75,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 3750.0
+            },
+            "2025-07-21": {
+                "max": 81.25,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 3870.0
+            },
+            "2025-07-28": {
+                "max": 82.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 1980.0
+            },
+            "2025-08-04": {
+                "max": 83.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2010.0
+            },
+            "2025-08-11": {
+                "max": 85.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2040.0
+            },
+            "2025-08-18": {
+                "max": 86.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2070.0
+            },
+            "2025-08-25": {
+                "max": 88.75,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 4230.0
+            },
+            "2025-09-01": {
+                "max": 90.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2160.0
+            },
+            "2025-09-08": {
+                "max": 91.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2190.0
+            },
+            "2025-09-15": {
+                "max": 92.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2220.0
+            },
+            "2025-09-22": {
+                "max": 93.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2250.0
+            },
+            "2025-09-29": {
+                "max": 96.25,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 4590.0
+            },
+            "2025-10-13": {
+                "max": 98.75,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 4710.0
+            },
+            "2025-10-20": {
+                "max": 100.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2400.0
+            },
+            "2025-10-27": {
+                "max": 101.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2430.0
+            },
+            "2025-11-03": {
+                "max": 102.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2460.0
+            },
+            "2025-11-10": {
+                "max": 103.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2490.0
+            },
+            "2025-11-17": {
+                "max": 106.25,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 5070.0
+            },
+            "2025-11-24": {
+                "max": 107.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2580.0
+            },
+            "2025-12-01": {
+                "max": 108.75,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2610.0
+            },
+            "2025-12-08": {
+                "max": 110.0,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2640.0
+            },
+            "2025-12-15": {
+                "max": 111.25,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 2670.0
+            },
+            "2025-12-22": {
+                "max": 113.75,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 5430.0
+            }
+        }
+    },
+    "Barbell Curl": {
+        "muscle": "Biceps",
+        "secondary": [],
+        "weeks": {
+            "2025-01-06": {
+                "max": 18.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 360.0
+            },
+            "2025-01-13": {
+                "max": 19.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 385.0
+            },
+            "2025-01-20": {
+                "max": 21.75,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 845.0
+            },
+            "2025-02-03": {
+                "max": 24.25,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 945.0
+            },
+            "2025-02-10": {
+                "max": 25.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 510.0
+            },
+            "2025-02-17": {
+                "max": 26.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 535.0
+            },
+            "2025-02-24": {
+                "max": 28.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 560.0
+            },
+            "2025-03-03": {
+                "max": 29.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 585.0
+            },
+            "2025-03-10": {
+                "max": 31.75,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 1245.0
+            },
+            "2025-03-17": {
+                "max": 33.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 660.0
+            },
+            "2025-03-24": {
+                "max": 34.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 685.0
+            },
+            "2025-03-31": {
+                "max": 35.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 710.0
+            },
+            "2025-04-07": {
+                "max": 36.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 735.0
+            },
+            "2025-04-14": {
+                "max": 39.25,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 1545.0
+            },
+            "2025-04-28": {
+                "max": 41.75,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 1645.0
+            },
+            "2025-05-05": {
+                "max": 43.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 860.0
+            },
+            "2025-05-12": {
+                "max": 44.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 885.0
+            },
+            "2025-05-19": {
+                "max": 45.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 910.0
+            },
+            "2025-05-26": {
+                "max": 46.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 935.0
+            },
+            "2025-06-02": {
+                "max": 49.25,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 1945.0
+            },
+            "2025-06-09": {
+                "max": 50.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1010.0
+            },
+            "2025-06-16": {
+                "max": 51.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1035.0
+            },
+            "2025-06-23": {
+                "max": 53.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1060.0
+            },
+            "2025-06-30": {
+                "max": 54.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1085.0
+            },
+            "2025-07-07": {
+                "max": 56.75,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2245.0
+            },
+            "2025-07-21": {
+                "max": 59.25,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2345.0
+            },
+            "2025-07-28": {
+                "max": 60.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1210.0
+            },
+            "2025-08-04": {
+                "max": 61.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1235.0
+            },
+            "2025-08-11": {
+                "max": 63.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1260.0
+            },
+            "2025-08-18": {
+                "max": 64.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1285.0
+            },
+            "2025-08-25": {
+                "max": 66.75,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2645.0
+            },
+            "2025-09-01": {
+                "max": 68.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1360.0
+            },
+            "2025-09-08": {
+                "max": 69.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1385.0
+            },
+            "2025-09-15": {
+                "max": 70.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1410.0
+            },
+            "2025-09-22": {
+                "max": 71.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1435.0
+            },
+            "2025-09-29": {
+                "max": 74.25,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2945.0
+            },
+            "2025-10-13": {
+                "max": 76.75,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3045.0
+            },
+            "2025-10-20": {
+                "max": 78.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1560.0
+            },
+            "2025-10-27": {
+                "max": 79.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1585.0
+            },
+            "2025-11-03": {
+                "max": 80.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1610.0
+            },
+            "2025-11-10": {
+                "max": 81.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1635.0
+            },
+            "2025-11-17": {
+                "max": 84.25,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3345.0
+            },
+            "2025-11-24": {
+                "max": 85.5,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1710.0
+            },
+            "2025-12-01": {
+                "max": 86.75,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1735.0
+            },
+            "2025-12-08": {
+                "max": 88.0,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1760.0
+            },
+            "2025-12-15": {
+                "max": 89.25,
+                "sets": 2,
+                "maxReps": 10,
+                "load": 1785.0
+            },
+            "2025-12-22": {
+                "max": 91.75,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 3645.0
+            }
+        }
+    }
+};
+
+    // Calculate global date range for time-aligned charts
+    const ALL_WEEKS = new Set();
+    Object.values(WORKOUT_DATA).forEach(ex => {
+      Object.keys(ex.weeks).forEach(week => ALL_WEEKS.add(week));
+    });
+    const sortedWeeks = Array.from(ALL_WEEKS).sort();
+    const YEAR_START = sortedWeeks[0];
+    const YEAR_END = sortedWeeks[sortedWeeks.length - 1];
+
+    // Calculate cutoff for "inactive" exercises (10 weeks ago)
+    const endDate = new Date(YEAR_END);
+    const cutoffDate = new Date(endDate);
+    cutoffDate.setDate(cutoffDate.getDate() - 70); // 10 weeks
+    const CUTOFF_DATE = cutoffDate.toISOString().split('T')[0];
+
+    // All muscle groups we track
+    const ALL_MUSCLE_GROUPS = [
+      'Chest',
+      'Back',
+      'Shoulders',
+      'Biceps',
+      'Triceps',
+      'Quadriceps',
+      'Hamstrings',
+      'Glutes',
+      'Calves'
+    ];
+
+    // Linear regression to calculate trend
+    function linearRegression(dataPoints) {
+      // dataPoints = [{x: weekNumber, y: load}, ...]
+      if (dataPoints.length < 2) return { slope: 0, intercept: 0, avgY: 0 };
+
+      const n = dataPoints.length;
+      let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+
+      dataPoints.forEach(point => {
+        sumX += point.x;
+        sumY += point.y;
+        sumXY += point.x * point.y;
+        sumX2 += point.x * point.x;
+      });
+
+      const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+      const intercept = (sumY - slope * sumX) / n;
+      const avgY = sumY / n;
+
+      return { slope, intercept, avgY };
+    }
+
+    // Process workout data into muscle groups
+    function processWorkoutData() {
+      const muscleGroups = {};
+
+      // Initialize all muscle groups
+      ALL_MUSCLE_GROUPS.forEach(muscle => {
+        muscleGroups[muscle] = { exercises: [], totalSets: 0, totalWorkouts: 0 };
+      });
+
+      // Process each exercise
+      Object.entries(WORKOUT_DATA).forEach(([exerciseName, exData]) => {
+        const primaryMuscle = exData.muscle;
+        const secondaryMuscles = exData.secondary;
+
+        // Sort weeks chronologically
+        const weekEntries = Object.entries(exData.weeks).sort((a, b) =>
+          new Date(a[0]) - new Date(b[0])
+        );
+
+        // Skip if less than 2 weeks
+        if (weekEntries.length < 2) return;
+
+        // Get last 12 weeks for metrics
+        const last12Weeks = weekEntries.slice(-12);
+
+        const weeks = last12Weeks.map(([weekStart, weekData]) => ({
+          weekStart,
+          maxWeight: weekData.max,
+          maxReps: weekData.maxReps,
+          load: weekData.load
+        }));
+
+        const totalSets = last12Weeks.reduce((sum, [, weekData]) => sum + weekData.sets, 0);
+
+        // Current and previous session data
+        const current = weeks[weeks.length - 1];
+        const previous = weeks[weeks.length - 2];
+
+        // Calculate progress using linear regression on MAX WEIGHT across ALL available weeks
+        const regressionData = weekEntries.map(([weekStart, weekData], index) => ({
+          x: index,
+          y: weekData.max
+        }));
+        const regression = linearRegression(regressionData);
+
+        // Convert slope to percentage per week
+        const loadPctChange = regression.avgY > 0 ? (regression.slope / regression.avgY) * 100 : 0;
+
+        // Find maximum weight across previous 11 weeks (excluding current)
+        const previous11Weeks = last12Weeks.slice(0, -1);
+        const maxWeightBefore = previous11Weeks.length > 0
+          ? Math.max(...previous11Weeks.map(([, weekData]) => weekData.max))
+          : 0;
+
+        // Session-to-session changes for status detection
+        const weightChange = current.maxWeight - previous.maxWeight;
+        const repsChange = current.maxReps - previous.maxReps;
+        const loadChange = current.load - previous.load;
+
+        // Detect progression pattern and generate smart status using USER LANGUAGE
+        let status = '';
+        let statusIcon = '';
+        let subtext = '';
+
+        if (weightChange > 0 && current.maxWeight > maxWeightBefore) {
+          // Truly new max - exceeded all previous 11 weeks
+          status = 'New max!';
+          statusIcon = '✅';
+          subtext = 'Keep going ✓';
+        } else if (weightChange > 0 && current.maxWeight === maxWeightBefore) {
+          // Matched previous best
+          status = 'Getting stronger';
+          statusIcon = '💪';
+          subtext = 'Back to your best ✓';
+        } else if (weightChange < 0 && repsChange > 0 && loadChange > 0) {
+          // Weight dropped, reps increased, total load increased = adding reps
+          status = 'Adding reps';
+          statusIcon = '🔄';
+          subtext = 'Building volume ✓';
+        } else if (weightChange === 0 && repsChange > 0) {
+          // Same weight, more reps = getting stronger
+          status = 'Getting stronger';
+          statusIcon = '📈';
+          subtext = 'Keep going ✓';
+        } else if (weightChange === 0 && repsChange === 0) {
+          // No change = holding steady
+          status = 'Holding steady';
+          statusIcon = '→';
+          subtext = 'Stay consistent ✓';
+        } else if (loadChange < 0) {
+          // Total load decreased = needs help
+          status = 'Needs help';
+          statusIcon = '⚠️';
+          subtext = 'Time to adjust';
+        } else {
+          // Default
+          status = 'Getting stronger';
+          statusIcon = '●';
+          subtext = 'Keep going ✓';
+        }
+
+        // Check if exercise is inactive (last performed before cutoff)
+        const lastWeek = weekEntries[weekEntries.length - 1][0];
+        const isInactive = lastWeek < CUTOFF_DATE;
+
+        // Store all weeks for time-aligned chart
+        const allWeeks = weekEntries.map(([weekStart, weekData]) => ({
+          weekStart,
+          maxWeight: weekData.max,
+          maxReps: weekData.maxReps,
+          load: weekData.load
+        }));
+
+        const exercise = {
+          name: exerciseName,
+          secondaryMuscles,
+          weeksActive: weeks.length,
+          totalSets,
+          weeks,
+          allWeeks,
+          currentWeight: current.maxWeight,
+          currentReps: current.maxReps,
+          currentLoad: current.load,
+          previousWeight: previous.maxWeight,
+          previousReps: previous.maxReps,
+          previousLoad: previous.load,
+          weightChange,
+          repsChange,
+          loadChange,
+          loadPctChange,
+          status,
+          statusIcon,
+          subtext,
+          isInactive
+        };
+
+        muscleGroups[primaryMuscle].exercises.push(exercise);
+        muscleGroups[primaryMuscle].totalSets += totalSets;
+        muscleGroups[primaryMuscle].totalWorkouts += weekEntries.length;
+      });
+
+      return { muscleGroups };
+    }
+
+    // Calculate progress metrics
+    function calculateProgressMetrics(data) {
+      const metrics = [];
+
+      ALL_MUSCLE_GROUPS.forEach(muscleName => {
+        const muscleData = data.muscleGroups[muscleName];
+        if (muscleData && muscleData.exercises && muscleData.exercises.length > 0) {
+          const activeExercises = muscleData.exercises.filter(ex => !ex.isInactive);
+          if (activeExercises.length > 0) {
+            const avgPctChange = activeExercises.reduce((sum, ex) => sum + ex.loadPctChange, 0) / activeExercises.length;
+            metrics.push({
+              muscle: muscleName,
+              pctChange: avgPctChange,
+              totalSets: muscleData.totalSets,
+              totalWorkouts: muscleData.totalWorkouts
+            });
+          }
+        }
+      });
+
+      return metrics;
+    }
+
+    // Render progress summary
+    function renderProgressSummary(data) {
+      const container = document.getElementById('progress-summary');
+      const metrics = calculateProgressMetrics(data);
+
+      const sortedMetrics = metrics.sort((a, b) => b.totalWorkouts - a.totalWorkouts);
+      const muscleProgressMap = new Map(sortedMetrics.map(m => [m.muscle, m.pctChange]));
+
+      const progressItems = ALL_MUSCLE_GROUPS
+        .map(muscleName => {
+          const pctChange = muscleProgressMap.get(muscleName);
+          const muscleData = data.muscleGroups[muscleName];
+          const totalSets = muscleData ? muscleData.totalSets : 0;
+
+          let status, statusClass, icon, statusText;
+
+          if (pctChange === undefined) {
+            status = 'neglected';
+            statusClass = 'status-neglected';
+            icon = '○';
+            statusText = 'Not trained';
+          } else if (pctChange > 0) {
+            status = 'progressing';
+            statusClass = 'status-progressing';
+            icon = '↑';
+            statusText = `+${pctChange.toFixed(1)}%/wk`;
+          } else if (pctChange === 0) {
+            status = 'plateau';
+            statusClass = 'status-plateau';
+            icon = '→';
+            statusText = 'Holding steady';
+          } else {
+            status = 'declining';
+            statusClass = 'status-declining';
+            icon = '↓';
+            statusText = `${pctChange.toFixed(1)}%/wk`;
+          }
+
+          return {
+            html: `
+              <div class="progress-item ${statusClass}" onclick="scrollToMuscleGroup('${muscleName}')">
+                <span class="progress-item-muscle">${muscleName}</span>
+                <div class="progress-item-status ${statusClass}">
+                  <span class="progress-item-icon">${icon}</span>
+                  <span>${statusText}</span>
+                </div>
+              </div>
+            `,
+            totalSets
+          };
+        })
+        .sort((a, b) => b.totalSets - a.totalSets)
+        .map(item => item.html)
+        .join('');
+
+      container.innerHTML = `
+        <div class="progress-summary-header">
+          <div class="progress-summary-icon">📊</div>
+          <div class="progress-summary-title">Muscle group overview (sorted by frequency)</div>
+        </div>
+        <div class="progress-summary-content">
+          ${progressItems}
+        </div>
+      `;
+    }
+
+    // Scroll to muscle group
+    function scrollToMuscleGroup(muscleName) {
+      const element = document.getElementById(`muscle-${muscleName.toLowerCase()}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Render dashboard
+    function renderDashboard(data) {
+      const container = document.getElementById('muscle-groups-container');
+      const metrics = calculateProgressMetrics(data);
+
+      const metricsMap = new Map(metrics.map(m => [m.muscle, m.pctChange]));
+
+      const sortedMuscleGroups = ALL_MUSCLE_GROUPS
+        .map(muscle => ({
+          name: muscle,
+          data: data.muscleGroups[muscle],
+          totalWorkouts: data.muscleGroups[muscle].totalWorkouts
+        }))
+        .sort((a, b) => b.totalWorkouts - a.totalWorkouts);
+
+      const html = sortedMuscleGroups.map(({ name: muscleName, data: muscleData }) => {
+        const hasExercises = muscleData && muscleData.exercises && muscleData.exercises.length > 0;
+
+        if (!hasExercises) {
+          return `
+            <div class="muscle-group-card neglected" id="muscle-${muscleName.toLowerCase()}">
+              <div class="muscle-group-header">
+                <div class="muscle-group-name">${muscleName}</div>
+                <div class="muscle-group-summary">Not trained</div>
+              </div>
+              <div class="neglected-message">
+                <div class="neglected-icon">⚠️</div>
+                <div class="neglected-text">
+                  <div class="neglected-title">No ${muscleName.toLowerCase()} exercises tracked</div>
+                  <div class="neglected-subtitle">Consider adding direct ${muscleName.toLowerCase()} work to your routine</div>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        const totalExercises = muscleData.exercises.length;
+        const totalSets = muscleData.totalSets;
+        const totalWorkouts = muscleData.totalWorkouts;
+        const avgPctChange = metricsMap.get(muscleName) || 0;
+
+        let benchmarkText = '';
+        let benchmarkColor = '';
+        if (avgPctChange > 0) {
+          benchmarkText = `Trending +${avgPctChange.toFixed(1)}%/week`;
+          benchmarkColor = '#4ade80';
+        } else if (avgPctChange === 0) {
+          benchmarkText = 'Holding steady';
+          benchmarkColor = '#fbbf24';
+        } else {
+          benchmarkText = `Trending ${avgPctChange.toFixed(1)}%/week`;
+          benchmarkColor = '#ef4444';
+        }
+
+        const exercisesHTML = muscleData.exercises.map(exercise => {
+          const chartId = `chart-${muscleName.toLowerCase()}-${exercise.name.replace(/\s+/g, '-').toLowerCase()}`;
+
+          // Determine progress color based on status
+          const isImproving = exercise.status === 'New max!' || exercise.status === 'Getting stronger';
+          const isAddingReps = exercise.status === 'Adding reps';
+          const progressColor = isImproving ? '#4ade80' : isAddingReps ? '#60a5fa' : '#737373';
+          const inactiveClass = exercise.isInactive ? 'inactive' : '';
+
+          setTimeout(() => {
+            const ctx = document.getElementById(chartId);
+            if (!ctx) return;
+
+            // Create full timeline with nulls for missing weeks
+            const allWeeksDates = [];
+            const allWeeksData = [];
+
+            const [startYear, startMonth, startDay] = YEAR_START.split('-').map(Number);
+            const [endYear, endMonth, endDay] = YEAR_END.split('-').map(Number);
+
+            let currentDate = new Date(Date.UTC(startYear, startMonth - 1, startDay));
+            const endDateObj = new Date(Date.UTC(endYear, endMonth - 1, endDay));
+
+            const exerciseWeeksMap = new Map(exercise.allWeeks.map(w => [w.weekStart, w.maxWeight]));
+            const exerciseRepsMap = new Map(exercise.allWeeks.map(w => [w.weekStart, w.maxReps]));
+
+            const allWeeksReps = [];
+            while (currentDate <= endDateObj) {
+              const weekStr = currentDate.toISOString().split('T')[0];
+              allWeeksDates.push(weekStr);
+              allWeeksData.push(exerciseWeeksMap.get(weekStr) || null);
+              allWeeksReps.push(exerciseRepsMap.get(weekStr) || null);
+              currentDate.setUTCDate(currentDate.getUTCDate() + 7);
+            }
+
+            const labels = allWeeksDates.map(w => formatWeekDate(w));
+
+            const weightColor = progressColor;
+            const repsColor = '#3a3a3a';
+            const weightWidth = 2.5;
+
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: labels,
+                datasets: [
+                  {
+                    label: 'Reps',
+                    type: 'bar',
+                    data: allWeeksReps,
+                    backgroundColor: repsColor,
+                    borderColor: 'transparent',
+                    borderWidth: 0,
+                    barThickness: 'flex',
+                    maxBarThickness: 8,
+                    yAxisID: 'y-reps',
+                    order: 2,
+                    datalabels: {
+                      display: false
+                    }
+                  },
+                  {
+                    label: 'Weight (kg)',
+                    type: 'line',
+                    data: allWeeksData,
+                    borderColor: weightColor,
+                    backgroundColor: 'transparent',
+                    borderWidth: weightWidth,
+                    pointRadius: 3,
+                    pointBackgroundColor: weightColor,
+                    pointBorderWidth: 0,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: weightColor,
+                    tension: 0.2,
+                    fill: false,
+                    spanGaps: true,
+                    yAxisID: 'y-weight',
+                    order: 1,
+                    datalabels: {
+                      display: true,
+                      align: 'top',
+                      anchor: 'end',
+                      color: weightColor,
+                      font: {
+                        size: 9,
+                        weight: 500
+                      },
+                      formatter: (value) => value ? `${value}kg` : null
+                    }
+                  }
+                ]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                  mode: 'index',
+                  intersect: false
+                },
+                plugins: {
+                  legend: { display: false },
+                  datalabels: {
+                    display: true
+                  },
+                  tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.95)',
+                    padding: 12,
+                    displayColors: true,
+                    borderColor: 'rgba(255, 255, 255, 0.1)',
+                    borderWidth: 1,
+                    callbacks: {
+                      title: (items) => {
+                        return items[0].label;
+                      },
+                      label: (ctx) => {
+                        if (!ctx.parsed.y) return null;
+                        if (ctx.dataset.label === 'Weight (kg)') {
+                          return `Weight: ${ctx.parsed.y}kg`;
+                        } else {
+                          return `Reps: ${ctx.parsed.y}`;
+                        }
+                      },
+                      afterBody: (items) => {
+                        const reps = items[0]?.parsed.y;
+                        const weight = items[1]?.parsed.y;
+                        if (weight && reps) {
+                          return `\nLoad: ${(weight * reps).toFixed(0)}kg`;
+                        }
+                        return '';
+                      }
+                    }
+                  }
+                },
+                scales: {
+                  x: {
+                    display: false,
+                    grid: { display: false }
+                  },
+                  'y-weight': {
+                    display: false,
+                    position: 'left',
+                    grid: { display: false }
+                  },
+                  'y-reps': {
+                    display: false,
+                    position: 'right',
+                    grid: { display: false }
+                  }
+                },
+                onHover: (event, activeElements, chart) => {
+                  if (activeElements.length > 0) {
+                    chart.data.datasets.forEach((dataset) => {
+                      if (dataset.type === 'line') {
+                        dataset.borderWidth = 3.5;
+                        dataset.pointRadius = 5;
+                      } else if (dataset.type === 'bar') {
+                        dataset.backgroundColor = '#525252';
+                      }
+                    });
+                    chart.update('none');
+                  } else {
+                    chart.data.datasets.forEach((dataset) => {
+                      if (dataset.type === 'line') {
+                        dataset.borderWidth = weightWidth;
+                        dataset.pointRadius = 3;
+                      } else if (dataset.type === 'bar') {
+                        dataset.backgroundColor = repsColor;
+                      }
+                    });
+                    chart.update('none');
+                  }
+                }
+              }
+            });
+          }, 100);
+
+          return `
+            <div class="exercise-row ${inactiveClass}" data-inactive="${exercise.isInactive}">
+              <div class="exercise-info">
+                <div class="exercise-name">${exercise.name}</div>
+                <div class="exercise-status" style="color: ${progressColor};">
+                  ${exercise.status}
+                </div>
+                <div class="exercise-subtext">
+                  ${exercise.subtext}
+                </div>
+              </div>
+              <div class="exercise-chart-container">
+                <div class="exercise-chart">
+                  <canvas id="${chartId}"></canvas>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <div class="muscle-group-card" id="muscle-${muscleName.toLowerCase()}">
+            <div class="muscle-group-header">
+              <div class="muscle-group-name">${muscleName}</div>
+              <div class="muscle-group-summary">${totalExercises} exercise${totalExercises !== 1 ? 's' : ''} • ${totalWorkouts} workouts</div>
+            </div>
+            <div class="muscle-group-benchmark" style="color: ${benchmarkColor};">${benchmarkText}</div>
+            <div class="exercises-list">
+              ${exercisesHTML}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = html;
+    }
+
+    // Format week date for labels
+    function formatWeekDate(dateStr) {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    // Toggle inactive exercises
+    document.getElementById('hide-inactive').addEventListener('change', function(e) {
+      const inactiveRows = document.querySelectorAll('.exercise-row[data-inactive="true"]');
+      inactiveRows.forEach(row => {
+        row.style.display = e.target.checked ? 'none' : 'grid';
+      });
+    });
+
+    // Load dashboard on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      const data = processWorkoutData();
+      renderProgressSummary(data);
+      renderDashboard(data);
+
+      // Hide inactive by default
+      document.querySelectorAll('.exercise-row[data-inactive="true"]').forEach(row => {
+        row.style.display = 'none';
+      });
+    });
+
+    // Chart.js default config
+    Chart.defaults.color = '#737373';
+    Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif';
+  </script>
+</body>
+</html>

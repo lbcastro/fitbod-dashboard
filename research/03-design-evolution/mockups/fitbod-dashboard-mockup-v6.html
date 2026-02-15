@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitbod Intelligence Dashboard v6 - Smart Progression</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: #000000;
+      color: #e5e5e5;
+      -webkit-font-smoothing: antialiased;
+      padding: 48px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 48px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 500;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #737373;
+      font-size: 0.875rem;
+    }
+
+    .tagline {
+      color: #4ade80;
+      font-size: 0.875rem;
+      margin-top: 4px;
+    }
+
+    /* Progress Summary Card */
+    .progress-summary-card {
+      margin-bottom: 48px;
+      padding: 24px;
+      background: rgba(74, 222, 128, 0.05);
+      border: 1px solid rgba(74, 222, 128, 0.2);
+      border-radius: 8px;
+    }
+
+    .progress-summary-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .progress-summary-icon {
+      font-size: 1.5rem;
+    }
+
+    .progress-summary-title {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #4ade80;
+    }
+
+    .progress-summary-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .progress-item {
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 6px;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+    }
+
+    .progress-item.status-progressing {
+      border-left-color: #4ade80;
+    }
+
+    .progress-item.status-plateau {
+      border-left-color: #fbbf24;
+    }
+
+    .progress-item.status-declining {
+      border-left-color: #ef4444;
+    }
+
+    .progress-item.status-neglected {
+      border-left-color: #525252;
+      opacity: 0.5;
+    }
+
+    .progress-item-muscle {
+      display: block;
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 0.875rem;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .progress-item-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8125rem;
+    }
+
+    .progress-item-icon {
+      font-size: 0.875rem;
+    }
+
+    .progress-item-status.status-progressing {
+      color: #4ade80;
+    }
+
+    .progress-item-status.status-plateau {
+      color: #fbbf24;
+    }
+
+    .progress-item-status.status-declining {
+      color: #ef4444;
+    }
+
+    .progress-item-status.status-neglected {
+      color: #737373;
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-bottom: 24px;
+      color: #d4d4d4;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Muscle Group Cards */
+    .muscle-group-card {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .muscle-group-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .muscle-group-name {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .muscle-group-summary {
+      font-size: 0.8125rem;
+      color: #737373;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .muscle-group-benchmark {
+      font-size: 0.8125rem;
+      color: #4ade80;
+      margin-bottom: 20px;
+    }
+
+    /* Neglected muscle group state */
+    .muscle-group-card.neglected {
+      opacity: 0.5;
+    }
+
+    .neglected-message {
+      padding: 20px 24px;
+      background: rgba(239, 68, 68, 0.05);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .neglected-icon {
+      font-size: 1.5rem;
+      color: #ef4444;
+    }
+
+    .neglected-text {
+      flex: 1;
+    }
+
+    .neglected-title {
+      font-size: 0.9375rem;
+      color: #ef4444;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .neglected-subtitle {
+      font-size: 0.8125rem;
+      color: #a3a3a3;
+    }
+
+    /* Exercise rows */
+    .exercises-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .exercise-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .exercise-row.inactive {
+      opacity: 0.3;
+    }
+
+    .exercise-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .exercise-name {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+
+    .exercise-muscles {
+      font-size: 0.75rem;
+      color: #525252;
+      line-height: 1.4;
+    }
+
+    .muscle-tag.secondary {
+      color: #737373;
+    }
+
+    .exercise-meta {
+      font-size: 0.75rem;
+      color: #525252;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .exercise-stats {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.8125rem;
+      color: #737373;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .exercise-change {
+      font-weight: 600;
+    }
+
+    .exercise-chart-container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .exercise-chart {
+      flex: 1;
+      height: 60px;
+      position: relative;
+    }
+
+    .exercise-chart canvas {
+      height: 60px !important;
+    }
+
+    /* Filter toggle */
+    .filter-toggle {
+      margin-bottom: 24px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.875rem;
+      color: #a3a3a3;
+    }
+
+    .filter-toggle input[type="checkbox"] {
+      cursor: pointer;
+    }
+
+    .filter-toggle label {
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 24px 16px;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      .progress-summary-content {
+        grid-template-columns: 1fr;
+      }
+
+      .exercise-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .exercise-chart {
+        height: 50px;
+      }
+
+      .exercise-chart canvas {
+        height: 50px !important;
+      }
+
+      .muscle-group-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid #1a1a1a;
+      text-align: center;
+      color: #737373;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Fitbod Intelligence Dashboard</h1>
+      <div class="subtitle">See what Fitbod doesn't show you</div>
+      <div class="tagline">Visual-first progression tracking - status and charts, minimal text</div>
+    </header>
+
+    <!-- Progress Summary -->
+    <div class="progress-summary-card" id="progress-summary">
+      <!-- Will be populated by JS -->
+    </div>
+
+    <h2 class="section-title">Muscle Group Balance — 2025 Data (Sorted by frequency)</h2>
+
+    <div class="filter-toggle">
+      <input type="checkbox" id="hide-inactive" checked>
+      <label for="hide-inactive">Hide exercises not performed in last 10 weeks</label>
+    </div>
+
+    <div id="muscle-groups-container">
+      <!-- Muscle groups will be rendered here -->
+    </div>
+
+    <footer>
+      2025 workout data (Jan 6 → Dec 29) • All charts share identical X-axis timeline
+    </footer>
+  </div>
+
+  <script>
+    // Disable datalabels plugin globally (we'll enable per dataset)
+    Chart.defaults.plugins.datalabels = {
+      display: false
+    };
+
+    // Your 2025 workout data (pre-processed with all exercises)
+    const WORKOUT_DATA = {"Barbell Incline Bench Press":{"muscle":"Chest","secondary":["Triceps","Shoulders"],"weeks":{"2025-01-06":{"max":40.0,"sets":4,"maxReps":8,"load":320.0},"2025-01-13":{"max":30.0,"sets":4,"maxReps":16,"load":480.0},"2025-01-27":{"max":30.0,"sets":3,"maxReps":14,"load":420.0},"2025-02-03":{"max":30.0,"sets":4,"maxReps":13,"load":390.0},"2025-02-10":{"max":50.0,"sets":5,"maxReps":6,"load":300.0},"2025-02-24":{"max":50.0,"sets":3,"maxReps":7,"load":350.0},"2025-03-03":{"max":50.0,"sets":4,"maxReps":5,"load":250.0},"2025-03-10":{"max":40.0,"sets":4,"maxReps":10,"load":400.0},"2025-04-21":{"max":40.0,"sets":3,"maxReps":10,"load":400.0},"2025-05-12":{"max":50.0,"sets":5,"maxReps":6,"load":300.0},"2025-05-26":{"max":30.0,"sets":3,"maxReps":13,"load":390.0},"2025-06-02":{"max":40.0,"sets":4,"maxReps":10,"load":400.0},"2025-06-16":{"max":30.0,"sets":4,"maxReps":15,"load":450.0},"2025-06-23":{"max":40.0,"sets":2,"maxReps":12,"load":480.0},"2025-06-30":{"max":40.0,"sets":2,"maxReps":12,"load":480.0},"2025-07-07":{"max":30.0,"sets":3,"maxReps":16,"load":480.0},"2025-07-14":{"max":40.0,"sets":3,"maxReps":10,"load":400.0},"2025-08-11":{"max":50.0,"sets":3,"maxReps":6,"load":300.0},"2025-08-18":{"max":50.0,"sets":3,"maxReps":7,"load":350.0},"2025-08-25":{"max":50.0,"sets":3,"maxReps":4,"load":200.0},"2025-09-01":{"max":40.0,"sets":3,"maxReps":9,"load":360.0},"2025-09-15":{"max":30.0,"sets":3,"maxReps":14,"load":420.0},"2025-09-22":{"max":50.0,"sets":4,"maxReps":7,"load":350.0},"2025-10-06":{"max":50.0,"sets":3,"maxReps":6,"load":300.0},"2025-10-27":{"max":40.0,"sets":4,"maxReps":11,"load":440.0},"2025-11-03":{"max":30.0,"sets":4,"maxReps":17,"load":510.0},"2025-11-17":{"max":50.0,"sets":4,"maxReps":5,"load":250.0},"2025-11-24":{"max":50.0,"sets":4,"maxReps":6,"load":300.0},"2025-12-15":{"max":40.0,"sets":4,"maxReps":8,"load":320.0},"2025-12-22":{"max":70.0,"sets":3,"maxReps":2,"load":140.0},"2025-12-29":{"max":60.0,"sets":3,"maxReps":6,"load":360.0}}},"Dumbbell Incline Fly":{"muscle":"Chest","secondary":["Shoulders"],"weeks":{"2025-04-21":{"max":24.0,"sets":2,"maxReps":8,"load":192.0},"2025-05-26":{"max":20.0,"sets":3,"maxReps":16,"load":320.0},"2025-11-24":{"max":24.0,"sets":3,"maxReps":10,"load":240.0},"2025-12-22":{"max":28.0,"sets":2,"maxReps":8,"load":224.0},"2025-12-29":{"max":28.0,"sets":4,"maxReps":12,"load":336.0}}},"Bent Over Barbell Row":{"muscle":"Back","secondary":["Biceps"],"weeks":{"2025-01-27":{"max":40.0,"sets":2,"maxReps":14,"load":560.0},"2025-03-10":{"max":40.0,"sets":3,"maxReps":15,"load":600.0},"2025-06-16":{"max":40.0,"sets":2,"maxReps":12,"load":480.0},"2025-11-10":{"max":40.0,"sets":7,"maxReps":12,"load":480.0},"2025-12-15":{"max":45.0,"sets":4,"maxReps":7,"load":315.0},"2025-12-29":{"max":50.0,"sets":4,"maxReps":9,"load":450.0}}},"Barbell Shoulder Press":{"muscle":"Shoulders","secondary":["Triceps"],"weeks":{"2025-02-10":{"max":20.0,"sets":3,"maxReps":8,"load":160.0},"2025-09-29":{"max":20.0,"sets":3,"maxReps":10,"load":200.0},"2025-10-13":{"max":20.0,"sets":4,"maxReps":14,"load":280.0},"2025-11-10":{"max":20.0,"sets":8,"maxReps":8,"load":160.0},"2025-11-17":{"max":20.0,"sets":4,"maxReps":9,"load":180.0},"2025-11-24":{"max":20.0,"sets":4,"maxReps":9,"load":180.0},"2025-12-01":{"max":25.0,"sets":3,"maxReps":6,"load":150.0},"2025-12-15":{"max":20.0,"sets":4,"maxReps":8,"load":160.0},"2025-12-29":{"max":25.0,"sets":3,"maxReps":8,"load":200.0}}},"Romanian Deadlift":{"muscle":"Hamstrings","secondary":["Back","Glutes"],"weeks":{"2025-01-13":{"max":50.0,"sets":4,"maxReps":8,"load":400.0},"2025-01-27":{"max":30.0,"sets":4,"maxReps":16,"load":480.0},"2025-03-03":{"max":40.0,"sets":5,"maxReps":14,"load":560.0},"2025-03-17":{"max":30.0,"sets":1,"maxReps":8,"load":240.0},"2025-12-29":{"max":60.0,"sets":3,"maxReps":10,"load":600.0}}},"Barbell Curl":{"muscle":"Biceps","secondary":[],"weeks":{"2025-01-27":{"max":10.0,"sets":4,"maxReps":13,"load":130.0},"2025-02-24":{"max":20.0,"sets":4,"maxReps":10,"load":200.0},"2025-04-28":{"max":20.0,"sets":4,"maxReps":8,"load":160.0},"2025-05-26":{"max":20.0,"sets":4,"maxReps":12,"load":240.0},"2025-06-23":{"max":20.0,"sets":2,"maxReps":10,"load":200.0},"2025-11-24":{"max":20.0,"sets":4,"maxReps":9,"load":180.0},"2025-12-22":{"max":25.0,"sets":4,"maxReps":6,"load":150.0}}},"Incline Dumbbell Curl":{"muscle":"Biceps","secondary":[],"weeks":{"2025-03-17":{"max":28.0,"sets":3,"maxReps":10,"load":280.0},"2025-04-28":{"max":24.0,"sets":3,"maxReps":12,"load":288.0},"2025-05-26":{"max":24.0,"sets":3,"maxReps":12,"load":288.0},"2025-06-09":{"max":24.0,"sets":4,"maxReps":10,"load":240.0},"2025-09-01":{"max":24.0,"sets":5,"maxReps":12,"load":288.0},"2025-11-03":{"max":24.0,"sets":4,"maxReps":13,"load":312.0},"2025-12-22":{"max":28.0,"sets":4,"maxReps":6,"load":168.0}}},"Cable Rope Overhead Triceps Extension":{"muscle":"Triceps","secondary":[],"weeks":{"2025-04-14":{"max":40.0,"sets":3,"maxReps":12,"load":480.0},"2025-06-16":{"max":35.0,"sets":4,"maxReps":10,"load":350.0},"2025-06-23":{"max":45.0,"sets":2,"maxReps":7,"load":315.0},"2025-06-30":{"max":40.0,"sets":2,"maxReps":10,"load":400.0},"2025-09-08":{"max":40.0,"sets":4,"maxReps":9,"load":360.0},"2025-10-13":{"max":40.0,"sets":3,"maxReps":6,"load":240.0},"2025-10-20":{"max":40.0,"sets":4,"maxReps":6,"load":240.0},"2025-12-22":{"max":50.0,"sets":4,"maxReps":3,"load":150.0}}},"Trap Bar Deadlift":{"muscle":"Hamstrings","secondary":["Back","Glutes"],"weeks":{"2025-11-10":{"max":50.0,"sets":6,"maxReps":14,"load":700.0},"2025-11-17":{"max":50.0,"sets":4,"maxReps":13,"load":650.0},"2025-11-24":{"max":60.0,"sets":4,"maxReps":12,"load":720.0},"2025-12-22":{"max":70.0,"sets":3,"maxReps":8,"load":560.0}}},"Leg Extension":{"muscle":"Quadriceps","secondary":[],"weeks":{"2025-01-13":{"max":80.0,"sets":2,"maxReps":8,"load":640.0},"2025-01-27":{"max":50.0,"sets":2,"maxReps":15,"load":750.0},"2025-02-10":{"max":60.0,"sets":3,"maxReps":14,"load":840.0},"2025-03-17":{"max":65.0,"sets":4,"maxReps":12,"load":780.0},"2025-03-31":{"max":60.0,"sets":3,"maxReps":16,"load":960.0},"2025-04-14":{"max":45.0,"sets":3,"maxReps":18,"load":810.0},"2025-04-28":{"max":65.0,"sets":4,"maxReps":16,"load":1040.0},"2025-05-19":{"max":40.0,"sets":3,"maxReps":19,"load":760.0},"2025-06-02":{"max":45.0,"sets":4,"maxReps":20,"load":900.0},"2025-06-23":{"max":60.0,"sets":2,"maxReps":14,"load":840.0},"2025-06-30":{"max":50.0,"sets":2,"maxReps":20,"load":1000.0},"2025-07-07":{"max":50.0,"sets":3,"maxReps":17,"load":850.0},"2025-07-14":{"max":50.0,"sets":4,"maxReps":13,"load":650.0},"2025-07-21":{"max":45.0,"sets":4,"maxReps":18,"load":810.0},"2025-08-11":{"max":55.0,"sets":4,"maxReps":12,"load":660.0},"2025-08-18":{"max":55.0,"sets":4,"maxReps":11,"load":605.0},"2025-09-08":{"max":45.0,"sets":4,"maxReps":15,"load":675.0},"2025-09-15":{"max":45.0,"sets":4,"maxReps":20,"load":900.0},"2025-09-22":{"max":50.0,"sets":4,"maxReps":13,"load":650.0},"2025-09-29":{"max":40.0,"sets":4,"maxReps":18,"load":720.0},"2025-10-06":{"max":50.0,"sets":3,"maxReps":15,"load":750.0},"2025-10-20":{"max":50.0,"sets":8,"maxReps":16,"load":800.0},"2025-10-27":{"max":45.0,"sets":4,"maxReps":15,"load":675.0},"2025-11-03":{"max":50.0,"sets":4,"maxReps":11,"load":550.0},"2025-11-24":{"max":65.0,"sets":4,"maxReps":9,"load":585.0},"2025-12-01":{"max":65.0,"sets":3,"maxReps":11,"load":715.0},"2025-12-15":{"max":70.0,"sets":3,"maxReps":9,"load":630.0},"2025-12-22":{"max":80.0,"sets":3,"maxReps":6,"load":480.0}}},"Lat Pulldown":{"muscle":"Back","secondary":["Biceps"],"weeks":{"2025-01-06":{"max":45.0,"sets":3,"maxReps":12,"load":540.0},"2025-03-10":{"max":45.0,"sets":4,"maxReps":12,"load":540.0},"2025-04-14":{"max":45.0,"sets":4,"maxReps":18,"load":810.0},"2025-05-19":{"max":50.0,"sets":5,"maxReps":10,"load":500.0},"2025-06-16":{"max":50.0,"sets":4,"maxReps":16,"load":800.0},"2025-07-07":{"max":60.0,"sets":2,"maxReps":3,"load":180.0},"2025-07-14":{"max":50.0,"sets":2,"maxReps":9,"load":450.0},"2025-08-11":{"max":50.0,"sets":2,"maxReps":8,"load":400.0},"2025-09-08":{"max":40.0,"sets":3,"maxReps":17,"load":680.0},"2025-09-29":{"max":60.0,"sets":4,"maxReps":6,"load":360.0},"2025-10-20":{"max":50.0,"sets":5,"maxReps":9,"load":450.0},"2025-12-15":{"max":60.0,"sets":4,"maxReps":6,"load":360.0}}},"Seated Back Extension":{"muscle":"Hamstrings","secondary":["Back","Glutes"],"weeks":{"2025-03-17":{"max":70.0,"sets":2,"maxReps":18,"load":1260.0},"2025-04-28":{"max":80.0,"sets":3,"maxReps":16,"load":1280.0},"2025-06-30":{"max":80.0,"sets":3,"maxReps":20,"load":1600.0},"2025-10-20":{"max":70.0,"sets":3,"maxReps":16,"load":1120.0},"2025-12-15":{"max":90.0,"sets":3,"maxReps":12,"load":1080.0}}},"Machine Hip Adductor":{"muscle":"Glutes","secondary":[],"weeks":{"2025-09-08":{"max":25.0,"sets":4,"maxReps":24,"load":600.0},"2025-09-15":{"max":25.0,"sets":2,"maxReps":20,"load":500.0},"2025-09-22":{"max":60.0,"sets":3,"maxReps":12,"load":720.0},"2025-10-06":{"max":30.0,"sets":3,"maxReps":17,"load":510.0},"2025-10-20":{"max":35.0,"sets":3,"maxReps":11,"load":385.0},"2025-10-27":{"max":50.0,"sets":3,"maxReps":11,"load":550.0},"2025-12-15":{"max":40.0,"sets":3,"maxReps":12,"load":480.0}}},"Machine Hip Abductor":{"muscle":"Glutes","secondary":[],"weeks":{"2025-09-08":{"max":50.0,"sets":3,"maxReps":20,"load":1000.0},"2025-09-15":{"max":55.0,"sets":2,"maxReps":13,"load":715.0},"2025-09-22":{"max":60.0,"sets":3,"maxReps":16,"load":960.0},"2025-10-06":{"max":60.0,"sets":3,"maxReps":14,"load":840.0},"2025-10-20":{"max":60.0,"sets":3,"maxReps":14,"load":840.0},"2025-10-27":{"max":65.0,"sets":3,"maxReps":11,"load":715.0},"2025-12-15":{"max":65.0,"sets":3,"maxReps":12,"load":780.0}}},"Close-Grip Bench Press":{"muscle":"Triceps","secondary":["Chest"],"weeks":{"2025-02-10":{"max":30.0,"sets":4,"maxReps":15,"load":450.0},"2025-12-15":{"max":50.0,"sets":3,"maxReps":4,"load":200.0}}},"Deadlift":{"muscle":"Hamstrings","secondary":["Back","Glutes"],"weeks":{"2025-02-03":{"max":30.0,"sets":4,"maxReps":16,"load":480.0},"2025-12-15":{"max":50.0,"sets":4,"maxReps":10,"load":500.0}}},"Barbell Bicep Drag Curl":{"muscle":"Biceps","secondary":[],"weeks":{"2025-02-17":{"max":30.0,"sets":3,"maxReps":12,"load":360.0},"2025-06-09":{"max":20.0,"sets":3,"maxReps":14,"load":280.0},"2025-12-15":{"max":20.0,"sets":4,"maxReps":11,"load":220.0}}},"Seated Machine Calf Press":{"muscle":"Calves","secondary":[],"weeks":{"2025-11-24":{"max":120.0,"sets":4,"maxReps":13,"load":1560.0}}},"Glute Kickback Machine":{"muscle":"Glutes","secondary":[],"weeks":{"2025-11-24":{"max":70.0,"sets":3,"maxReps":9,"load":630.0}}},"Calf Press":{"muscle":"Calves","secondary":[],"weeks":{"2025-10-20":{"max":100.0,"sets":4,"maxReps":19,"load":1900.0},"2025-11-03":{"max":120.0,"sets":3,"maxReps":18,"load":2160.0}}},"Barbell Bench Press":{"muscle":"Chest","secondary":["Triceps","Shoulders"],"weeks":{"2025-01-06":{"max":60.0,"sets":4,"maxReps":4,"load":240.0},"2025-04-21":{"max":60.0,"sets":4,"maxReps":8,"load":480.0},"2025-08-11":{"max":50.0,"sets":3,"maxReps":10,"load":500.0}}},"Dumbbell Shoulder Press":{"muscle":"Shoulders","secondary":["Triceps"],"weeks":{"2025-05-12":{"max":20.0,"sets":4,"maxReps":19,"load":380.0},"2025-06-09":{"max":24.0,"sets":3,"maxReps":13,"load":312.0},"2025-06-23":{"max":24.0,"sets":3,"maxReps":18,"load":432.0}}},"Dumbbell Bench Press":{"muscle":"Chest","secondary":["Triceps","Shoulders"],"weeks":{"2025-02-03":{"max":56.0,"sets":3,"maxReps":8,"load":448.0},"2025-03-03":{"max":48.0,"sets":2,"maxReps":9,"load":432.0}}}};
+
+    // Calculate global date range for time-aligned charts
+    const ALL_WEEKS = new Set();
+    Object.values(WORKOUT_DATA).forEach(ex => {
+      Object.keys(ex.weeks).forEach(week => ALL_WEEKS.add(week));
+    });
+    const sortedWeeks = Array.from(ALL_WEEKS).sort();
+    const YEAR_START = sortedWeeks[0];
+    const YEAR_END = sortedWeeks[sortedWeeks.length - 1];
+
+    // Calculate cutoff for "inactive" exercises (10 weeks ago)
+    const endDate = new Date(YEAR_END);
+    const cutoffDate = new Date(endDate);
+    cutoffDate.setDate(cutoffDate.getDate() - 70); // 10 weeks
+    const CUTOFF_DATE = cutoffDate.toISOString().split('T')[0];
+
+    // All muscle groups we track
+    const ALL_MUSCLE_GROUPS = [
+      'Chest',
+      'Back',
+      'Shoulders',
+      'Biceps',
+      'Triceps',
+      'Quadriceps',
+      'Hamstrings',
+      'Glutes',
+      'Calves'
+    ];
+
+    // Linear regression to calculate trend
+    function linearRegression(dataPoints) {
+      // dataPoints = [{x: weekNumber, y: load}, ...]
+      if (dataPoints.length < 2) return { slope: 0, intercept: 0, avgY: 0 };
+
+      const n = dataPoints.length;
+      let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+
+      dataPoints.forEach(point => {
+        sumX += point.x;
+        sumY += point.y;
+        sumXY += point.x * point.y;
+        sumX2 += point.x * point.x;
+      });
+
+      const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+      const intercept = (sumY - slope * sumX) / n;
+      const avgY = sumY / n;
+
+      return { slope, intercept, avgY };
+    }
+
+    // Process workout data into muscle groups
+    function processWorkoutData() {
+      const muscleGroups = {};
+
+      // Initialize all muscle groups
+      ALL_MUSCLE_GROUPS.forEach(muscle => {
+        muscleGroups[muscle] = { exercises: [], totalSets: 0, totalWorkouts: 0 };
+      });
+
+      // Process each exercise
+      Object.entries(WORKOUT_DATA).forEach(([exerciseName, exData]) => {
+        const primaryMuscle = exData.muscle;
+        const secondaryMuscles = exData.secondary;
+
+        // Sort weeks chronologically
+        const weekEntries = Object.entries(exData.weeks).sort((a, b) =>
+          new Date(a[0]) - new Date(b[0])
+        );
+
+        // Skip if less than 2 weeks
+        if (weekEntries.length < 2) return;
+
+        // Get last 12 weeks for metrics
+        const last12Weeks = weekEntries.slice(-12);
+
+        const weeks = last12Weeks.map(([weekStart, weekData]) => ({
+          weekStart,
+          maxWeight: weekData.max,
+          maxReps: weekData.maxReps,
+          load: weekData.load
+        }));
+
+        const totalSets = last12Weeks.reduce((sum, [, weekData]) => sum + weekData.sets, 0);
+
+        // Current and previous session data
+        const current = weeks[weeks.length - 1];
+        const previous = weeks[weeks.length - 2];
+
+        // Calculate progress using linear regression on MAX WEIGHT across ALL available weeks
+        // Using max weight instead of load because it better represents strength progression
+        // regardless of rep range variations (strength phase vs hypertrophy phase)
+        const regressionData = weekEntries.map(([weekStart, weekData], index) => ({
+          x: index, // Week number (0, 1, 2, ...)
+          y: weekData.max
+        }));
+        const regression = linearRegression(regressionData);
+
+        // Convert slope to percentage per week: (slope / avgMaxWeight) * 100
+        const loadPctChange = regression.avgY > 0 ? (regression.slope / regression.avgY) * 100 : 0;
+
+        // Find maximum weight across previous 11 weeks (excluding current)
+        const previous11Weeks = last12Weeks.slice(0, -1);
+        const maxWeightBefore = previous11Weeks.length > 0
+          ? Math.max(...previous11Weeks.map(([, weekData]) => weekData.max))
+          : 0;
+
+        // Session-to-session changes for status detection
+        const weightChange = current.maxWeight - previous.maxWeight;
+        const repsChange = current.maxReps - previous.maxReps;
+        const loadChange = current.load - previous.load;
+
+        // Detect progression pattern and generate smart status
+        let status = '';
+        let statusIcon = '';
+        let interpretation = '';
+
+        if (weightChange > 0 && current.maxWeight > maxWeightBefore) {
+          // Truly new max - exceeded all previous 11 weeks
+          status = 'New max!';
+          statusIcon = '✅';
+          interpretation = `Increased from ${previous.maxWeight}kg to ${current.maxWeight}kg`;
+        } else if (weightChange > 0 && current.maxWeight === maxWeightBefore) {
+          // Matched previous best
+          status = 'Back to your best';
+          statusIcon = '💪';
+          interpretation = `Matched your recent best of ${current.maxWeight}kg`;
+        } else if (weightChange < 0 && repsChange > 0 && loadChange > 0) {
+          // Weight dropped, reps increased, total load increased = building capacity
+          status = 'Building capacity';
+          statusIcon = '💪';
+          interpretation = `Lower weight, higher reps = building strength foundation. Previous: ${previous.maxWeight}kg × ${previous.maxReps} reps`;
+        } else if (weightChange === 0 && repsChange > 0) {
+          // Same weight, more reps = progressing
+          status = 'Progressing';
+          statusIcon = '📈';
+          interpretation = `Increased reps from ${previous.maxReps} to ${current.maxReps} at ${current.maxWeight}kg`;
+        } else if (weightChange === 0 && repsChange === 0) {
+          // No change = maintaining
+          status = 'Maintaining';
+          statusIcon = '→';
+          interpretation = `Consistent at ${current.maxWeight}kg × ${current.maxReps} reps`;
+        } else if (loadChange < 0) {
+          // Total load decreased = declining
+          status = 'Declining';
+          statusIcon = '↓';
+          interpretation = `Load decreased from ${Math.round(previous.load)} to ${Math.round(current.load)}`;
+        } else {
+          // Default
+          status = 'Active';
+          statusIcon = '●';
+          interpretation = `${current.maxWeight}kg × ${current.maxReps} reps`;
+        }
+
+        // Check if exercise is inactive (last performed before cutoff)
+        const lastWeek = weekEntries[weekEntries.length - 1][0];
+        const isInactive = lastWeek < CUTOFF_DATE;
+
+        // Store all weeks for time-aligned chart (using load as primary metric)
+        const allWeeks = weekEntries.map(([weekStart, weekData]) => ({
+          weekStart,
+          maxWeight: weekData.max,
+          maxReps: weekData.maxReps,
+          load: weekData.load
+        }));
+
+        const exercise = {
+          name: exerciseName,
+          secondaryMuscles,
+          weeksActive: weeks.length,
+          totalSets,
+          weeks,
+          allWeeks,  // For time-aligned charts
+          currentWeight: current.maxWeight,
+          currentReps: current.maxReps,
+          currentLoad: current.load,
+          previousWeight: previous.maxWeight,
+          previousReps: previous.maxReps,
+          previousLoad: previous.load,
+          weightChange,
+          repsChange,
+          loadChange,
+          loadPctChange,
+          status,
+          statusIcon,
+          interpretation,
+          isInactive
+        };
+
+        muscleGroups[primaryMuscle].exercises.push(exercise);
+        muscleGroups[primaryMuscle].totalSets += totalSets;
+        muscleGroups[primaryMuscle].totalWorkouts += weekEntries.length;
+      });
+
+      return { muscleGroups };
+    }
+
+    // Calculate progress metrics
+    function calculateProgressMetrics(data) {
+      const metrics = [];
+
+      ALL_MUSCLE_GROUPS.forEach(muscleName => {
+        const muscleData = data.muscleGroups[muscleName];
+        if (muscleData && muscleData.exercises && muscleData.exercises.length > 0) {
+          // Only calculate from active exercises
+          const activeExercises = muscleData.exercises.filter(ex => !ex.isInactive);
+          if (activeExercises.length > 0) {
+            const avgPctChange = activeExercises.reduce((sum, ex) => sum + ex.loadPctChange, 0) / activeExercises.length;
+            metrics.push({
+              muscle: muscleName,
+              pctChange: avgPctChange,
+              totalSets: muscleData.totalSets,
+              totalWorkouts: muscleData.totalWorkouts
+            });
+          }
+        }
+      });
+
+      return metrics;
+    }
+
+    // Render progress summary
+    function renderProgressSummary(data) {
+      const container = document.getElementById('progress-summary');
+      const metrics = calculateProgressMetrics(data);
+
+      // Sort by total workouts (frequency)
+      const sortedMetrics = metrics.sort((a, b) => b.totalWorkouts - a.totalWorkouts);
+
+      const muscleProgressMap = new Map(sortedMetrics.map(m => [m.muscle, m.pctChange]));
+
+      const progressItems = ALL_MUSCLE_GROUPS
+        .map(muscleName => {
+          const pctChange = muscleProgressMap.get(muscleName);
+          const muscleData = data.muscleGroups[muscleName];
+          const totalSets = muscleData ? muscleData.totalSets : 0;
+
+          let status, statusClass, icon, statusText;
+
+          if (pctChange === undefined) {
+            status = 'neglected';
+            statusClass = 'status-neglected';
+            icon = '○';
+            statusText = 'Not trained';
+          } else if (pctChange > 0) {
+            status = 'progressing';
+            statusClass = 'status-progressing';
+            icon = '↑';
+            statusText = `+${pctChange.toFixed(1)}%/wk`;
+          } else if (pctChange === 0) {
+            status = 'plateau';
+            statusClass = 'status-plateau';
+            icon = '→';
+            statusText = 'Plateau';
+          } else {
+            status = 'declining';
+            statusClass = 'status-declining';
+            icon = '↓';
+            statusText = `${pctChange.toFixed(1)}%/wk`;
+          }
+
+          return {
+            html: `
+              <div class="progress-item ${statusClass}" onclick="scrollToMuscleGroup('${muscleName}')">
+                <span class="progress-item-muscle">${muscleName}</span>
+                <div class="progress-item-status ${statusClass}">
+                  <span class="progress-item-icon">${icon}</span>
+                  <span>${statusText}</span>
+                </div>
+              </div>
+            `,
+            totalSets
+          };
+        })
+        .sort((a, b) => b.totalSets - a.totalSets)
+        .map(item => item.html)
+        .join('');
+
+      container.innerHTML = `
+        <div class="progress-summary-header">
+          <div class="progress-summary-icon">📊</div>
+          <div class="progress-summary-title">Muscle group overview (sorted by frequency)</div>
+        </div>
+        <div class="progress-summary-content">
+          ${progressItems}
+        </div>
+      `;
+    }
+
+    // Scroll to muscle group
+    function scrollToMuscleGroup(muscleName) {
+      const element = document.getElementById(`muscle-${muscleName.toLowerCase()}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Render dashboard
+    function renderDashboard(data) {
+      const container = document.getElementById('muscle-groups-container');
+      const metrics = calculateProgressMetrics(data);
+
+      const metricsMap = new Map(metrics.map(m => [m.muscle, m.pctChange]));
+
+      // Sort muscle groups by total workouts (frequency)
+      const sortedMuscleGroups = ALL_MUSCLE_GROUPS
+        .map(muscle => ({
+          name: muscle,
+          data: data.muscleGroups[muscle],
+          totalWorkouts: data.muscleGroups[muscle].totalWorkouts
+        }))
+        .sort((a, b) => b.totalWorkouts - a.totalWorkouts);
+
+      const html = sortedMuscleGroups.map(({ name: muscleName, data: muscleData }) => {
+        const hasExercises = muscleData && muscleData.exercises && muscleData.exercises.length > 0;
+
+        if (!hasExercises) {
+          return `
+            <div class="muscle-group-card neglected" id="muscle-${muscleName.toLowerCase()}">
+              <div class="muscle-group-header">
+                <div class="muscle-group-name">${muscleName}</div>
+                <div class="muscle-group-summary">Not trained</div>
+              </div>
+              <div class="neglected-message">
+                <div class="neglected-icon">⚠️</div>
+                <div class="neglected-text">
+                  <div class="neglected-title">No ${muscleName.toLowerCase()} exercises tracked</div>
+                  <div class="neglected-subtitle">Consider adding direct ${muscleName.toLowerCase()} work to your routine</div>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        const totalExercises = muscleData.exercises.length;
+        const totalSets = muscleData.totalSets;
+        const totalWorkouts = muscleData.totalWorkouts;
+        const avgPctChange = metricsMap.get(muscleName) || 0;
+
+        let benchmarkText = '';
+        let benchmarkColor = '';
+        if (avgPctChange > 0) {
+          benchmarkText = `Trending +${avgPctChange.toFixed(1)}%/week`;
+          benchmarkColor = '#4ade80';
+        } else if (avgPctChange === 0) {
+          benchmarkText = 'Plateau';
+          benchmarkColor = '#fbbf24';
+        } else {
+          benchmarkText = `Trending ${avgPctChange.toFixed(1)}%/week`;
+          benchmarkColor = '#ef4444';
+        }
+
+        const exercisesHTML = muscleData.exercises.map(exercise => {
+          const chartId = `chart-${muscleName.toLowerCase()}-${exercise.name.replace(/\s+/g, '-').toLowerCase()}`;
+
+          // Determine progress color based on status
+          const isImproving = exercise.status === 'New max!' || exercise.status === 'Back to your best' || exercise.status === 'Building capacity' || exercise.status === 'Progressing';
+          const isStagnant = exercise.status === 'Maintaining';
+          const progressColor = isImproving ? '#4ade80' : isStagnant ? '#fbbf24' : '#737373';
+          const inactiveClass = exercise.isInactive ? 'inactive' : '';
+
+          setTimeout(() => {
+            const ctx = document.getElementById(chartId);
+            if (!ctx) return;
+
+            // Create full timeline with nulls for missing weeks
+            const allWeeksDates = [];
+            const allWeeksData = [];
+
+            // Parse dates as UTC to avoid timezone shifts
+            const [startYear, startMonth, startDay] = YEAR_START.split('-').map(Number);
+            const [endYear, endMonth, endDay] = YEAR_END.split('-').map(Number);
+
+            let currentDate = new Date(Date.UTC(startYear, startMonth - 1, startDay));
+            const endDateObj = new Date(Date.UTC(endYear, endMonth - 1, endDay));
+
+            const exerciseWeeksMap = new Map(exercise.allWeeks.map(w => [w.weekStart, w.maxWeight]));
+            const exerciseRepsMap = new Map(exercise.allWeeks.map(w => [w.weekStart, w.maxReps]));
+
+            const allWeeksReps = [];
+            while (currentDate <= endDateObj) {
+              const weekStr = currentDate.toISOString().split('T')[0];
+              allWeeksDates.push(weekStr);
+              allWeeksData.push(exerciseWeeksMap.get(weekStr) || null);
+              allWeeksReps.push(exerciseRepsMap.get(weekStr) || null);
+              currentDate.setUTCDate(currentDate.getUTCDate() + 7);
+            }
+
+            const labels = allWeeksDates.map(w => formatWeekDate(w));
+
+            // Color configuration - only weight is highlighted
+            const weightColor = progressColor;
+            const repsColor = '#3a3a3a'; // Always dark gray
+            const weightWidth = 2.5;
+
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: labels,
+                datasets: [
+                  // Reps series (bars) - rendered first so it's behind
+                  {
+                    label: 'Reps',
+                    type: 'bar',
+                    data: allWeeksReps,
+                    backgroundColor: repsColor,
+                    borderColor: 'transparent',
+                    borderWidth: 0,
+                    barThickness: 'flex',
+                    maxBarThickness: 8,
+                    yAxisID: 'y-reps',
+                    order: 2,
+                    datalabels: {
+                      display: false
+                    }
+                  },
+                  // Weight series (line) - rendered second so it's on top
+                  {
+                    label: 'Weight (kg)',
+                    type: 'line',
+                    data: allWeeksData,
+                    borderColor: weightColor,
+                    backgroundColor: 'transparent',
+                    borderWidth: weightWidth,
+                    pointRadius: 3,
+                    pointBackgroundColor: weightColor,
+                    pointBorderWidth: 0,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: weightColor,
+                    tension: 0.2,
+                    fill: false,
+                    spanGaps: true,
+                    yAxisID: 'y-weight',
+                    order: 1,
+                    datalabels: {
+                      display: true,
+                      align: 'top',
+                      anchor: 'end',
+                      color: weightColor,
+                      font: {
+                        size: 9,
+                        weight: 500
+                      },
+                      formatter: (value) => value ? `${value}kg` : null
+                    }
+                  }
+                ]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                  mode: 'index',
+                  intersect: false
+                },
+                plugins: {
+                  legend: { display: false },
+                  datalabels: {
+                    display: true
+                  },
+                  tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.95)',
+                    padding: 12,
+                    displayColors: true,
+                    borderColor: 'rgba(255, 255, 255, 0.1)',
+                    borderWidth: 1,
+                    callbacks: {
+                      title: (items) => {
+                        return items[0].label;
+                      },
+                      label: (ctx) => {
+                        if (!ctx.parsed.y) return null;
+                        if (ctx.dataset.label === 'Weight (kg)') {
+                          return `Weight: ${ctx.parsed.y}kg`;
+                        } else {
+                          return `Reps: ${ctx.parsed.y}`;
+                        }
+                      },
+                      afterBody: (items) => {
+                        // items[0] is reps (bar), items[1] is weight (line)
+                        const reps = items[0]?.parsed.y;
+                        const weight = items[1]?.parsed.y;
+                        if (weight && reps) {
+                          return `\nLoad: ${(weight * reps).toFixed(0)}kg`;
+                        }
+                        return '';
+                      }
+                    }
+                  }
+                },
+                scales: {
+                  x: {
+                    display: false,
+                    grid: { display: false }
+                  },
+                  'y-weight': {
+                    display: false,
+                    position: 'left',
+                    grid: { display: false }
+                  },
+                  'y-reps': {
+                    display: false,
+                    position: 'right',
+                    grid: { display: false }
+                  }
+                },
+                onHover: (event, activeElements, chart) => {
+                  if (activeElements.length > 0) {
+                    // Highlight both series on hover
+                    chart.data.datasets.forEach((dataset) => {
+                      if (dataset.type === 'line') {
+                        dataset.borderWidth = 3.5;
+                        dataset.pointRadius = 5;
+                      } else if (dataset.type === 'bar') {
+                        dataset.backgroundColor = '#525252'; // Lighter gray on hover
+                      }
+                    });
+                    chart.update('none');
+                  } else {
+                    // Reset to original styling
+                    chart.data.datasets.forEach((dataset) => {
+                      if (dataset.type === 'line') {
+                        dataset.borderWidth = weightWidth;
+                        dataset.pointRadius = 3;
+                      } else if (dataset.type === 'bar') {
+                        dataset.backgroundColor = repsColor; // Back to dark gray
+                      }
+                    });
+                    chart.update('none');
+                  }
+                }
+              }
+            });
+          }, 100);
+
+          return `
+            <div class="exercise-row ${inactiveClass}" data-inactive="${exercise.isInactive}">
+              <div class="exercise-info">
+                <div class="exercise-name">${exercise.name}</div>
+                <div class="exercise-change" style="color: ${progressColor}; margin-top: 8px;">
+                  ${exercise.status}
+                </div>
+              </div>
+              <div class="exercise-chart-container">
+                <div class="exercise-chart">
+                  <canvas id="${chartId}"></canvas>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <div class="muscle-group-card" id="muscle-${muscleName.toLowerCase()}">
+            <div class="muscle-group-header">
+              <div class="muscle-group-name">${muscleName}</div>
+              <div class="muscle-group-summary">${totalExercises} exercise${totalExercises !== 1 ? 's' : ''} • ${totalWorkouts} workouts</div>
+            </div>
+            <div class="muscle-group-benchmark" style="color: ${benchmarkColor};">${benchmarkText}</div>
+            <div class="exercises-list">
+              ${exercisesHTML}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = html;
+    }
+
+    // Format week date for labels
+    function formatWeekDate(dateStr) {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    // Toggle inactive exercises
+    document.getElementById('hide-inactive').addEventListener('change', function(e) {
+      const inactiveRows = document.querySelectorAll('.exercise-row[data-inactive="true"]');
+      inactiveRows.forEach(row => {
+        row.style.display = e.target.checked ? 'none' : 'grid';
+      });
+    });
+
+    // Load dashboard on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      const data = processWorkoutData();
+      renderProgressSummary(data);
+      renderDashboard(data);
+
+      // Hide inactive by default
+      document.querySelectorAll('.exercise-row[data-inactive="true"]').forEach(row => {
+        row.style.display = 'none';
+      });
+    });
+
+    // Chart.js default config
+    Chart.defaults.color = '#737373';
+    Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif';
+  </script>
+</body>
+</html>

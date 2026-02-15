@@ -1,0 +1,1393 @@
+Date,Exercise,Reps,Weight(kg),Duration(s),Distance(m),Incline,Resistance,isWarmup,Note,multiplier
+2025-01-01 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-01-01 06:30:00 PM +0000,Barbell Back Squat,5,60.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-01-01 06:30:00 PM +0000,Barbell Back Squat,5,62.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-01-01 06:30:00 PM +0000,Barbell Back Squat,5,65.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-01 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-01 06:30:00 PM +0000,Barbell Bench Press,4,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-01 06:30:00 PM +0000,Barbell Bench Press,4,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-01 06:30:00 PM +0000,Barbell Bench Press,4,50.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-01 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-01 06:30:00 PM +0000,Bent Over Barbell Row,4,40.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-01-01 06:30:00 PM +0000,Bent Over Barbell Row,4,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-01 06:30:00 PM +0000,Bent Over Barbell Row,5,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-05 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-01-05 06:30:00 PM +0000,Barbell Back Squat,6,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-05 06:30:00 PM +0000,Barbell Back Squat,5,62.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-05 06:30:00 PM +0000,Barbell Back Squat,4,65.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-05 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-05 06:30:00 PM +0000,Barbell Bench Press,5,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-05 06:30:00 PM +0000,Barbell Bench Press,6,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-05 06:30:00 PM +0000,Barbell Bench Press,5,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-05 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-05 06:30:00 PM +0000,Bent Over Barbell Row,4,40.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-05 06:30:00 PM +0000,Bent Over Barbell Row,4,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-08 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-01-08 06:30:00 PM +0000,Barbell Back Squat,6,60.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-08 06:30:00 PM +0000,Barbell Back Squat,4,62.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-08 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-08 06:30:00 PM +0000,Barbell Bench Press,4,45.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-01-08 06:30:00 PM +0000,Barbell Bench Press,5,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-08 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-08 06:30:00 PM +0000,Bent Over Barbell Row,5,40.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-08 06:30:00 PM +0000,Bent Over Barbell Row,6,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-08 06:30:00 PM +0000,Bent Over Barbell Row,6,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-11 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-01-11 06:30:00 PM +0000,Barbell Back Squat,5,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-11 06:30:00 PM +0000,Barbell Back Squat,4,62.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-11 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-11 06:30:00 PM +0000,Barbell Bench Press,4,45.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-01-11 06:30:00 PM +0000,Barbell Bench Press,5,47.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-11 06:30:00 PM +0000,Barbell Bench Press,5,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-11 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-11 06:30:00 PM +0000,Bent Over Barbell Row,5,40.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-11 06:30:00 PM +0000,Bent Over Barbell Row,4,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-11 06:30:00 PM +0000,Bent Over Barbell Row,5,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-13 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-01-13 06:30:00 PM +0000,Barbell Back Squat,4,60.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-13 06:30:00 PM +0000,Barbell Back Squat,6,62.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-13 06:30:00 PM +0000,Barbell Back Squat,5,65.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-13 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-13 06:30:00 PM +0000,Barbell Bench Press,6,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-13 06:30:00 PM +0000,Barbell Bench Press,4,47.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-13 06:30:00 PM +0000,Barbell Bench Press,5,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-13 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-13 06:30:00 PM +0000,Bent Over Barbell Row,5,40.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-01-13 06:30:00 PM +0000,Bent Over Barbell Row,6,42.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-01-17 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-01-17 06:30:00 PM +0000,Barbell Back Squat,5,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-17 06:30:00 PM +0000,Barbell Back Squat,4,62.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-17 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-17 06:30:00 PM +0000,Barbell Bench Press,5,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-17 06:30:00 PM +0000,Barbell Bench Press,4,47.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-01-17 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-17 06:30:00 PM +0000,Bent Over Barbell Row,6,40.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-17 06:30:00 PM +0000,Bent Over Barbell Row,6,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-21 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-01-21 06:30:00 PM +0000,Barbell Back Squat,5,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-21 06:30:00 PM +0000,Barbell Back Squat,4,62.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-21 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-21 06:30:00 PM +0000,Barbell Bench Press,6,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-21 06:30:00 PM +0000,Barbell Bench Press,5,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-21 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-21 06:30:00 PM +0000,Bent Over Barbell Row,4,40.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-21 06:30:00 PM +0000,Bent Over Barbell Row,6,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-24 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-01-24 06:30:00 PM +0000,Barbell Back Squat,4,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-24 06:30:00 PM +0000,Barbell Back Squat,6,62.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-24 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-24 06:30:00 PM +0000,Barbell Bench Press,4,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-24 06:30:00 PM +0000,Barbell Bench Press,5,47.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-24 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-24 06:30:00 PM +0000,Bent Over Barbell Row,5,40.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-01-24 06:30:00 PM +0000,Bent Over Barbell Row,6,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-28 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-01-28 06:30:00 PM +0000,Barbell Back Squat,6,60.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-01-28 06:30:00 PM +0000,Barbell Back Squat,4,62.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-28 06:30:00 PM +0000,Barbell Back Squat,5,65.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-28 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-28 06:30:00 PM +0000,Barbell Bench Press,6,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-28 06:30:00 PM +0000,Barbell Bench Press,4,47.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-28 06:30:00 PM +0000,Barbell Bench Press,6,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-28 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-28 06:30:00 PM +0000,Bent Over Barbell Row,5,40.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-01-28 06:30:00 PM +0000,Bent Over Barbell Row,4,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-31 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-01-31 06:30:00 PM +0000,Barbell Back Squat,6,60.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-01-31 06:30:00 PM +0000,Barbell Back Squat,5,62.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-31 06:30:00 PM +0000,Barbell Back Squat,5,65.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-01-31 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-31 06:30:00 PM +0000,Barbell Bench Press,5,45.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-01-31 06:30:00 PM +0000,Barbell Bench Press,6,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-01-31 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-01-31 06:30:00 PM +0000,Bent Over Barbell Row,4,40.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-01-31 06:30:00 PM +0000,Bent Over Barbell Row,5,42.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-02-03 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-02-03 06:30:00 PM +0000,Barbell Bench Press,11,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-03 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-03 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-03 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-03 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-03 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-02-03 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-02-03 06:30:00 PM +0000,Cable Chest Fly,11,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-03 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-03 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-03 06:30:00 PM +0000,Dumbbell Lateral Raise,16,10.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-03 06:30:00 PM +0000,Dumbbell Lateral Raise,14,13.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-06 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-02-06 06:30:00 PM +0000,Barbell Bench Press,9,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-06 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-06 06:30:00 PM +0000,Barbell Bench Press,11,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-06 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-06 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-06 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-06 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,25.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-06 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-02-06 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-02-06 06:30:00 PM +0000,Cable Chest Fly,13,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-06 06:30:00 PM +0000,Cable Chest Fly,11,35.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-02-06 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-06 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-02-06 06:30:00 PM +0000,Dumbbell Lateral Raise,16,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-06 06:30:00 PM +0000,Dumbbell Lateral Raise,16,13.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-08 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-02-08 06:30:00 PM +0000,Barbell Bench Press,9,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-08 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-02-08 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-08 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-08 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-08 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-08 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-02-08 06:30:00 PM +0000,Cable Chest Fly,11,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-08 06:30:00 PM +0000,Cable Chest Fly,12,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-08 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-08 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-08 06:30:00 PM +0000,Dumbbell Lateral Raise,14,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-11 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-02-11 06:30:00 PM +0000,Barbell Bench Press,9,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-11 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-02-11 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-02-11 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-11 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-11 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-11 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,25.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-11 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-02-11 06:30:00 PM +0000,Cable Chest Fly,11,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-11 06:30:00 PM +0000,Cable Chest Fly,13,32.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-02-11 06:30:00 PM +0000,Cable Chest Fly,13,35.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-02-11 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-11 06:30:00 PM +0000,Dumbbell Lateral Raise,16,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-11 06:30:00 PM +0000,Dumbbell Lateral Raise,14,10.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-11 06:30:00 PM +0000,Dumbbell Lateral Raise,16,13.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-13 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-02-13 06:30:00 PM +0000,Barbell Bench Press,11,50.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-02-13 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-13 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-13 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,20.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-13 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-13 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,25.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-13 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-02-13 06:30:00 PM +0000,Cable Chest Fly,13,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-13 06:30:00 PM +0000,Cable Chest Fly,13,32.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-02-13 06:30:00 PM +0000,Cable Chest Fly,12,35.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-13 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-13 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-02-13 06:30:00 PM +0000,Dumbbell Lateral Raise,14,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-16 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-02-16 06:30:00 PM +0000,Barbell Bench Press,11,50.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-02-16 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-02-16 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-16 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-16 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,22.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-16 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-02-16 06:30:00 PM +0000,Cable Chest Fly,13,30.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-02-16 06:30:00 PM +0000,Cable Chest Fly,13,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-16 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-16 06:30:00 PM +0000,Dumbbell Lateral Raise,15,8.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-16 06:30:00 PM +0000,Dumbbell Lateral Raise,16,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-19 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-02-19 06:30:00 PM +0000,Barbell Bench Press,10,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-02-19 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-19 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-19 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,20.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-19 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-19 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,25.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-02-19 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-02-19 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-19 06:30:00 PM +0000,Cable Chest Fly,11,32.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-02-19 06:30:00 PM +0000,Cable Chest Fly,13,35.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-19 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-19 06:30:00 PM +0000,Dumbbell Lateral Raise,16,8.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-02-19 06:30:00 PM +0000,Dumbbell Lateral Raise,14,10.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-02-21 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-02-21 06:30:00 PM +0000,Barbell Bench Press,10,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-02-21 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-02-21 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-21 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-21 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,22.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-21 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-02-21 06:30:00 PM +0000,Cable Chest Fly,13,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-21 06:30:00 PM +0000,Cable Chest Fly,12,32.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-02-21 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-21 06:30:00 PM +0000,Dumbbell Lateral Raise,15,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-21 06:30:00 PM +0000,Dumbbell Lateral Raise,15,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-25 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-02-25 06:30:00 PM +0000,Barbell Bench Press,11,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-25 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-25 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-25 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-25 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-25 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,25.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-25 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-02-25 06:30:00 PM +0000,Cable Chest Fly,11,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-25 06:30:00 PM +0000,Cable Chest Fly,13,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-25 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-25 06:30:00 PM +0000,Dumbbell Lateral Raise,15,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-25 06:30:00 PM +0000,Dumbbell Lateral Raise,16,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-25 06:30:00 PM +0000,Dumbbell Lateral Raise,16,13.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-27 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-02-27 06:30:00 PM +0000,Barbell Bench Press,9,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-02-27 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-02-27 06:30:00 PM +0000,Barbell Bench Press,10,55.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-02-27 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-27 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-27 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,22.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-27 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,25.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-27 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-02-27 06:30:00 PM +0000,Cable Chest Fly,11,30.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-02-27 06:30:00 PM +0000,Cable Chest Fly,13,32.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-02-27 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-02-27 06:30:00 PM +0000,Dumbbell Lateral Raise,15,8.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-02-27 06:30:00 PM +0000,Dumbbell Lateral Raise,14,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-02-27 06:30:00 PM +0000,Dumbbell Lateral Raise,15,13.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-03-01 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-03-01 06:30:00 PM +0000,Barbell Bench Press,9,50.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-03-01 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-03-01 06:30:00 PM +0000,Barbell Bench Press,10,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-01 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-03-01 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-01 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-01 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-01 06:30:00 PM +0000,Cable Chest Fly,11,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-01 06:30:00 PM +0000,Cable Chest Fly,11,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-01 06:30:00 PM +0000,Cable Chest Fly,12,35.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-03-01 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-03-01 06:30:00 PM +0000,Dumbbell Lateral Raise,16,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-01 06:30:00 PM +0000,Dumbbell Lateral Raise,15,10.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-03-01 06:30:00 PM +0000,Dumbbell Lateral Raise,16,13.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-10 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-03-10 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-03-10 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-10 06:30:00 PM +0000,Barbell Bench Press,9,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-10 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-10 06:30:00 PM +0000,Bent Over Barbell Row,9,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-10 06:30:00 PM +0000,Bent Over Barbell Row,9,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-10 06:30:00 PM +0000,Bent Over Barbell Row,9,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-03-10 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-03-10 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-03-10 06:30:00 PM +0000,Dumbbell Shoulder Press,13,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-10 06:30:00 PM +0000,Dumbbell Shoulder Press,13,23.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-03-10 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-10 06:30:00 PM +0000,Dip,12,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-10 06:30:00 PM +0000,Dip,11,2.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-03-10 06:30:00 PM +0000,Dip,12,5.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-03-13 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-03-13 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-13 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-13 06:30:00 PM +0000,Barbell Bench Press,11,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-13 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-13 06:30:00 PM +0000,Bent Over Barbell Row,11,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-13 06:30:00 PM +0000,Bent Over Barbell Row,11,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-13 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-03-13 06:30:00 PM +0000,Dumbbell Shoulder Press,12,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-13 06:30:00 PM +0000,Dumbbell Shoulder Press,12,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-13 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-13 06:30:00 PM +0000,Dip,12,0.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-03-13 06:30:00 PM +0000,Dip,13,2.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-03-17 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-03-17 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-03-17 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-17 06:30:00 PM +0000,Barbell Bench Press,10,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-17 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-17 06:30:00 PM +0000,Bent Over Barbell Row,9,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-17 06:30:00 PM +0000,Bent Over Barbell Row,9,47.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-03-17 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-03-17 06:30:00 PM +0000,Dumbbell Shoulder Press,11,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-17 06:30:00 PM +0000,Dumbbell Shoulder Press,13,20.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-03-17 06:30:00 PM +0000,Dumbbell Shoulder Press,12,23.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-17 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-17 06:30:00 PM +0000,Dip,13,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-17 06:30:00 PM +0000,Dip,11,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-20 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-03-20 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-03-20 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-20 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-20 06:30:00 PM +0000,Bent Over Barbell Row,10,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-20 06:30:00 PM +0000,Bent Over Barbell Row,10,47.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-03-20 06:30:00 PM +0000,Bent Over Barbell Row,9,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-03-20 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-03-20 06:30:00 PM +0000,Dumbbell Shoulder Press,12,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-20 06:30:00 PM +0000,Dumbbell Shoulder Press,13,20.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-03-20 06:30:00 PM +0000,Dumbbell Shoulder Press,12,23.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-20 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-20 06:30:00 PM +0000,Dip,13,0.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-03-20 06:30:00 PM +0000,Dip,12,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-23 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-03-23 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-23 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-23 06:30:00 PM +0000,Barbell Bench Press,10,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-23 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-23 06:30:00 PM +0000,Bent Over Barbell Row,9,45.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-03-23 06:30:00 PM +0000,Bent Over Barbell Row,9,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-23 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-03-23 06:30:00 PM +0000,Dumbbell Shoulder Press,11,18.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-03-23 06:30:00 PM +0000,Dumbbell Shoulder Press,13,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-23 06:30:00 PM +0000,Dumbbell Shoulder Press,12,23.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-23 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-23 06:30:00 PM +0000,Dip,11,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-23 06:30:00 PM +0000,Dip,12,2.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-03-25 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-03-25 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-25 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-25 06:30:00 PM +0000,Barbell Bench Press,9,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-25 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-25 06:30:00 PM +0000,Bent Over Barbell Row,10,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-25 06:30:00 PM +0000,Bent Over Barbell Row,9,47.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-03-25 06:30:00 PM +0000,Bent Over Barbell Row,9,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-25 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-03-25 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-03-25 06:30:00 PM +0000,Dumbbell Shoulder Press,12,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-25 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-25 06:30:00 PM +0000,Dip,11,0.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-03-25 06:30:00 PM +0000,Dip,12,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-28 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-03-28 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-03-28 06:30:00 PM +0000,Barbell Bench Press,10,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-28 06:30:00 PM +0000,Barbell Bench Press,9,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-28 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-28 06:30:00 PM +0000,Bent Over Barbell Row,10,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-03-28 06:30:00 PM +0000,Bent Over Barbell Row,9,47.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-03-28 06:30:00 PM +0000,Bent Over Barbell Row,9,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-03-28 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-03-28 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-28 06:30:00 PM +0000,Dumbbell Shoulder Press,13,20.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-03-28 06:30:00 PM +0000,Dumbbell Shoulder Press,13,23.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-03-28 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-03-28 06:30:00 PM +0000,Dip,12,0.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-03-28 06:30:00 PM +0000,Dip,11,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-07 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-04-07 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-04-07 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-04-07 06:30:00 PM +0000,Barbell Bench Press,10,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-07 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-04-07 06:30:00 PM +0000,Bent Over Barbell Row,9,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-07 06:30:00 PM +0000,Bent Over Barbell Row,11,47.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-04-07 06:30:00 PM +0000,Bent Over Barbell Row,10,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-07 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-04-07 06:30:00 PM +0000,Dumbbell Shoulder Press,11,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-04-07 06:30:00 PM +0000,Dumbbell Shoulder Press,11,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-04-07 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-04-07 06:30:00 PM +0000,Dip,11,0.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-04-07 06:30:00 PM +0000,Dip,12,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-07 06:30:00 PM +0000,Dip,12,5.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-10 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-04-10 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-10 06:30:00 PM +0000,Barbell Bench Press,11,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-10 06:30:00 PM +0000,Barbell Bench Press,10,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-10 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-04-10 06:30:00 PM +0000,Bent Over Barbell Row,11,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-10 06:30:00 PM +0000,Bent Over Barbell Row,11,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-10 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-04-10 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-04-10 06:30:00 PM +0000,Dumbbell Shoulder Press,11,20.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-04-10 06:30:00 PM +0000,Dumbbell Shoulder Press,13,23.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-04-10 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-04-10 06:30:00 PM +0000,Dip,12,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-10 06:30:00 PM +0000,Dip,11,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-14 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-04-14 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-14 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-14 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-04-14 06:30:00 PM +0000,Bent Over Barbell Row,9,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-04-14 06:30:00 PM +0000,Bent Over Barbell Row,9,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-14 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-04-14 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-04-14 06:30:00 PM +0000,Dumbbell Shoulder Press,13,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-04-14 06:30:00 PM +0000,Dumbbell Shoulder Press,13,23.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-04-14 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-04-14 06:30:00 PM +0000,Dip,11,0.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-04-14 06:30:00 PM +0000,Dip,13,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-18 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-04-18 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-18 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-18 06:30:00 PM +0000,Barbell Bench Press,9,57.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-04-18 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-04-18 06:30:00 PM +0000,Bent Over Barbell Row,10,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-18 06:30:00 PM +0000,Bent Over Barbell Row,9,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-18 06:30:00 PM +0000,Bent Over Barbell Row,10,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-04-18 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-04-18 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-04-18 06:30:00 PM +0000,Dumbbell Shoulder Press,13,20.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-04-18 06:30:00 PM +0000,Dumbbell Shoulder Press,11,23.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-04-18 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-04-18 06:30:00 PM +0000,Dip,12,0.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-04-18 06:30:00 PM +0000,Dip,13,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-18 06:30:00 PM +0000,Dip,12,5.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-22 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-04-22 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-22 06:30:00 PM +0000,Barbell Bench Press,10,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-22 06:30:00 PM +0000,Barbell Bench Press,10,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-22 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-04-22 06:30:00 PM +0000,Bent Over Barbell Row,10,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-22 06:30:00 PM +0000,Bent Over Barbell Row,10,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-22 06:30:00 PM +0000,Bent Over Barbell Row,11,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-22 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-04-22 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-04-22 06:30:00 PM +0000,Dumbbell Shoulder Press,12,20.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-04-22 06:30:00 PM +0000,Dumbbell Shoulder Press,13,23.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-04-22 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-04-22 06:30:00 PM +0000,Dip,12,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-04-22 06:30:00 PM +0000,Dip,13,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-03 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-05-03 06:30:00 PM +0000,Barbell Back Squat,7,70.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-03 06:30:00 PM +0000,Barbell Back Squat,7,72.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-05-03 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-03 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-03 06:30:00 PM +0000,Barbell Bench Press,8,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-03 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-03 06:30:00 PM +0000,Barbell Deadlift,6,90.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-03 06:30:00 PM +0000,Barbell Deadlift,4,92.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-03 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-03 06:30:00 PM +0000,Pull Up,9,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-03 06:30:00 PM +0000,Pull Up,9,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-06 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-05-06 06:30:00 PM +0000,Barbell Back Squat,9,70.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-06 06:30:00 PM +0000,Barbell Back Squat,9,72.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-05-06 06:30:00 PM +0000,Barbell Back Squat,9,75.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-05-06 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-06 06:30:00 PM +0000,Barbell Bench Press,7,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-06 06:30:00 PM +0000,Barbell Bench Press,8,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-06 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-06 06:30:00 PM +0000,Barbell Deadlift,5,90.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-06 06:30:00 PM +0000,Barbell Deadlift,6,92.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-05-06 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-06 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-06 06:30:00 PM +0000,Pull Up,7,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-17 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-05-17 06:30:00 PM +0000,Barbell Back Squat,9,70.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-05-17 06:30:00 PM +0000,Barbell Back Squat,9,72.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-05-17 06:30:00 PM +0000,Barbell Back Squat,7,75.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-17 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-17 06:30:00 PM +0000,Barbell Bench Press,8,55.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-05-17 06:30:00 PM +0000,Barbell Bench Press,9,57.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-05-17 06:30:00 PM +0000,Barbell Bench Press,8,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-17 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-17 06:30:00 PM +0000,Barbell Deadlift,6,90.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-17 06:30:00 PM +0000,Barbell Deadlift,5,92.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-17 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-17 06:30:00 PM +0000,Pull Up,7,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-17 06:30:00 PM +0000,Pull Up,8,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-17 06:30:00 PM +0000,Pull Up,8,5.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-21 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-05-21 06:30:00 PM +0000,Barbell Back Squat,8,70.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-21 06:30:00 PM +0000,Barbell Back Squat,8,72.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-05-21 06:30:00 PM +0000,Barbell Back Squat,7,75.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-21 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-21 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-05-21 06:30:00 PM +0000,Barbell Bench Press,9,57.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-05-21 06:30:00 PM +0000,Barbell Bench Press,8,60.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-05-21 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-21 06:30:00 PM +0000,Barbell Deadlift,5,90.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-05-21 06:30:00 PM +0000,Barbell Deadlift,5,92.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-21 06:30:00 PM +0000,Barbell Deadlift,5,95.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-05-21 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-21 06:30:00 PM +0000,Pull Up,7,0.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-05-21 06:30:00 PM +0000,Pull Up,9,2.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-05-24 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-05-24 06:30:00 PM +0000,Barbell Back Squat,8,70.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-24 06:30:00 PM +0000,Barbell Back Squat,8,72.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-24 06:30:00 PM +0000,Barbell Back Squat,8,75.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-24 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-24 06:30:00 PM +0000,Barbell Bench Press,7,55.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-05-24 06:30:00 PM +0000,Barbell Bench Press,9,57.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-05-24 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-24 06:30:00 PM +0000,Barbell Deadlift,6,90.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-24 06:30:00 PM +0000,Barbell Deadlift,5,92.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-24 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-24 06:30:00 PM +0000,Pull Up,7,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-24 06:30:00 PM +0000,Pull Up,8,2.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-05-24 06:30:00 PM +0000,Pull Up,8,5.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-27 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-05-27 06:30:00 PM +0000,Barbell Back Squat,9,70.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-27 06:30:00 PM +0000,Barbell Back Squat,7,72.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-27 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-27 06:30:00 PM +0000,Barbell Bench Press,7,55.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-05-27 06:30:00 PM +0000,Barbell Bench Press,8,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-27 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-27 06:30:00 PM +0000,Barbell Deadlift,6,90.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-27 06:30:00 PM +0000,Barbell Deadlift,5,92.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-27 06:30:00 PM +0000,Barbell Deadlift,5,95.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-05-27 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-27 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-27 06:30:00 PM +0000,Pull Up,8,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-27 06:30:00 PM +0000,Pull Up,9,5.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-30 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-05-30 06:30:00 PM +0000,Barbell Back Squat,7,70.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-05-30 06:30:00 PM +0000,Barbell Back Squat,8,72.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-30 06:30:00 PM +0000,Barbell Back Squat,9,75.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-30 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-30 06:30:00 PM +0000,Barbell Bench Press,8,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-30 06:30:00 PM +0000,Barbell Bench Press,7,57.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-05-30 06:30:00 PM +0000,Barbell Bench Press,8,60.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-05-30 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-30 06:30:00 PM +0000,Barbell Deadlift,5,90.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-30 06:30:00 PM +0000,Barbell Deadlift,4,92.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-05-30 06:30:00 PM +0000,Barbell Deadlift,5,95.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-30 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-05-30 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-05-30 06:30:00 PM +0000,Pull Up,8,2.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-03 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-06-03 06:30:00 PM +0000,Barbell Back Squat,5,60.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-03 06:30:00 PM +0000,Barbell Back Squat,5,62.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-03 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-03 06:30:00 PM +0000,Barbell Bench Press,4,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-03 06:30:00 PM +0000,Barbell Bench Press,5,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-03 06:30:00 PM +0000,Barbell Bench Press,6,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-03 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-03 06:30:00 PM +0000,Bent Over Barbell Row,4,40.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-03 06:30:00 PM +0000,Bent Over Barbell Row,6,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-06 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-06-06 06:30:00 PM +0000,Barbell Back Squat,6,60.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-06-06 06:30:00 PM +0000,Barbell Back Squat,5,62.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-06 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-06 06:30:00 PM +0000,Barbell Bench Press,5,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-06 06:30:00 PM +0000,Barbell Bench Press,4,47.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-06-06 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-06 06:30:00 PM +0000,Bent Over Barbell Row,6,40.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-06-06 06:30:00 PM +0000,Bent Over Barbell Row,4,42.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-06-06 06:30:00 PM +0000,Bent Over Barbell Row,5,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-10 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-06-10 06:30:00 PM +0000,Barbell Back Squat,5,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-10 06:30:00 PM +0000,Barbell Back Squat,6,62.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-10 06:30:00 PM +0000,Barbell Back Squat,5,65.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-06-10 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-10 06:30:00 PM +0000,Barbell Bench Press,6,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-10 06:30:00 PM +0000,Barbell Bench Press,6,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-10 06:30:00 PM +0000,Barbell Bench Press,5,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-10 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-10 06:30:00 PM +0000,Bent Over Barbell Row,4,40.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-10 06:30:00 PM +0000,Bent Over Barbell Row,5,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-10 06:30:00 PM +0000,Bent Over Barbell Row,6,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-13 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-06-13 06:30:00 PM +0000,Barbell Back Squat,4,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-13 06:30:00 PM +0000,Barbell Back Squat,6,62.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-13 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-13 06:30:00 PM +0000,Barbell Bench Press,4,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-13 06:30:00 PM +0000,Barbell Bench Press,5,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-13 06:30:00 PM +0000,Barbell Bench Press,5,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-13 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-13 06:30:00 PM +0000,Bent Over Barbell Row,4,40.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-06-13 06:30:00 PM +0000,Bent Over Barbell Row,6,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-16 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-06-16 06:30:00 PM +0000,Barbell Back Squat,5,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-16 06:30:00 PM +0000,Barbell Back Squat,4,62.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-16 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-16 06:30:00 PM +0000,Barbell Bench Press,5,45.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-06-16 06:30:00 PM +0000,Barbell Bench Press,6,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-16 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-16 06:30:00 PM +0000,Bent Over Barbell Row,6,40.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-16 06:30:00 PM +0000,Bent Over Barbell Row,4,42.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-16 06:30:00 PM +0000,Bent Over Barbell Row,6,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-19 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-06-19 06:30:00 PM +0000,Barbell Back Squat,5,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-19 06:30:00 PM +0000,Barbell Back Squat,4,62.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-19 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-19 06:30:00 PM +0000,Barbell Bench Press,6,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-19 06:30:00 PM +0000,Barbell Bench Press,4,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-19 06:30:00 PM +0000,Barbell Bench Press,4,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-19 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-19 06:30:00 PM +0000,Bent Over Barbell Row,4,40.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-19 06:30:00 PM +0000,Bent Over Barbell Row,4,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-23 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-06-23 06:30:00 PM +0000,Barbell Back Squat,6,60.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-06-23 06:30:00 PM +0000,Barbell Back Squat,5,62.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-23 06:30:00 PM +0000,Barbell Back Squat,4,65.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-23 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-23 06:30:00 PM +0000,Barbell Bench Press,6,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-23 06:30:00 PM +0000,Barbell Bench Press,6,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-23 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-23 06:30:00 PM +0000,Bent Over Barbell Row,6,40.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-06-23 06:30:00 PM +0000,Bent Over Barbell Row,4,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-25 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-06-25 06:30:00 PM +0000,Barbell Bench Press,11,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-25 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-06-25 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-06-25 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-06-25 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,22.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-06-25 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,25.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-06-25 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-25 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-25 06:30:00 PM +0000,Cable Chest Fly,11,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-25 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-06-25 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-06-25 06:30:00 PM +0000,Dumbbell Lateral Raise,16,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-06-27 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-06-27 06:30:00 PM +0000,Barbell Bench Press,10,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-27 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-27 06:30:00 PM +0000,Barbell Bench Press,11,55.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-27 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-06-27 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-06-27 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-06-27 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-06-27 06:30:00 PM +0000,Cable Chest Fly,11,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-06-27 06:30:00 PM +0000,Cable Chest Fly,13,32.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-06-27 06:30:00 PM +0000,Cable Chest Fly,12,35.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-06-27 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-06-27 06:30:00 PM +0000,Dumbbell Lateral Raise,15,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-06-27 06:30:00 PM +0000,Dumbbell Lateral Raise,15,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-01 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-07-01 06:30:00 PM +0000,Barbell Bench Press,10,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-01 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-01 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-01 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-01 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-01 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,22.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-07-01 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-07-01 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-01 06:30:00 PM +0000,Cable Chest Fly,11,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-01 06:30:00 PM +0000,Cable Chest Fly,11,35.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-01 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-01 06:30:00 PM +0000,Dumbbell Lateral Raise,16,8.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-07-01 06:30:00 PM +0000,Dumbbell Lateral Raise,15,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-01 06:30:00 PM +0000,Dumbbell Lateral Raise,16,13.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-03 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-07-03 06:30:00 PM +0000,Barbell Bench Press,10,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-07-03 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-03 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-03 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-03 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-03 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,25.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-07-03 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-07-03 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-03 06:30:00 PM +0000,Cable Chest Fly,12,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-03 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-03 06:30:00 PM +0000,Dumbbell Lateral Raise,15,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-03 06:30:00 PM +0000,Dumbbell Lateral Raise,15,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-03 06:30:00 PM +0000,Dumbbell Lateral Raise,16,13.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-06 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-07-06 06:30:00 PM +0000,Barbell Bench Press,11,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-06 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-06 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-06 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-06 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-06 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-07-06 06:30:00 PM +0000,Cable Chest Fly,13,30.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-07-06 06:30:00 PM +0000,Cable Chest Fly,12,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-06 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-06 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-06 06:30:00 PM +0000,Dumbbell Lateral Raise,16,10.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-07-08 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-07-08 06:30:00 PM +0000,Barbell Bench Press,9,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-08 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-07-08 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-08 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-08 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-08 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-08 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-07-08 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-08 06:30:00 PM +0000,Cable Chest Fly,13,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-08 06:30:00 PM +0000,Cable Chest Fly,11,35.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-07-08 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-08 06:30:00 PM +0000,Dumbbell Lateral Raise,16,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-08 06:30:00 PM +0000,Dumbbell Lateral Raise,15,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-11 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-07-11 06:30:00 PM +0000,Barbell Bench Press,10,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-11 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-07-11 06:30:00 PM +0000,Barbell Bench Press,11,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-11 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-11 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-11 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,22.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-07-11 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,25.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-11 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-07-11 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-11 06:30:00 PM +0000,Cable Chest Fly,13,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-11 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-11 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-11 06:30:00 PM +0000,Dumbbell Lateral Raise,16,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-14 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-07-14 06:30:00 PM +0000,Barbell Bench Press,10,50.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-07-14 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-14 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-14 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,20.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-07-14 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-14 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-07-14 06:30:00 PM +0000,Cable Chest Fly,13,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-14 06:30:00 PM +0000,Cable Chest Fly,13,32.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-07-14 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-14 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-07-14 06:30:00 PM +0000,Dumbbell Lateral Raise,14,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-14 06:30:00 PM +0000,Dumbbell Lateral Raise,16,13.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-07-18 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-07-18 06:30:00 PM +0000,Barbell Bench Press,9,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-07-18 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-18 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-18 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-18 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-18 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,22.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-07-18 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-07-18 06:30:00 PM +0000,Cable Chest Fly,13,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-18 06:30:00 PM +0000,Cable Chest Fly,12,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-18 06:30:00 PM +0000,Cable Chest Fly,12,35.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-07-18 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-18 06:30:00 PM +0000,Dumbbell Lateral Raise,15,8.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-07-18 06:30:00 PM +0000,Dumbbell Lateral Raise,16,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-18 06:30:00 PM +0000,Dumbbell Lateral Raise,16,13.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-07-21 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-07-21 06:30:00 PM +0000,Barbell Bench Press,10,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-21 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-21 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-21 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-21 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-21 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,25.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-21 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-07-21 06:30:00 PM +0000,Cable Chest Fly,13,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-21 06:30:00 PM +0000,Cable Chest Fly,11,32.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-07-21 06:30:00 PM +0000,Cable Chest Fly,13,35.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-21 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-21 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-21 06:30:00 PM +0000,Dumbbell Lateral Raise,14,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-21 06:30:00 PM +0000,Dumbbell Lateral Raise,15,13.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-07-24 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-07-24 06:30:00 PM +0000,Barbell Bench Press,9,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-24 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-24 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-24 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-24 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-24 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,25.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-24 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-07-24 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-24 06:30:00 PM +0000,Cable Chest Fly,12,32.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-07-24 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-24 06:30:00 PM +0000,Dumbbell Lateral Raise,16,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-24 06:30:00 PM +0000,Dumbbell Lateral Raise,15,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-24 06:30:00 PM +0000,Dumbbell Lateral Raise,14,13.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-27 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-07-27 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-27 06:30:00 PM +0000,Barbell Bench Press,10,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-27 06:30:00 PM +0000,Barbell Bench Press,11,57.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-07-27 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-07-27 06:30:00 PM +0000,Bent Over Barbell Row,11,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-27 06:30:00 PM +0000,Bent Over Barbell Row,9,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-27 06:30:00 PM +0000,Bent Over Barbell Row,9,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-27 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-27 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-27 06:30:00 PM +0000,Dumbbell Shoulder Press,12,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-27 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-07-27 06:30:00 PM +0000,Dip,13,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-27 06:30:00 PM +0000,Dip,11,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-30 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-07-30 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-07-30 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-30 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-07-30 06:30:00 PM +0000,Bent Over Barbell Row,10,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-30 06:30:00 PM +0000,Bent Over Barbell Row,11,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-07-30 06:30:00 PM +0000,Bent Over Barbell Row,10,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-07-30 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-07-30 06:30:00 PM +0000,Dumbbell Shoulder Press,12,18.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-07-30 06:30:00 PM +0000,Dumbbell Shoulder Press,11,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-07-30 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-07-30 06:30:00 PM +0000,Dip,11,0.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-07-30 06:30:00 PM +0000,Dip,13,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-02 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-08-02 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-02 06:30:00 PM +0000,Barbell Bench Press,11,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-02 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-02 06:30:00 PM +0000,Bent Over Barbell Row,11,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-02 06:30:00 PM +0000,Bent Over Barbell Row,9,47.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-02 06:30:00 PM +0000,Bent Over Barbell Row,11,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-02 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-08-02 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-02 06:30:00 PM +0000,Dumbbell Shoulder Press,11,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-02 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-02 06:30:00 PM +0000,Dip,13,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-02 06:30:00 PM +0000,Dip,11,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-02 06:30:00 PM +0000,Dip,12,5.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-05 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-08-05 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-08-05 06:30:00 PM +0000,Barbell Bench Press,10,55.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-05 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-05 06:30:00 PM +0000,Bent Over Barbell Row,9,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-05 06:30:00 PM +0000,Bent Over Barbell Row,11,47.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-05 06:30:00 PM +0000,Bent Over Barbell Row,10,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-05 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-08-05 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-05 06:30:00 PM +0000,Dumbbell Shoulder Press,12,20.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-08-05 06:30:00 PM +0000,Dumbbell Shoulder Press,13,23.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-08-05 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-05 06:30:00 PM +0000,Dip,12,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-05 06:30:00 PM +0000,Dip,13,2.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-08 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-08-08 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-08 06:30:00 PM +0000,Barbell Bench Press,10,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-08 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-08 06:30:00 PM +0000,Bent Over Barbell Row,11,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-08 06:30:00 PM +0000,Bent Over Barbell Row,10,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-08 06:30:00 PM +0000,Bent Over Barbell Row,9,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-08 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-08-08 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-08-08 06:30:00 PM +0000,Dumbbell Shoulder Press,11,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-08 06:30:00 PM +0000,Dumbbell Shoulder Press,11,23.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-08 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-08 06:30:00 PM +0000,Dip,11,0.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-08 06:30:00 PM +0000,Dip,12,2.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-08-08 06:30:00 PM +0000,Dip,12,5.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-11 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-08-11 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-11 06:30:00 PM +0000,Barbell Bench Press,10,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-11 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-11 06:30:00 PM +0000,Bent Over Barbell Row,9,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-08-11 06:30:00 PM +0000,Bent Over Barbell Row,9,47.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-11 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-08-11 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-11 06:30:00 PM +0000,Dumbbell Shoulder Press,13,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-11 06:30:00 PM +0000,Dumbbell Shoulder Press,12,23.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-11 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-11 06:30:00 PM +0000,Dip,12,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-11 06:30:00 PM +0000,Dip,13,2.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-08-14 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-08-14 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-08-14 06:30:00 PM +0000,Barbell Bench Press,10,55.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-14 06:30:00 PM +0000,Barbell Bench Press,9,57.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-14 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-14 06:30:00 PM +0000,Bent Over Barbell Row,9,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-14 06:30:00 PM +0000,Bent Over Barbell Row,11,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-14 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-08-14 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-08-14 06:30:00 PM +0000,Dumbbell Shoulder Press,11,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-14 06:30:00 PM +0000,Dumbbell Shoulder Press,12,23.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-14 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-14 06:30:00 PM +0000,Dip,12,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-14 06:30:00 PM +0000,Dip,13,2.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-08-14 06:30:00 PM +0000,Dip,13,5.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-08-18 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-08-18 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-18 06:30:00 PM +0000,Barbell Bench Press,11,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-18 06:30:00 PM +0000,Barbell Bench Press,10,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-18 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-18 06:30:00 PM +0000,Bent Over Barbell Row,10,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-18 06:30:00 PM +0000,Bent Over Barbell Row,10,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-18 06:30:00 PM +0000,Bent Over Barbell Row,10,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-18 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-08-18 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-18 06:30:00 PM +0000,Dumbbell Shoulder Press,13,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-18 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-18 06:30:00 PM +0000,Dip,11,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-18 06:30:00 PM +0000,Dip,13,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-21 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-08-21 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-21 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-21 06:30:00 PM +0000,Barbell Bench Press,11,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-21 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-21 06:30:00 PM +0000,Bent Over Barbell Row,11,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-08-21 06:30:00 PM +0000,Bent Over Barbell Row,11,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-21 06:30:00 PM +0000,Bent Over Barbell Row,9,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-21 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-08-21 06:30:00 PM +0000,Dumbbell Shoulder Press,11,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-21 06:30:00 PM +0000,Dumbbell Shoulder Press,11,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-21 06:30:00 PM +0000,Dumbbell Shoulder Press,12,23.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-08-21 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-21 06:30:00 PM +0000,Dip,11,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-21 06:30:00 PM +0000,Dip,13,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-21 06:30:00 PM +0000,Dip,13,5.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-24 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-08-24 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-08-24 06:30:00 PM +0000,Barbell Bench Press,11,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-24 06:30:00 PM +0000,Barbell Bench Press,9,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-24 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-24 06:30:00 PM +0000,Bent Over Barbell Row,11,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-24 06:30:00 PM +0000,Bent Over Barbell Row,10,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-24 06:30:00 PM +0000,Bent Over Barbell Row,11,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-24 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-08-24 06:30:00 PM +0000,Dumbbell Shoulder Press,11,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-24 06:30:00 PM +0000,Dumbbell Shoulder Press,12,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-24 06:30:00 PM +0000,Dumbbell Shoulder Press,12,23.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-24 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-24 06:30:00 PM +0000,Dip,12,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-24 06:30:00 PM +0000,Dip,13,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-24 06:30:00 PM +0000,Dip,12,5.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-28 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-08-28 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-08-28 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-28 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-28 06:30:00 PM +0000,Bent Over Barbell Row,10,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-28 06:30:00 PM +0000,Bent Over Barbell Row,9,47.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-08-28 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-08-28 06:30:00 PM +0000,Dumbbell Shoulder Press,11,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-28 06:30:00 PM +0000,Dumbbell Shoulder Press,12,20.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-08-28 06:30:00 PM +0000,Dumbbell Shoulder Press,12,23.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-28 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-28 06:30:00 PM +0000,Dip,12,0.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-28 06:30:00 PM +0000,Dip,12,2.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-31 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-08-31 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-31 06:30:00 PM +0000,Barbell Bench Press,11,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-31 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-31 06:30:00 PM +0000,Bent Over Barbell Row,9,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-08-31 06:30:00 PM +0000,Bent Over Barbell Row,9,47.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-08-31 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-08-31 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-08-31 06:30:00 PM +0000,Dumbbell Shoulder Press,11,20.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-08-31 06:30:00 PM +0000,Dumbbell Shoulder Press,12,23.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-08-31 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-08-31 06:30:00 PM +0000,Dip,13,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-08-31 06:30:00 PM +0000,Dip,11,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-02 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-09-02 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-02 06:30:00 PM +0000,Barbell Bench Press,11,55.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-02 06:30:00 PM +0000,Barbell Bench Press,11,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-02 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-02 06:30:00 PM +0000,Bent Over Barbell Row,9,45.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-02 06:30:00 PM +0000,Bent Over Barbell Row,11,47.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-02 06:30:00 PM +0000,Bent Over Barbell Row,11,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-02 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-09-02 06:30:00 PM +0000,Dumbbell Shoulder Press,11,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-09-02 06:30:00 PM +0000,Dumbbell Shoulder Press,11,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-09-02 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-02 06:30:00 PM +0000,Dip,11,0.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-02 06:30:00 PM +0000,Dip,11,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-04 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-09-04 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-04 06:30:00 PM +0000,Barbell Bench Press,11,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-04 06:30:00 PM +0000,Barbell Bench Press,11,57.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-04 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-04 06:30:00 PM +0000,Bent Over Barbell Row,11,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-09-04 06:30:00 PM +0000,Bent Over Barbell Row,9,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-04 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-09-04 06:30:00 PM +0000,Dumbbell Shoulder Press,13,18.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-09-04 06:30:00 PM +0000,Dumbbell Shoulder Press,13,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-09-04 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-04 06:30:00 PM +0000,Dip,12,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-04 06:30:00 PM +0000,Dip,12,2.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-07 06:30:00 PM +0000,Barbell Bench Press,8,31.5,0.0,0.0,0.0,0.0,true,Back to basics?,1.0
+2025-09-07 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-09-07 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-07 06:30:00 PM +0000,Bent Over Barbell Row,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-07 06:30:00 PM +0000,Bent Over Barbell Row,9,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-07 06:30:00 PM +0000,Bent Over Barbell Row,11,47.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-09-07 06:30:00 PM +0000,Bent Over Barbell Row,11,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-07 06:30:00 PM +0000,Dumbbell Shoulder Press,8,10.799999999999999,0.0,0.0,0.0,0.0,true,,2.0
+2025-09-07 06:30:00 PM +0000,Dumbbell Shoulder Press,12,18.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-09-07 06:30:00 PM +0000,Dumbbell Shoulder Press,12,20.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-09-07 06:30:00 PM +0000,Dumbbell Shoulder Press,12,23.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-09-07 06:30:00 PM +0000,Dip,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-07 06:30:00 PM +0000,Dip,12,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-07 06:30:00 PM +0000,Dip,11,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-07 06:30:00 PM +0000,Dip,12,5.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-09 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-09-09 06:30:00 PM +0000,Barbell Back Squat,8,70.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-09 06:30:00 PM +0000,Barbell Back Squat,7,72.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-09 06:30:00 PM +0000,Barbell Back Squat,8,75.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-09 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-09 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-09 06:30:00 PM +0000,Barbell Bench Press,9,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-09 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-09 06:30:00 PM +0000,Barbell Deadlift,5,90.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-09 06:30:00 PM +0000,Barbell Deadlift,4,92.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-09 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-09 06:30:00 PM +0000,Pull Up,7,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-09 06:30:00 PM +0000,Pull Up,9,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-11 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-09-11 06:30:00 PM +0000,Barbell Back Squat,8,70.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-09-11 06:30:00 PM +0000,Barbell Back Squat,7,72.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-11 06:30:00 PM +0000,Barbell Back Squat,9,75.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-11 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-11 06:30:00 PM +0000,Barbell Bench Press,7,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-11 06:30:00 PM +0000,Barbell Bench Press,7,57.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-11 06:30:00 PM +0000,Barbell Bench Press,8,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-11 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-11 06:30:00 PM +0000,Barbell Deadlift,5,90.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-11 06:30:00 PM +0000,Barbell Deadlift,4,92.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-11 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-11 06:30:00 PM +0000,Pull Up,7,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-11 06:30:00 PM +0000,Pull Up,8,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-11 06:30:00 PM +0000,Pull Up,9,5.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-14 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-09-14 06:30:00 PM +0000,Barbell Back Squat,7,70.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-14 06:30:00 PM +0000,Barbell Back Squat,8,72.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-14 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-14 06:30:00 PM +0000,Barbell Bench Press,7,55.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-14 06:30:00 PM +0000,Barbell Bench Press,9,57.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-14 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-14 06:30:00 PM +0000,Barbell Deadlift,4,90.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-14 06:30:00 PM +0000,Barbell Deadlift,4,92.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-14 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-14 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-14 06:30:00 PM +0000,Pull Up,9,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-16 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-09-16 06:30:00 PM +0000,Barbell Back Squat,8,70.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-16 06:30:00 PM +0000,Barbell Back Squat,7,72.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-09-16 06:30:00 PM +0000,Barbell Back Squat,9,75.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-16 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-16 06:30:00 PM +0000,Barbell Bench Press,8,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-16 06:30:00 PM +0000,Barbell Bench Press,7,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-16 06:30:00 PM +0000,Barbell Bench Press,9,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-16 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-16 06:30:00 PM +0000,Barbell Deadlift,4,90.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-16 06:30:00 PM +0000,Barbell Deadlift,4,92.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-16 06:30:00 PM +0000,Barbell Deadlift,5,95.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-16 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-16 06:30:00 PM +0000,Pull Up,7,0.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-16 06:30:00 PM +0000,Pull Up,9,2.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-16 06:30:00 PM +0000,Pull Up,9,5.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-19 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-09-19 06:30:00 PM +0000,Barbell Back Squat,7,70.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-09-19 06:30:00 PM +0000,Barbell Back Squat,9,72.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-19 06:30:00 PM +0000,Barbell Back Squat,7,75.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-19 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-19 06:30:00 PM +0000,Barbell Bench Press,7,55.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-09-19 06:30:00 PM +0000,Barbell Bench Press,8,57.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-09-19 06:30:00 PM +0000,Barbell Bench Press,8,60.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-09-19 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-19 06:30:00 PM +0000,Barbell Deadlift,6,90.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-19 06:30:00 PM +0000,Barbell Deadlift,5,92.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-19 06:30:00 PM +0000,Barbell Deadlift,6,95.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-19 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-19 06:30:00 PM +0000,Pull Up,9,0.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-09-19 06:30:00 PM +0000,Pull Up,9,2.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-09-19 06:30:00 PM +0000,Pull Up,7,5.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-30 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-09-30 06:30:00 PM +0000,Barbell Back Squat,9,70.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-30 06:30:00 PM +0000,Barbell Back Squat,8,72.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-09-30 06:30:00 PM +0000,Barbell Back Squat,7,75.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-30 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-30 06:30:00 PM +0000,Barbell Bench Press,8,55.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-30 06:30:00 PM +0000,Barbell Bench Press,8,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-30 06:30:00 PM +0000,Barbell Bench Press,7,60.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-09-30 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-30 06:30:00 PM +0000,Barbell Deadlift,5,90.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-30 06:30:00 PM +0000,Barbell Deadlift,5,92.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-09-30 06:30:00 PM +0000,Barbell Deadlift,4,95.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-30 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-09-30 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-30 06:30:00 PM +0000,Pull Up,8,2.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-09-30 06:30:00 PM +0000,Pull Up,7,5.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-03 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-10-03 06:30:00 PM +0000,Barbell Back Squat,7,70.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-03 06:30:00 PM +0000,Barbell Back Squat,7,72.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-03 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-03 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-03 06:30:00 PM +0000,Barbell Bench Press,7,57.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-03 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-03 06:30:00 PM +0000,Barbell Deadlift,4,90.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-03 06:30:00 PM +0000,Barbell Deadlift,5,92.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-03 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-03 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-10-03 06:30:00 PM +0000,Pull Up,7,2.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-13 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-10-13 06:30:00 PM +0000,Barbell Back Squat,8,70.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-10-13 06:30:00 PM +0000,Barbell Back Squat,7,72.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-10-13 06:30:00 PM +0000,Barbell Back Squat,7,75.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-13 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-13 06:30:00 PM +0000,Barbell Bench Press,7,55.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-13 06:30:00 PM +0000,Barbell Bench Press,8,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-13 06:30:00 PM +0000,Barbell Bench Press,7,60.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-13 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-13 06:30:00 PM +0000,Barbell Deadlift,5,90.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-13 06:30:00 PM +0000,Barbell Deadlift,4,92.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-13 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-13 06:30:00 PM +0000,Pull Up,9,0.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-13 06:30:00 PM +0000,Pull Up,7,2.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-13 06:30:00 PM +0000,Pull Up,9,5.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-16 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-10-16 06:30:00 PM +0000,Barbell Back Squat,7,70.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-16 06:30:00 PM +0000,Barbell Back Squat,9,72.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-16 06:30:00 PM +0000,Barbell Back Squat,9,75.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-10-16 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-16 06:30:00 PM +0000,Barbell Bench Press,8,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-16 06:30:00 PM +0000,Barbell Bench Press,8,57.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-16 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-16 06:30:00 PM +0000,Barbell Deadlift,5,90.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-16 06:30:00 PM +0000,Barbell Deadlift,5,92.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-16 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-16 06:30:00 PM +0000,Pull Up,9,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-16 06:30:00 PM +0000,Pull Up,8,2.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-10-20 06:30:00 PM +0000,Barbell Back Squat,8,42.0,0.0,0.0,0.0,0.0,true,Trying full body 3x,1.0
+2025-10-20 06:30:00 PM +0000,Barbell Back Squat,8,70.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-20 06:30:00 PM +0000,Barbell Back Squat,9,72.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-20 06:30:00 PM +0000,Barbell Bench Press,8,33.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-20 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-20 06:30:00 PM +0000,Barbell Bench Press,9,57.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-10-20 06:30:00 PM +0000,Barbell Bench Press,8,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-20 06:30:00 PM +0000,Barbell Deadlift,8,54.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-20 06:30:00 PM +0000,Barbell Deadlift,6,90.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-20 06:30:00 PM +0000,Barbell Deadlift,4,92.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-10-20 06:30:00 PM +0000,Pull Up,8,0.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-20 06:30:00 PM +0000,Pull Up,7,0.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-20 06:30:00 PM +0000,Pull Up,9,2.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-10-20 06:30:00 PM +0000,Pull Up,8,5.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-10-23 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-10-23 06:30:00 PM +0000,Barbell Back Squat,6,60.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-23 06:30:00 PM +0000,Barbell Back Squat,6,62.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-10-23 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-23 06:30:00 PM +0000,Barbell Bench Press,6,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-23 06:30:00 PM +0000,Barbell Bench Press,4,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-23 06:30:00 PM +0000,Barbell Bench Press,5,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-23 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-23 06:30:00 PM +0000,Bent Over Barbell Row,4,40.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-10-23 06:30:00 PM +0000,Bent Over Barbell Row,5,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-23 06:30:00 PM +0000,Bent Over Barbell Row,5,45.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-26 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-10-26 06:30:00 PM +0000,Barbell Back Squat,5,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-26 06:30:00 PM +0000,Barbell Back Squat,5,62.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-26 06:30:00 PM +0000,Barbell Back Squat,4,65.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-26 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-26 06:30:00 PM +0000,Barbell Bench Press,4,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-26 06:30:00 PM +0000,Barbell Bench Press,6,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-26 06:30:00 PM +0000,Barbell Bench Press,4,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-26 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-26 06:30:00 PM +0000,Bent Over Barbell Row,6,40.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-26 06:30:00 PM +0000,Bent Over Barbell Row,5,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-29 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-10-29 06:30:00 PM +0000,Barbell Back Squat,5,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-29 06:30:00 PM +0000,Barbell Back Squat,5,62.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-29 06:30:00 PM +0000,Barbell Back Squat,4,65.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-29 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-29 06:30:00 PM +0000,Barbell Bench Press,5,45.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-10-29 06:30:00 PM +0000,Barbell Bench Press,6,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-29 06:30:00 PM +0000,Barbell Bench Press,5,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-10-29 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-10-29 06:30:00 PM +0000,Bent Over Barbell Row,4,40.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-29 06:30:00 PM +0000,Bent Over Barbell Row,5,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-10-29 06:30:00 PM +0000,Bent Over Barbell Row,4,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-02 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-11-02 06:30:00 PM +0000,Barbell Back Squat,6,60.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-02 06:30:00 PM +0000,Barbell Back Squat,4,62.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-11-02 06:30:00 PM +0000,Barbell Back Squat,4,65.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-11-02 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-02 06:30:00 PM +0000,Barbell Bench Press,6,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-02 06:30:00 PM +0000,Barbell Bench Press,5,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-02 06:30:00 PM +0000,Barbell Bench Press,6,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-02 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-02 06:30:00 PM +0000,Bent Over Barbell Row,5,40.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-02 06:30:00 PM +0000,Bent Over Barbell Row,6,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-02 06:30:00 PM +0000,Bent Over Barbell Row,6,45.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-04 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-11-04 06:30:00 PM +0000,Barbell Back Squat,6,60.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-11-04 06:30:00 PM +0000,Barbell Back Squat,6,62.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-04 06:30:00 PM +0000,Barbell Back Squat,5,65.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-04 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-04 06:30:00 PM +0000,Barbell Bench Press,6,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-04 06:30:00 PM +0000,Barbell Bench Press,4,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-04 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-04 06:30:00 PM +0000,Bent Over Barbell Row,6,40.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-04 06:30:00 PM +0000,Bent Over Barbell Row,6,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-04 06:30:00 PM +0000,Bent Over Barbell Row,6,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-08 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-11-08 06:30:00 PM +0000,Barbell Back Squat,4,60.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-11-08 06:30:00 PM +0000,Barbell Back Squat,4,62.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-08 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-08 06:30:00 PM +0000,Barbell Bench Press,5,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-08 06:30:00 PM +0000,Barbell Bench Press,4,47.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-08 06:30:00 PM +0000,Barbell Bench Press,4,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-08 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-08 06:30:00 PM +0000,Bent Over Barbell Row,6,40.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-08 06:30:00 PM +0000,Bent Over Barbell Row,6,42.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-11-08 06:30:00 PM +0000,Bent Over Barbell Row,4,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-10 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-11-10 06:30:00 PM +0000,Barbell Back Squat,6,60.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-10 06:30:00 PM +0000,Barbell Back Squat,4,62.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-10 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-10 06:30:00 PM +0000,Barbell Bench Press,5,45.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-10 06:30:00 PM +0000,Barbell Bench Press,5,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-10 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-10 06:30:00 PM +0000,Bent Over Barbell Row,4,40.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-10 06:30:00 PM +0000,Bent Over Barbell Row,6,42.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-10 06:30:00 PM +0000,Bent Over Barbell Row,6,45.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-14 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-11-14 06:30:00 PM +0000,Barbell Back Squat,4,60.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-14 06:30:00 PM +0000,Barbell Back Squat,6,62.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-11-14 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-14 06:30:00 PM +0000,Barbell Bench Press,6,45.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-14 06:30:00 PM +0000,Barbell Bench Press,6,47.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-11-14 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-14 06:30:00 PM +0000,Bent Over Barbell Row,5,40.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-11-14 06:30:00 PM +0000,Bent Over Barbell Row,6,42.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-14 06:30:00 PM +0000,Bent Over Barbell Row,4,45.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-18 06:30:00 PM +0000,Barbell Back Squat,8,36.0,0.0,0.0,0.0,0.0,true,5x5 program,1.0
+2025-11-18 06:30:00 PM +0000,Barbell Back Squat,4,60.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-18 06:30:00 PM +0000,Barbell Back Squat,6,62.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-18 06:30:00 PM +0000,Barbell Back Squat,5,65.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-18 06:30:00 PM +0000,Barbell Bench Press,8,27.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-18 06:30:00 PM +0000,Barbell Bench Press,6,45.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-18 06:30:00 PM +0000,Barbell Bench Press,6,47.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-18 06:30:00 PM +0000,Bent Over Barbell Row,8,24.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-18 06:30:00 PM +0000,Bent Over Barbell Row,5,40.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-18 06:30:00 PM +0000,Bent Over Barbell Row,4,42.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-21 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-11-21 06:30:00 PM +0000,Barbell Bench Press,11,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-21 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-21 06:30:00 PM +0000,Barbell Bench Press,11,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-21 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-11-21 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-11-21 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,22.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-11-21 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,25.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-11-21 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-21 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-21 06:30:00 PM +0000,Cable Chest Fly,12,32.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-11-21 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-11-21 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-11-21 06:30:00 PM +0000,Dumbbell Lateral Raise,15,10.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-11-21 06:30:00 PM +0000,Dumbbell Lateral Raise,16,13.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-11-24 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-11-24 06:30:00 PM +0000,Barbell Bench Press,10,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-24 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-24 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-24 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-11-24 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-11-24 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,22.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-11-24 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-24 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-24 06:30:00 PM +0000,Cable Chest Fly,11,32.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-11-24 06:30:00 PM +0000,Cable Chest Fly,11,35.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-11-24 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-11-24 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-11-24 06:30:00 PM +0000,Dumbbell Lateral Raise,14,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-11-26 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-11-26 06:30:00 PM +0000,Barbell Bench Press,10,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-26 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-26 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-11-26 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,20.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-11-26 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-11-26 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-26 06:30:00 PM +0000,Cable Chest Fly,11,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-26 06:30:00 PM +0000,Cable Chest Fly,11,32.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-26 06:30:00 PM +0000,Cable Chest Fly,11,35.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-26 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-11-26 06:30:00 PM +0000,Dumbbell Lateral Raise,15,8.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-11-26 06:30:00 PM +0000,Dumbbell Lateral Raise,14,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-11-30 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-11-30 06:30:00 PM +0000,Barbell Bench Press,9,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-30 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-11-30 06:30:00 PM +0000,Barbell Bench Press,11,55.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-30 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-11-30 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-11-30 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-11-30 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,25.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-11-30 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-11-30 06:30:00 PM +0000,Cable Chest Fly,11,30.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-11-30 06:30:00 PM +0000,Cable Chest Fly,12,32.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-11-30 06:30:00 PM +0000,Cable Chest Fly,13,35.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-11-30 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-11-30 06:30:00 PM +0000,Dumbbell Lateral Raise,15,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-11-30 06:30:00 PM +0000,Dumbbell Lateral Raise,14,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-04 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-12-04 06:30:00 PM +0000,Barbell Bench Press,9,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-04 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-12-04 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-04 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-04 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-04 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-04 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,25.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-04 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-12-04 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-04 06:30:00 PM +0000,Cable Chest Fly,11,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-04 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-04 06:30:00 PM +0000,Dumbbell Lateral Raise,15,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-04 06:30:00 PM +0000,Dumbbell Lateral Raise,14,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-07 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-12-07 06:30:00 PM +0000,Barbell Bench Press,11,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-07 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-12-07 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-07 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-07 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,22.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-12-07 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,25.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-12-07 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-12-07 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-07 06:30:00 PM +0000,Cable Chest Fly,11,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-07 06:30:00 PM +0000,Cable Chest Fly,13,35.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-07 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-07 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-12-07 06:30:00 PM +0000,Dumbbell Lateral Raise,14,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-07 06:30:00 PM +0000,Dumbbell Lateral Raise,16,13.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-12-10 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-12-10 06:30:00 PM +0000,Barbell Bench Press,10,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-10 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-10 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-10 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-10 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-10 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,22.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-12-10 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,25.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-10 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-12-10 06:30:00 PM +0000,Cable Chest Fly,11,30.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-12-10 06:30:00 PM +0000,Cable Chest Fly,13,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-10 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-10 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-12-10 06:30:00 PM +0000,Dumbbell Lateral Raise,15,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-14 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-12-14 06:30:00 PM +0000,Barbell Bench Press,10,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-14 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-12-14 06:30:00 PM +0000,Barbell Bench Press,11,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-14 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-14 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-14 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,22.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-12-14 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,25.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-12-14 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-12-14 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-14 06:30:00 PM +0000,Cable Chest Fly,11,32.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-12-14 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-14 06:30:00 PM +0000,Dumbbell Lateral Raise,15,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-14 06:30:00 PM +0000,Dumbbell Lateral Raise,16,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-16 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-12-16 06:30:00 PM +0000,Barbell Bench Press,9,50.0,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-12-16 06:30:00 PM +0000,Barbell Bench Press,11,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-16 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-16 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-16 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-16 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,22.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-12-16 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-12-16 06:30:00 PM +0000,Cable Chest Fly,11,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-16 06:30:00 PM +0000,Cable Chest Fly,12,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-16 06:30:00 PM +0000,Cable Chest Fly,13,35.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-16 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-16 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-16 06:30:00 PM +0000,Dumbbell Lateral Raise,15,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-19 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-12-19 06:30:00 PM +0000,Barbell Bench Press,9,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-19 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-12-19 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-19 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,20.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-12-19 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-19 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,25.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-19 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-12-19 06:30:00 PM +0000,Cable Chest Fly,13,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-19 06:30:00 PM +0000,Cable Chest Fly,11,32.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-12-19 06:30:00 PM +0000,Cable Chest Fly,13,35.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-19 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-19 06:30:00 PM +0000,Dumbbell Lateral Raise,16,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-19 06:30:00 PM +0000,Dumbbell Lateral Raise,14,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-19 06:30:00 PM +0000,Dumbbell Lateral Raise,16,13.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-12-22 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-12-22 06:30:00 PM +0000,Barbell Bench Press,11,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-22 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-22 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-22 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-22 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,22.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-22 06:30:00 PM +0000,Dumbbell Incline Bench Press,11,25.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-22 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-12-22 06:30:00 PM +0000,Cable Chest Fly,11,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-22 06:30:00 PM +0000,Cable Chest Fly,12,32.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-12-22 06:30:00 PM +0000,Cable Chest Fly,12,35.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-22 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-22 06:30:00 PM +0000,Dumbbell Lateral Raise,15,8.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-12-22 06:30:00 PM +0000,Dumbbell Lateral Raise,16,10.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-12-22 06:30:00 PM +0000,Dumbbell Lateral Raise,15,13.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-12-25 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-12-25 06:30:00 PM +0000,Barbell Bench Press,9,50.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-12-25 06:30:00 PM +0000,Barbell Bench Press,10,52.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-12-25 06:30:00 PM +0000,Barbell Bench Press,9,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-25 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-25 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,20.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-25 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,22.5,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-12-25 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-12-25 06:30:00 PM +0000,Cable Chest Fly,11,30.0,0.0,0.0,0.0,0.0,false,Should I do more sets?,1.0
+2025-12-25 06:30:00 PM +0000,Cable Chest Fly,11,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-25 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-25 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-25 06:30:00 PM +0000,Dumbbell Lateral Raise,14,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-25 06:30:00 PM +0000,Dumbbell Lateral Raise,14,13.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-12-27 06:30:00 PM +0000,Barbell Bench Press,8,30.0,0.0,0.0,0.0,0.0,true,Switched to PPL,1.0
+2025-12-27 06:30:00 PM +0000,Barbell Bench Press,11,50.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-27 06:30:00 PM +0000,Barbell Bench Press,9,52.5,0.0,0.0,0.0,0.0,false,Is this enough?,1.0
+2025-12-27 06:30:00 PM +0000,Barbell Bench Press,11,55.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-27 06:30:00 PM +0000,Dumbbell Incline Bench Press,8,12.0,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-27 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,20.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0
+2025-12-27 06:30:00 PM +0000,Dumbbell Incline Bench Press,12,22.5,0.0,0.0,0.0,0.0,false,Should I do more sets?,2.0
+2025-12-27 06:30:00 PM +0000,Dumbbell Incline Bench Press,13,25.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-27 06:30:00 PM +0000,Cable Chest Fly,8,18.0,0.0,0.0,0.0,0.0,true,,1.0
+2025-12-27 06:30:00 PM +0000,Cable Chest Fly,12,30.0,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-27 06:30:00 PM +0000,Cable Chest Fly,13,32.5,0.0,0.0,0.0,0.0,false,,1.0
+2025-12-27 06:30:00 PM +0000,Dumbbell Lateral Raise,8,4.8,0.0,0.0,0.0,0.0,true,,2.0
+2025-12-27 06:30:00 PM +0000,Dumbbell Lateral Raise,14,8.0,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-27 06:30:00 PM +0000,Dumbbell Lateral Raise,16,10.5,0.0,0.0,0.0,0.0,false,,2.0
+2025-12-27 06:30:00 PM +0000,Dumbbell Lateral Raise,14,13.0,0.0,0.0,0.0,0.0,false,Is this enough?,2.0

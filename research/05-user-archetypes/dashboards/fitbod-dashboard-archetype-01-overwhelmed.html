@@ -1,0 +1,2213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitbod Intelligence Dashboard - Archetype 1: Overwhelmed</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: #000000;
+      color: #e5e5e5;
+      -webkit-font-smoothing: antialiased;
+      padding: 48px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 48px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 500;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #737373;
+      font-size: 0.875rem;
+    }
+
+    .tagline {
+      color: #4ade80;
+      font-size: 0.875rem;
+      margin-top: 4px;
+    }
+
+    /* Progress Summary Card */
+    .progress-summary-card {
+      margin-bottom: 48px;
+      padding: 24px;
+      background: rgba(74, 222, 128, 0.05);
+      border: 1px solid rgba(74, 222, 128, 0.2);
+      border-radius: 8px;
+    }
+
+    .progress-summary-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .progress-summary-icon {
+      font-size: 1.5rem;
+    }
+
+    .progress-summary-title {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #4ade80;
+    }
+
+    .progress-summary-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .progress-item {
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 6px;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+    }
+
+    .progress-item.status-progressing {
+      border-left-color: #4ade80;
+    }
+
+    .progress-item.status-plateau {
+      border-left-color: #fbbf24;
+    }
+
+    .progress-item.status-declining {
+      border-left-color: #ef4444;
+    }
+
+    .progress-item.status-neglected {
+      border-left-color: #525252;
+      opacity: 0.5;
+    }
+
+    .progress-item-muscle {
+      display: block;
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 0.875rem;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .progress-item-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8125rem;
+    }
+
+    .progress-item-icon {
+      font-size: 0.875rem;
+    }
+
+    .progress-item-status.status-progressing {
+      color: #4ade80;
+    }
+
+    .progress-item-status.status-plateau {
+      color: #fbbf24;
+    }
+
+    .progress-item-status.status-declining {
+      color: #ef4444;
+    }
+
+    .progress-item-status.status-neglected {
+      color: #737373;
+    }
+
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-bottom: 24px;
+      color: #d4d4d4;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Muscle Group Cards */
+    .muscle-group-card {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .muscle-group-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+
+    .muscle-group-name {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .muscle-group-summary {
+      font-size: 0.8125rem;
+      color: #737373;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .muscle-group-benchmark {
+      font-size: 0.8125rem;
+      color: #4ade80;
+      margin-bottom: 20px;
+    }
+
+    /* Neglected muscle group state */
+    .muscle-group-card.neglected {
+      opacity: 0.5;
+    }
+
+    .neglected-message {
+      padding: 20px 24px;
+      background: rgba(239, 68, 68, 0.05);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .neglected-icon {
+      font-size: 1.5rem;
+      color: #ef4444;
+    }
+
+    .neglected-text {
+      flex: 1;
+    }
+
+    .neglected-title {
+      font-size: 0.9375rem;
+      color: #ef4444;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .neglected-subtitle {
+      font-size: 0.8125rem;
+      color: #a3a3a3;
+    }
+
+    /* Exercise rows */
+    .exercises-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .exercise-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .exercise-row.inactive {
+      opacity: 0.3;
+    }
+
+    .exercise-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .exercise-name {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: #ffffff;
+      line-height: 1.3;
+    }
+
+    .exercise-status {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .exercise-subtext {
+      font-size: 0.75rem;
+      color: #a3a3a3;
+      margin-top: 2px;
+    }
+
+    .exercise-chart-container {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .exercise-chart {
+      flex: 1;
+      height: 60px;
+      position: relative;
+    }
+
+    .exercise-chart canvas {
+      height: 60px !important;
+    }
+
+    /* Filter toggle */
+    .filter-toggle {
+      margin-bottom: 24px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.875rem;
+      color: #a3a3a3;
+    }
+
+    .filter-toggle input[type="checkbox"] {
+      cursor: pointer;
+    }
+
+    .filter-toggle label {
+      cursor: pointer;
+    }
+
+    /* Version indicator */
+    .version-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      background: rgba(74, 222, 128, 0.1);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: #4ade80;
+      margin-left: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 24px 16px;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+      }
+
+      .progress-summary-content {
+        grid-template-columns: 1fr;
+      }
+
+      .exercise-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .exercise-chart {
+        height: 50px;
+      }
+
+      .exercise-chart canvas {
+        height: 50px !important;
+      }
+
+      .muscle-group-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid #1a1a1a;
+      text-align: center;
+      color: #737373;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>
+        Fitbod Intelligence Dashboard
+        <span class="version-badge">Archetype 1: Overwhelmed</span>
+      </h1>
+      <div class="subtitle">Pattern: Constant program switching and exercise experimentation</div>
+      <div class="tagline">Data profile: Program hopper who tries new exercises every week based on YouTube advice</div>
+    </header>
+
+    <!-- Progress Summary -->
+    <div class="progress-summary-card" id="progress-summary">
+      <!-- Will be populated by JS -->
+    </div>
+
+    <h2 class="section-title">Muscle Group Balance — 2025 Data (Sorted by frequency)</h2>
+
+    <div class="filter-toggle">
+      <input type="checkbox" id="hide-inactive" checked>
+      <label for="hide-inactive">Hide exercises not performed in last 10 weeks</label>
+    </div>
+
+    <div id="muscle-groups-container">
+      <!-- Muscle groups will be rendered here -->
+    </div>
+
+    <footer>
+      2025-2026 archetype data • Archetype 1: Overwhelmed: Pattern: Constant program switching and exercise experimentation
+    </footer>
+  </div>
+
+  <script>
+    // Disable datalabels plugin globally (we'll enable per dataset)
+    Chart.defaults.plugins.datalabels = {
+      display: false
+    };
+
+    // Your 2025 workout data (pre-processed with all exercises)
+    const WORKOUT_DATA = {
+    "Barbell Back Squat": {
+        "muscle": "Quadriceps",
+        "secondary": [
+            "Hamstrings",
+            "Glutes"
+        ],
+        "weeks": {
+            "2024-12-30": {
+                "max": 65.0,
+                "sets": 6,
+                "maxReps": 6,
+                "load": 1870.0
+            },
+            "2025-01-06": {
+                "max": 62.5,
+                "sets": 4,
+                "maxReps": 6,
+                "load": 1160.0
+            },
+            "2025-01-13": {
+                "max": 65.0,
+                "sets": 5,
+                "maxReps": 6,
+                "load": 1490.0
+            },
+            "2025-01-20": {
+                "max": 62.5,
+                "sets": 4,
+                "maxReps": 6,
+                "load": 1165.0
+            },
+            "2025-01-27": {
+                "max": 65.0,
+                "sets": 6,
+                "maxReps": 6,
+                "load": 1932.5
+            },
+            "2025-04-28": {
+                "max": 72.5,
+                "sets": 2,
+                "maxReps": 7,
+                "load": 997.5
+            },
+            "2025-05-05": {
+                "max": 75.0,
+                "sets": 3,
+                "maxReps": 9,
+                "load": 1957.5
+            },
+            "2025-05-12": {
+                "max": 75.0,
+                "sets": 3,
+                "maxReps": 9,
+                "load": 1807.5
+            },
+            "2025-05-19": {
+                "max": 75.0,
+                "sets": 6,
+                "maxReps": 8,
+                "load": 3405.0
+            },
+            "2025-05-26": {
+                "max": 75.0,
+                "sets": 5,
+                "maxReps": 9,
+                "load": 2882.5
+            },
+            "2025-06-02": {
+                "max": 62.5,
+                "sets": 4,
+                "maxReps": 6,
+                "load": 1285.0
+            },
+            "2025-06-09": {
+                "max": 65.0,
+                "sets": 5,
+                "maxReps": 6,
+                "load": 1615.0
+            },
+            "2025-06-16": {
+                "max": 62.5,
+                "sets": 4,
+                "maxReps": 5,
+                "load": 1100.0
+            },
+            "2025-06-23": {
+                "max": 65.0,
+                "sets": 3,
+                "maxReps": 6,
+                "load": 932.5
+            },
+            "2025-09-08": {
+                "max": 75.0,
+                "sets": 8,
+                "maxReps": 9,
+                "load": 4480.0
+            },
+            "2025-09-15": {
+                "max": 75.0,
+                "sets": 6,
+                "maxReps": 9,
+                "load": 3410.0
+            },
+            "2025-09-29": {
+                "max": 75.0,
+                "sets": 5,
+                "maxReps": 9,
+                "load": 2732.5
+            },
+            "2025-10-13": {
+                "max": 75.0,
+                "sets": 6,
+                "maxReps": 9,
+                "load": 3410.0
+            },
+            "2025-10-20": {
+                "max": 72.5,
+                "sets": 7,
+                "maxReps": 9,
+                "load": 2820.0
+            },
+            "2025-10-27": {
+                "max": 65.0,
+                "sets": 6,
+                "maxReps": 6,
+                "load": 1742.5
+            },
+            "2025-11-03": {
+                "max": 65.0,
+                "sets": 5,
+                "maxReps": 6,
+                "load": 1550.0
+            },
+            "2025-11-10": {
+                "max": 62.5,
+                "sets": 4,
+                "maxReps": 6,
+                "load": 1225.0
+            },
+            "2025-11-17": {
+                "max": 65.0,
+                "sets": 3,
+                "maxReps": 6,
+                "load": 940.0
+            }
+        }
+    },
+    "Barbell Bench Press": {
+        "muscle": "Chest",
+        "secondary": [
+            "Triceps",
+            "Shoulders"
+        ],
+        "weeks": {
+            "2024-12-30": {
+                "max": 50.0,
+                "sets": 6,
+                "maxReps": 6,
+                "load": 1330.0
+            },
+            "2025-01-06": {
+                "max": 50.0,
+                "sets": 5,
+                "maxReps": 5,
+                "load": 1085.0
+            },
+            "2025-01-13": {
+                "max": 50.0,
+                "sets": 5,
+                "maxReps": 6,
+                "load": 1125.0
+            },
+            "2025-01-20": {
+                "max": 47.5,
+                "sets": 4,
+                "maxReps": 6,
+                "load": 925.0
+            },
+            "2025-01-27": {
+                "max": 50.0,
+                "sets": 5,
+                "maxReps": 6,
+                "load": 1270.0
+            },
+            "2025-02-03": {
+                "max": 55.0,
+                "sets": 8,
+                "maxReps": 11,
+                "load": 4125.0
+            },
+            "2025-02-10": {
+                "max": 55.0,
+                "sets": 7,
+                "maxReps": 11,
+                "load": 3620.0
+            },
+            "2025-02-17": {
+                "max": 52.5,
+                "sets": 4,
+                "maxReps": 11,
+                "load": 2102.5
+            },
+            "2025-02-24": {
+                "max": 55.0,
+                "sets": 8,
+                "maxReps": 11,
+                "load": 4177.5
+            },
+            "2025-03-10": {
+                "max": 57.5,
+                "sets": 6,
+                "maxReps": 11,
+                "load": 3085.0
+            },
+            "2025-03-17": {
+                "max": 57.5,
+                "sets": 8,
+                "maxReps": 11,
+                "load": 4157.5
+            },
+            "2025-03-24": {
+                "max": 57.5,
+                "sets": 6,
+                "maxReps": 10,
+                "load": 3077.5
+            },
+            "2025-04-07": {
+                "max": 57.5,
+                "sets": 6,
+                "maxReps": 11,
+                "load": 3300.0
+            },
+            "2025-04-14": {
+                "max": 57.5,
+                "sets": 5,
+                "maxReps": 11,
+                "load": 2557.5
+            },
+            "2025-04-21": {
+                "max": 57.5,
+                "sets": 3,
+                "maxReps": 10,
+                "load": 1597.5
+            },
+            "2025-04-28": {
+                "max": 57.5,
+                "sets": 2,
+                "maxReps": 9,
+                "load": 955.0
+            },
+            "2025-05-05": {
+                "max": 57.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 845.0
+            },
+            "2025-05-12": {
+                "max": 60.0,
+                "sets": 3,
+                "maxReps": 9,
+                "load": 1437.5
+            },
+            "2025-05-19": {
+                "max": 60.0,
+                "sets": 5,
+                "maxReps": 9,
+                "load": 2395.0
+            },
+            "2025-05-26": {
+                "max": 60.0,
+                "sets": 5,
+                "maxReps": 8,
+                "load": 2167.5
+            },
+            "2025-06-02": {
+                "max": 50.0,
+                "sets": 5,
+                "maxReps": 6,
+                "load": 1132.5
+            },
+            "2025-06-09": {
+                "max": 50.0,
+                "sets": 6,
+                "maxReps": 6,
+                "load": 1472.5
+            },
+            "2025-06-16": {
+                "max": 50.0,
+                "sets": 5,
+                "maxReps": 6,
+                "load": 1170.0
+            },
+            "2025-06-23": {
+                "max": 55.0,
+                "sets": 7,
+                "maxReps": 11,
+                "load": 3207.5
+            },
+            "2025-06-30": {
+                "max": 55.0,
+                "sets": 7,
+                "maxReps": 11,
+                "load": 3672.5
+            },
+            "2025-07-07": {
+                "max": 55.0,
+                "sets": 6,
+                "maxReps": 11,
+                "load": 3100.0
+            },
+            "2025-07-14": {
+                "max": 55.0,
+                "sets": 5,
+                "maxReps": 11,
+                "load": 2600.0
+            },
+            "2025-07-21": {
+                "max": 57.5,
+                "sets": 7,
+                "maxReps": 11,
+                "load": 3655.0
+            },
+            "2025-07-28": {
+                "max": 55.0,
+                "sets": 4,
+                "maxReps": 11,
+                "load": 2150.0
+            },
+            "2025-08-04": {
+                "max": 55.0,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 2045.0
+            },
+            "2025-08-11": {
+                "max": 57.5,
+                "sets": 5,
+                "maxReps": 11,
+                "load": 2720.0
+            },
+            "2025-08-18": {
+                "max": 57.5,
+                "sets": 9,
+                "maxReps": 11,
+                "load": 4952.5
+            },
+            "2025-08-25": {
+                "max": 55.0,
+                "sets": 4,
+                "maxReps": 11,
+                "load": 2202.5
+            },
+            "2025-09-01": {
+                "max": 57.5,
+                "sets": 8,
+                "maxReps": 11,
+                "load": 4545.0
+            },
+            "2025-09-08": {
+                "max": 60.0,
+                "sets": 7,
+                "maxReps": 9,
+                "load": 3182.5
+            },
+            "2025-09-15": {
+                "max": 60.0,
+                "sets": 6,
+                "maxReps": 9,
+                "load": 2707.5
+            },
+            "2025-09-29": {
+                "max": 60.0,
+                "sets": 5,
+                "maxReps": 9,
+                "load": 2217.5
+            },
+            "2025-10-13": {
+                "max": 60.0,
+                "sets": 5,
+                "maxReps": 8,
+                "load": 2165.0
+            },
+            "2025-10-20": {
+                "max": 60.0,
+                "sets": 9,
+                "maxReps": 9,
+                "load": 2867.5
+            },
+            "2025-10-27": {
+                "max": 50.0,
+                "sets": 6,
+                "maxReps": 6,
+                "load": 1567.5
+            },
+            "2025-11-03": {
+                "max": 50.0,
+                "sets": 5,
+                "maxReps": 6,
+                "load": 1075.0
+            },
+            "2025-11-10": {
+                "max": 47.5,
+                "sets": 4,
+                "maxReps": 6,
+                "load": 1017.5
+            },
+            "2025-11-17": {
+                "max": 55.0,
+                "sets": 5,
+                "maxReps": 11,
+                "load": 2287.5
+            },
+            "2025-11-24": {
+                "max": 55.0,
+                "sets": 8,
+                "maxReps": 11,
+                "load": 4177.5
+            },
+            "2025-12-01": {
+                "max": 55.0,
+                "sets": 5,
+                "maxReps": 11,
+                "load": 2492.5
+            },
+            "2025-12-08": {
+                "max": 55.0,
+                "sets": 6,
+                "maxReps": 11,
+                "load": 3150.0
+            },
+            "2025-12-15": {
+                "max": 55.0,
+                "sets": 5,
+                "maxReps": 11,
+                "load": 2497.5
+            },
+            "2025-12-22": {
+                "max": 55.0,
+                "sets": 8,
+                "maxReps": 11,
+                "load": 4172.5
+            }
+        }
+    },
+    "Bent Over Barbell Row": {
+        "muscle": "Back",
+        "secondary": [
+            "Biceps"
+        ],
+        "weeks": {
+            "2024-12-30": {
+                "max": 45.0,
+                "sets": 5,
+                "maxReps": 5,
+                "load": 885.0
+            },
+            "2025-01-06": {
+                "max": 45.0,
+                "sets": 6,
+                "maxReps": 6,
+                "load": 1320.0
+            },
+            "2025-01-13": {
+                "max": 42.5,
+                "sets": 4,
+                "maxReps": 6,
+                "load": 950.0
+            },
+            "2025-01-20": {
+                "max": 42.5,
+                "sets": 4,
+                "maxReps": 6,
+                "load": 870.0
+            },
+            "2025-01-27": {
+                "max": 42.5,
+                "sets": 4,
+                "maxReps": 5,
+                "load": 742.5
+            },
+            "2025-03-10": {
+                "max": 50.0,
+                "sets": 5,
+                "maxReps": 11,
+                "load": 2300.0
+            },
+            "2025-03-17": {
+                "max": 50.0,
+                "sets": 7,
+                "maxReps": 10,
+                "load": 3040.0
+            },
+            "2025-03-24": {
+                "max": 50.0,
+                "sets": 6,
+                "maxReps": 10,
+                "load": 2655.0
+            },
+            "2025-04-07": {
+                "max": 50.0,
+                "sets": 5,
+                "maxReps": 11,
+                "load": 2445.0
+            },
+            "2025-04-14": {
+                "max": 50.0,
+                "sets": 5,
+                "maxReps": 10,
+                "load": 2210.0
+            },
+            "2025-04-21": {
+                "max": 50.0,
+                "sets": 3,
+                "maxReps": 11,
+                "load": 1475.0
+            },
+            "2025-06-02": {
+                "max": 45.0,
+                "sets": 5,
+                "maxReps": 6,
+                "load": 1050.0
+            },
+            "2025-06-09": {
+                "max": 45.0,
+                "sets": 5,
+                "maxReps": 6,
+                "load": 1057.5
+            },
+            "2025-06-16": {
+                "max": 45.0,
+                "sets": 5,
+                "maxReps": 6,
+                "load": 1010.0
+            },
+            "2025-06-23": {
+                "max": 42.5,
+                "sets": 2,
+                "maxReps": 6,
+                "load": 410.0
+            },
+            "2025-07-21": {
+                "max": 50.0,
+                "sets": 3,
+                "maxReps": 11,
+                "load": 1372.5
+            },
+            "2025-07-28": {
+                "max": 50.0,
+                "sets": 6,
+                "maxReps": 11,
+                "load": 2945.0
+            },
+            "2025-08-04": {
+                "max": 50.0,
+                "sets": 6,
+                "maxReps": 11,
+                "load": 2847.5
+            },
+            "2025-08-11": {
+                "max": 47.5,
+                "sets": 4,
+                "maxReps": 11,
+                "load": 1760.0
+            },
+            "2025-08-18": {
+                "max": 50.0,
+                "sets": 9,
+                "maxReps": 11,
+                "load": 4412.5
+            },
+            "2025-08-25": {
+                "max": 47.5,
+                "sets": 4,
+                "maxReps": 10,
+                "load": 1710.0
+            },
+            "2025-09-01": {
+                "max": 50.0,
+                "sets": 8,
+                "maxReps": 11,
+                "load": 3877.5
+            },
+            "2025-10-20": {
+                "max": 45.0,
+                "sets": 5,
+                "maxReps": 6,
+                "load": 1050.0
+            },
+            "2025-10-27": {
+                "max": 45.0,
+                "sets": 6,
+                "maxReps": 6,
+                "load": 1277.5
+            },
+            "2025-11-03": {
+                "max": 45.0,
+                "sets": 6,
+                "maxReps": 6,
+                "load": 1440.0
+            },
+            "2025-11-10": {
+                "max": 45.0,
+                "sets": 6,
+                "maxReps": 6,
+                "load": 1320.0
+            },
+            "2025-11-17": {
+                "max": 42.5,
+                "sets": 2,
+                "maxReps": 5,
+                "load": 370.0
+            }
+        }
+    },
+    "Dumbbell Incline Bench Press": {
+        "muscle": "Chest",
+        "secondary": [
+            "Triceps",
+            "Shoulders"
+        ],
+        "weeks": {
+            "2025-02-03": {
+                "max": 25.0,
+                "sets": 7,
+                "maxReps": 13,
+                "load": 3785.0
+            },
+            "2025-02-10": {
+                "max": 25.0,
+                "sets": 8,
+                "maxReps": 13,
+                "load": 4395.0
+            },
+            "2025-02-17": {
+                "max": 25.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 2690.0
+            },
+            "2025-02-24": {
+                "max": 25.0,
+                "sets": 8,
+                "maxReps": 13,
+                "load": 4320.0
+            },
+            "2025-06-23": {
+                "max": 25.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 2600.0
+            },
+            "2025-06-30": {
+                "max": 25.0,
+                "sets": 7,
+                "maxReps": 13,
+                "load": 3520.0
+            },
+            "2025-07-07": {
+                "max": 25.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 2540.0
+            },
+            "2025-07-14": {
+                "max": 22.5,
+                "sets": 4,
+                "maxReps": 13,
+                "load": 1990.0
+            },
+            "2025-07-21": {
+                "max": 25.0,
+                "sets": 6,
+                "maxReps": 13,
+                "load": 3300.0
+            },
+            "2025-11-17": {
+                "max": 25.0,
+                "sets": 3,
+                "maxReps": 13,
+                "load": 1665.0
+            },
+            "2025-11-24": {
+                "max": 25.0,
+                "sets": 7,
+                "maxReps": 13,
+                "load": 3750.0
+            },
+            "2025-12-01": {
+                "max": 25.0,
+                "sets": 6,
+                "maxReps": 13,
+                "load": 3245.0
+            },
+            "2025-12-08": {
+                "max": 25.0,
+                "sets": 6,
+                "maxReps": 12,
+                "load": 3190.0
+            },
+            "2025-12-15": {
+                "max": 25.0,
+                "sets": 5,
+                "maxReps": 12,
+                "load": 2600.0
+            },
+            "2025-12-22": {
+                "max": 25.0,
+                "sets": 8,
+                "maxReps": 13,
+                "load": 4345.0
+            }
+        }
+    },
+    "Cable Chest Fly": {
+        "muscle": "Chest",
+        "secondary": [
+            "Shoulders"
+        ],
+        "weeks": {
+            "2025-02-03": {
+                "max": 35.0,
+                "sets": 7,
+                "maxReps": 13,
+                "load": 2605.0
+            },
+            "2025-02-10": {
+                "max": 35.0,
+                "sets": 8,
+                "maxReps": 13,
+                "load": 3252.5
+            },
+            "2025-02-17": {
+                "max": 35.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 1952.5
+            },
+            "2025-02-24": {
+                "max": 35.0,
+                "sets": 7,
+                "maxReps": 13,
+                "load": 2612.5
+            },
+            "2025-06-23": {
+                "max": 35.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 1890.0
+            },
+            "2025-06-30": {
+                "max": 35.0,
+                "sets": 7,
+                "maxReps": 13,
+                "load": 2632.5
+            },
+            "2025-07-07": {
+                "max": 35.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 1950.0
+            },
+            "2025-07-14": {
+                "max": 35.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 2012.5
+            },
+            "2025-07-21": {
+                "max": 35.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 1952.5
+            },
+            "2025-11-17": {
+                "max": 32.5,
+                "sets": 2,
+                "maxReps": 12,
+                "load": 750.0
+            },
+            "2025-11-24": {
+                "max": 35.0,
+                "sets": 9,
+                "maxReps": 13,
+                "load": 3350.0
+            },
+            "2025-12-01": {
+                "max": 35.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 1890.0
+            },
+            "2025-12-08": {
+                "max": 32.5,
+                "sets": 4,
+                "maxReps": 13,
+                "load": 1470.0
+            },
+            "2025-12-15": {
+                "max": 35.0,
+                "sets": 6,
+                "maxReps": 13,
+                "load": 2377.5
+            },
+            "2025-12-22": {
+                "max": 35.0,
+                "sets": 7,
+                "maxReps": 13,
+                "load": 2610.0
+            }
+        }
+    },
+    "Dumbbell Lateral Raise": {
+        "muscle": "Shoulders",
+        "secondary": [],
+        "weeks": {
+            "2025-02-03": {
+                "max": 13.0,
+                "sets": 8,
+                "maxReps": 16,
+                "load": 2418.0
+            },
+            "2025-02-10": {
+                "max": 13.0,
+                "sets": 7,
+                "maxReps": 16,
+                "load": 2060.0
+            },
+            "2025-02-17": {
+                "max": 10.5,
+                "sets": 4,
+                "maxReps": 16,
+                "load": 1105.0
+            },
+            "2025-02-24": {
+                "max": 13.0,
+                "sets": 9,
+                "maxReps": 16,
+                "load": 2903.0
+            },
+            "2025-06-23": {
+                "max": 10.5,
+                "sets": 4,
+                "maxReps": 16,
+                "load": 1115.0
+            },
+            "2025-06-30": {
+                "max": 13.0,
+                "sets": 8,
+                "maxReps": 16,
+                "load": 2518.0
+            },
+            "2025-07-07": {
+                "max": 10.5,
+                "sets": 4,
+                "maxReps": 16,
+                "load": 1131.0
+            },
+            "2025-07-14": {
+                "max": 13.0,
+                "sets": 6,
+                "maxReps": 16,
+                "load": 1926.0
+            },
+            "2025-07-21": {
+                "max": 13.0,
+                "sets": 6,
+                "maxReps": 16,
+                "load": 1843.0
+            },
+            "2025-11-17": {
+                "max": 13.0,
+                "sets": 3,
+                "maxReps": 16,
+                "load": 955.0
+            },
+            "2025-11-24": {
+                "max": 10.5,
+                "sets": 6,
+                "maxReps": 15,
+                "load": 1586.0
+            },
+            "2025-12-01": {
+                "max": 13.0,
+                "sets": 5,
+                "maxReps": 16,
+                "load": 1468.0
+            },
+            "2025-12-08": {
+                "max": 10.5,
+                "sets": 4,
+                "maxReps": 16,
+                "load": 1115.0
+            },
+            "2025-12-15": {
+                "max": 13.0,
+                "sets": 5,
+                "maxReps": 16,
+                "load": 1505.0
+            },
+            "2025-12-22": {
+                "max": 13.0,
+                "sets": 9,
+                "maxReps": 16,
+                "load": 2772.0
+            }
+        }
+    },
+    "Dumbbell Shoulder Press": {
+        "muscle": "Shoulders",
+        "secondary": [
+            "Triceps"
+        ],
+        "weeks": {
+            "2025-03-10": {
+                "max": 23.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 2523.0
+            },
+            "2025-03-17": {
+                "max": 23.0,
+                "sets": 9,
+                "maxReps": 13,
+                "load": 4479.0
+            },
+            "2025-03-24": {
+                "max": 23.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 2559.0
+            },
+            "2025-04-07": {
+                "max": 23.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 2364.0
+            },
+            "2025-04-14": {
+                "max": 23.0,
+                "sets": 6,
+                "maxReps": 13,
+                "load": 3106.0
+            },
+            "2025-04-21": {
+                "max": 23.0,
+                "sets": 3,
+                "maxReps": 13,
+                "load": 1558.0
+            },
+            "2025-07-21": {
+                "max": 20.5,
+                "sets": 2,
+                "maxReps": 13,
+                "load": 960.0
+            },
+            "2025-07-28": {
+                "max": 20.5,
+                "sets": 4,
+                "maxReps": 13,
+                "load": 1802.0
+            },
+            "2025-08-04": {
+                "max": 23.0,
+                "sets": 6,
+                "maxReps": 13,
+                "load": 2983.0
+            },
+            "2025-08-11": {
+                "max": 23.0,
+                "sets": 6,
+                "maxReps": 13,
+                "load": 3024.0
+            },
+            "2025-08-18": {
+                "max": 23.0,
+                "sets": 8,
+                "maxReps": 13,
+                "load": 3840.0
+            },
+            "2025-08-25": {
+                "max": 23.0,
+                "sets": 6,
+                "maxReps": 13,
+                "load": 2911.0
+            },
+            "2025-09-01": {
+                "max": 23.0,
+                "sets": 7,
+                "maxReps": 13,
+                "load": 3324.0
+            }
+        }
+    },
+    "Dip": {
+        "muscle": "Triceps",
+        "secondary": [
+            "Chest"
+        ],
+        "weeks": {
+            "2025-03-10": {
+                "max": 5.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 120.0
+            },
+            "2025-03-17": {
+                "max": 2.5,
+                "sets": 6,
+                "maxReps": 13,
+                "load": 87.5
+            },
+            "2025-03-24": {
+                "max": 2.5,
+                "sets": 4,
+                "maxReps": 12,
+                "load": 57.5
+            },
+            "2025-04-07": {
+                "max": 5.0,
+                "sets": 5,
+                "maxReps": 12,
+                "load": 117.5
+            },
+            "2025-04-14": {
+                "max": 5.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 125.0
+            },
+            "2025-04-21": {
+                "max": 2.5,
+                "sets": 2,
+                "maxReps": 13,
+                "load": 32.5
+            },
+            "2025-07-21": {
+                "max": 2.5,
+                "sets": 2,
+                "maxReps": 13,
+                "load": 27.5
+            },
+            "2025-07-28": {
+                "max": 5.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 120.0
+            },
+            "2025-08-04": {
+                "max": 5.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 122.5
+            },
+            "2025-08-11": {
+                "max": 5.0,
+                "sets": 5,
+                "maxReps": 13,
+                "load": 130.0
+            },
+            "2025-08-18": {
+                "max": 5.0,
+                "sets": 8,
+                "maxReps": 13,
+                "load": 222.5
+            },
+            "2025-08-25": {
+                "max": 2.5,
+                "sets": 4,
+                "maxReps": 13,
+                "load": 57.5
+            },
+            "2025-09-01": {
+                "max": 5.0,
+                "sets": 7,
+                "maxReps": 12,
+                "load": 145.0
+            }
+        }
+    },
+    "Barbell Deadlift": {
+        "muscle": "Hamstrings",
+        "secondary": [
+            "Back",
+            "Glutes"
+        ],
+        "weeks": {
+            "2025-04-28": {
+                "max": 92.5,
+                "sets": 2,
+                "maxReps": 6,
+                "load": 910.0
+            },
+            "2025-05-05": {
+                "max": 92.5,
+                "sets": 2,
+                "maxReps": 6,
+                "load": 1005.0
+            },
+            "2025-05-12": {
+                "max": 92.5,
+                "sets": 2,
+                "maxReps": 6,
+                "load": 1002.5
+            },
+            "2025-05-19": {
+                "max": 95.0,
+                "sets": 5,
+                "maxReps": 6,
+                "load": 2390.0
+            },
+            "2025-05-26": {
+                "max": 95.0,
+                "sets": 6,
+                "maxReps": 6,
+                "load": 2772.5
+            },
+            "2025-09-08": {
+                "max": 92.5,
+                "sets": 6,
+                "maxReps": 5,
+                "load": 2370.0
+            },
+            "2025-09-15": {
+                "max": 95.0,
+                "sets": 6,
+                "maxReps": 6,
+                "load": 2777.5
+            },
+            "2025-09-29": {
+                "max": 95.0,
+                "sets": 5,
+                "maxReps": 5,
+                "load": 2115.0
+            },
+            "2025-10-13": {
+                "max": 92.5,
+                "sets": 4,
+                "maxReps": 5,
+                "load": 1732.5
+            },
+            "2025-10-20": {
+                "max": 92.5,
+                "sets": 2,
+                "maxReps": 6,
+                "load": 910.0
+            }
+        }
+    },
+    "Pull Up": {
+        "muscle": "Back",
+        "secondary": [
+            "Biceps"
+        ],
+        "weeks": {
+            "2025-04-28": {
+                "max": 2.5,
+                "sets": 2,
+                "maxReps": 9,
+                "load": 22.5
+            },
+            "2025-05-05": {
+                "max": 2.5,
+                "sets": 2,
+                "maxReps": 8,
+                "load": 17.5
+            },
+            "2025-05-12": {
+                "max": 5.0,
+                "sets": 3,
+                "maxReps": 8,
+                "load": 60.0
+            },
+            "2025-05-19": {
+                "max": 5.0,
+                "sets": 5,
+                "maxReps": 9,
+                "load": 82.5
+            },
+            "2025-05-26": {
+                "max": 5.0,
+                "sets": 5,
+                "maxReps": 9,
+                "load": 85.0
+            },
+            "2025-09-08": {
+                "max": 5.0,
+                "sets": 7,
+                "maxReps": 9,
+                "load": 110.0
+            },
+            "2025-09-15": {
+                "max": 5.0,
+                "sets": 6,
+                "maxReps": 9,
+                "load": 125.0
+            },
+            "2025-09-29": {
+                "max": 5.0,
+                "sets": 5,
+                "maxReps": 8,
+                "load": 72.5
+            },
+            "2025-10-13": {
+                "max": 5.0,
+                "sets": 5,
+                "maxReps": 9,
+                "load": 82.5
+            },
+            "2025-10-20": {
+                "max": 5.0,
+                "sets": 3,
+                "maxReps": 9,
+                "load": 62.5
+            }
+        }
+    }
+};
+
+    // Calculate global date range for time-aligned charts
+    const ALL_WEEKS = new Set();
+    Object.values(WORKOUT_DATA).forEach(ex => {
+      Object.keys(ex.weeks).forEach(week => ALL_WEEKS.add(week));
+    });
+    const sortedWeeks = Array.from(ALL_WEEKS).sort();
+    const YEAR_START = sortedWeeks[0];
+    const YEAR_END = sortedWeeks[sortedWeeks.length - 1];
+
+    // Calculate cutoff for "inactive" exercises (10 weeks ago)
+    const endDate = new Date(YEAR_END);
+    const cutoffDate = new Date(endDate);
+    cutoffDate.setDate(cutoffDate.getDate() - 70); // 10 weeks
+    const CUTOFF_DATE = cutoffDate.toISOString().split('T')[0];
+
+    // All muscle groups we track
+    const ALL_MUSCLE_GROUPS = [
+      'Chest',
+      'Back',
+      'Shoulders',
+      'Biceps',
+      'Triceps',
+      'Quadriceps',
+      'Hamstrings',
+      'Glutes',
+      'Calves'
+    ];
+
+    // Linear regression to calculate trend
+    function linearRegression(dataPoints) {
+      // dataPoints = [{x: weekNumber, y: load}, ...]
+      if (dataPoints.length < 2) return { slope: 0, intercept: 0, avgY: 0 };
+
+      const n = dataPoints.length;
+      let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+
+      dataPoints.forEach(point => {
+        sumX += point.x;
+        sumY += point.y;
+        sumXY += point.x * point.y;
+        sumX2 += point.x * point.x;
+      });
+
+      const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+      const intercept = (sumY - slope * sumX) / n;
+      const avgY = sumY / n;
+
+      return { slope, intercept, avgY };
+    }
+
+    // Process workout data into muscle groups
+    function processWorkoutData() {
+      const muscleGroups = {};
+
+      // Initialize all muscle groups
+      ALL_MUSCLE_GROUPS.forEach(muscle => {
+        muscleGroups[muscle] = { exercises: [], totalSets: 0, totalWorkouts: 0 };
+      });
+
+      // Process each exercise
+      Object.entries(WORKOUT_DATA).forEach(([exerciseName, exData]) => {
+        const primaryMuscle = exData.muscle;
+        const secondaryMuscles = exData.secondary;
+
+        // Sort weeks chronologically
+        const weekEntries = Object.entries(exData.weeks).sort((a, b) =>
+          new Date(a[0]) - new Date(b[0])
+        );
+
+        // Skip if less than 2 weeks
+        if (weekEntries.length < 2) return;
+
+        // Get last 12 weeks for metrics
+        const last12Weeks = weekEntries.slice(-12);
+
+        const weeks = last12Weeks.map(([weekStart, weekData]) => ({
+          weekStart,
+          maxWeight: weekData.max,
+          maxReps: weekData.maxReps,
+          load: weekData.load
+        }));
+
+        const totalSets = last12Weeks.reduce((sum, [, weekData]) => sum + weekData.sets, 0);
+
+        // Current and previous session data
+        const current = weeks[weeks.length - 1];
+        const previous = weeks[weeks.length - 2];
+
+        // Calculate progress using linear regression on MAX WEIGHT across ALL available weeks
+        const regressionData = weekEntries.map(([weekStart, weekData], index) => ({
+          x: index,
+          y: weekData.max
+        }));
+        const regression = linearRegression(regressionData);
+
+        // Convert slope to percentage per week
+        const loadPctChange = regression.avgY > 0 ? (regression.slope / regression.avgY) * 100 : 0;
+
+        // Find maximum weight across previous 11 weeks (excluding current)
+        const previous11Weeks = last12Weeks.slice(0, -1);
+        const maxWeightBefore = previous11Weeks.length > 0
+          ? Math.max(...previous11Weeks.map(([, weekData]) => weekData.max))
+          : 0;
+
+        // Session-to-session changes for status detection
+        const weightChange = current.maxWeight - previous.maxWeight;
+        const repsChange = current.maxReps - previous.maxReps;
+        const loadChange = current.load - previous.load;
+
+        // Detect progression pattern and generate smart status using USER LANGUAGE
+        let status = '';
+        let statusIcon = '';
+        let subtext = '';
+
+        if (weightChange > 0 && current.maxWeight > maxWeightBefore) {
+          // Truly new max - exceeded all previous 11 weeks
+          status = 'New max!';
+          statusIcon = '✅';
+          subtext = 'Keep going ✓';
+        } else if (weightChange > 0 && current.maxWeight === maxWeightBefore) {
+          // Matched previous best
+          status = 'Getting stronger';
+          statusIcon = '💪';
+          subtext = 'Back to your best ✓';
+        } else if (weightChange < 0 && repsChange > 0 && loadChange > 0) {
+          // Weight dropped, reps increased, total load increased = adding reps
+          status = 'Adding reps';
+          statusIcon = '🔄';
+          subtext = 'Building volume ✓';
+        } else if (weightChange === 0 && repsChange > 0) {
+          // Same weight, more reps = getting stronger
+          status = 'Getting stronger';
+          statusIcon = '📈';
+          subtext = 'Keep going ✓';
+        } else if (weightChange === 0 && repsChange === 0) {
+          // No change = holding steady
+          status = 'Holding steady';
+          statusIcon = '→';
+          subtext = 'Stay consistent ✓';
+        } else if (loadChange < 0) {
+          // Total load decreased = needs help
+          status = 'Needs help';
+          statusIcon = '⚠️';
+          subtext = 'Time to adjust';
+        } else {
+          // Default
+          status = 'Getting stronger';
+          statusIcon = '●';
+          subtext = 'Keep going ✓';
+        }
+
+        // Check if exercise is inactive (last performed before cutoff)
+        const lastWeek = weekEntries[weekEntries.length - 1][0];
+        const isInactive = lastWeek < CUTOFF_DATE;
+
+        // Store all weeks for time-aligned chart
+        const allWeeks = weekEntries.map(([weekStart, weekData]) => ({
+          weekStart,
+          maxWeight: weekData.max,
+          maxReps: weekData.maxReps,
+          load: weekData.load
+        }));
+
+        const exercise = {
+          name: exerciseName,
+          secondaryMuscles,
+          weeksActive: weeks.length,
+          totalSets,
+          weeks,
+          allWeeks,
+          currentWeight: current.maxWeight,
+          currentReps: current.maxReps,
+          currentLoad: current.load,
+          previousWeight: previous.maxWeight,
+          previousReps: previous.maxReps,
+          previousLoad: previous.load,
+          weightChange,
+          repsChange,
+          loadChange,
+          loadPctChange,
+          status,
+          statusIcon,
+          subtext,
+          isInactive
+        };
+
+        muscleGroups[primaryMuscle].exercises.push(exercise);
+        muscleGroups[primaryMuscle].totalSets += totalSets;
+        muscleGroups[primaryMuscle].totalWorkouts += weekEntries.length;
+      });
+
+      return { muscleGroups };
+    }
+
+    // Calculate progress metrics
+    function calculateProgressMetrics(data) {
+      const metrics = [];
+
+      ALL_MUSCLE_GROUPS.forEach(muscleName => {
+        const muscleData = data.muscleGroups[muscleName];
+        if (muscleData && muscleData.exercises && muscleData.exercises.length > 0) {
+          const activeExercises = muscleData.exercises.filter(ex => !ex.isInactive);
+          if (activeExercises.length > 0) {
+            const avgPctChange = activeExercises.reduce((sum, ex) => sum + ex.loadPctChange, 0) / activeExercises.length;
+            metrics.push({
+              muscle: muscleName,
+              pctChange: avgPctChange,
+              totalSets: muscleData.totalSets,
+              totalWorkouts: muscleData.totalWorkouts
+            });
+          }
+        }
+      });
+
+      return metrics;
+    }
+
+    // Render progress summary
+    function renderProgressSummary(data) {
+      const container = document.getElementById('progress-summary');
+      const metrics = calculateProgressMetrics(data);
+
+      const sortedMetrics = metrics.sort((a, b) => b.totalWorkouts - a.totalWorkouts);
+      const muscleProgressMap = new Map(sortedMetrics.map(m => [m.muscle, m.pctChange]));
+
+      const progressItems = ALL_MUSCLE_GROUPS
+        .map(muscleName => {
+          const pctChange = muscleProgressMap.get(muscleName);
+          const muscleData = data.muscleGroups[muscleName];
+          const totalSets = muscleData ? muscleData.totalSets : 0;
+
+          let status, statusClass, icon, statusText;
+
+          if (pctChange === undefined) {
+            status = 'neglected';
+            statusClass = 'status-neglected';
+            icon = '○';
+            statusText = 'Not trained';
+          } else if (pctChange > 0) {
+            status = 'progressing';
+            statusClass = 'status-progressing';
+            icon = '↑';
+            statusText = `+${pctChange.toFixed(1)}%/wk`;
+          } else if (pctChange === 0) {
+            status = 'plateau';
+            statusClass = 'status-plateau';
+            icon = '→';
+            statusText = 'Holding steady';
+          } else {
+            status = 'declining';
+            statusClass = 'status-declining';
+            icon = '↓';
+            statusText = `${pctChange.toFixed(1)}%/wk`;
+          }
+
+          return {
+            html: `
+              <div class="progress-item ${statusClass}" onclick="scrollToMuscleGroup('${muscleName}')">
+                <span class="progress-item-muscle">${muscleName}</span>
+                <div class="progress-item-status ${statusClass}">
+                  <span class="progress-item-icon">${icon}</span>
+                  <span>${statusText}</span>
+                </div>
+              </div>
+            `,
+            totalSets
+          };
+        })
+        .sort((a, b) => b.totalSets - a.totalSets)
+        .map(item => item.html)
+        .join('');
+
+      container.innerHTML = `
+        <div class="progress-summary-header">
+          <div class="progress-summary-icon">📊</div>
+          <div class="progress-summary-title">Muscle group overview (sorted by frequency)</div>
+        </div>
+        <div class="progress-summary-content">
+          ${progressItems}
+        </div>
+      `;
+    }
+
+    // Scroll to muscle group
+    function scrollToMuscleGroup(muscleName) {
+      const element = document.getElementById(`muscle-${muscleName.toLowerCase()}`);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Render dashboard
+    function renderDashboard(data) {
+      const container = document.getElementById('muscle-groups-container');
+      const metrics = calculateProgressMetrics(data);
+
+      const metricsMap = new Map(metrics.map(m => [m.muscle, m.pctChange]));
+
+      const sortedMuscleGroups = ALL_MUSCLE_GROUPS
+        .map(muscle => ({
+          name: muscle,
+          data: data.muscleGroups[muscle],
+          totalWorkouts: data.muscleGroups[muscle].totalWorkouts
+        }))
+        .sort((a, b) => b.totalWorkouts - a.totalWorkouts);
+
+      const html = sortedMuscleGroups.map(({ name: muscleName, data: muscleData }) => {
+        const hasExercises = muscleData && muscleData.exercises && muscleData.exercises.length > 0;
+
+        if (!hasExercises) {
+          return `
+            <div class="muscle-group-card neglected" id="muscle-${muscleName.toLowerCase()}">
+              <div class="muscle-group-header">
+                <div class="muscle-group-name">${muscleName}</div>
+                <div class="muscle-group-summary">Not trained</div>
+              </div>
+              <div class="neglected-message">
+                <div class="neglected-icon">⚠️</div>
+                <div class="neglected-text">
+                  <div class="neglected-title">No ${muscleName.toLowerCase()} exercises tracked</div>
+                  <div class="neglected-subtitle">Consider adding direct ${muscleName.toLowerCase()} work to your routine</div>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        const totalExercises = muscleData.exercises.length;
+        const totalSets = muscleData.totalSets;
+        const totalWorkouts = muscleData.totalWorkouts;
+        const avgPctChange = metricsMap.get(muscleName) || 0;
+
+        let benchmarkText = '';
+        let benchmarkColor = '';
+        if (avgPctChange > 0) {
+          benchmarkText = `Trending +${avgPctChange.toFixed(1)}%/week`;
+          benchmarkColor = '#4ade80';
+        } else if (avgPctChange === 0) {
+          benchmarkText = 'Holding steady';
+          benchmarkColor = '#fbbf24';
+        } else {
+          benchmarkText = `Trending ${avgPctChange.toFixed(1)}%/week`;
+          benchmarkColor = '#ef4444';
+        }
+
+        const exercisesHTML = muscleData.exercises.map(exercise => {
+          const chartId = `chart-${muscleName.toLowerCase()}-${exercise.name.replace(/\s+/g, '-').toLowerCase()}`;
+
+          // Determine progress color based on status
+          const isImproving = exercise.status === 'New max!' || exercise.status === 'Getting stronger';
+          const isAddingReps = exercise.status === 'Adding reps';
+          const progressColor = isImproving ? '#4ade80' : isAddingReps ? '#60a5fa' : '#737373';
+          const inactiveClass = exercise.isInactive ? 'inactive' : '';
+
+          setTimeout(() => {
+            const ctx = document.getElementById(chartId);
+            if (!ctx) return;
+
+            // Create full timeline with nulls for missing weeks
+            const allWeeksDates = [];
+            const allWeeksData = [];
+
+            const [startYear, startMonth, startDay] = YEAR_START.split('-').map(Number);
+            const [endYear, endMonth, endDay] = YEAR_END.split('-').map(Number);
+
+            let currentDate = new Date(Date.UTC(startYear, startMonth - 1, startDay));
+            const endDateObj = new Date(Date.UTC(endYear, endMonth - 1, endDay));
+
+            const exerciseWeeksMap = new Map(exercise.allWeeks.map(w => [w.weekStart, w.maxWeight]));
+            const exerciseRepsMap = new Map(exercise.allWeeks.map(w => [w.weekStart, w.maxReps]));
+
+            const allWeeksReps = [];
+            while (currentDate <= endDateObj) {
+              const weekStr = currentDate.toISOString().split('T')[0];
+              allWeeksDates.push(weekStr);
+              allWeeksData.push(exerciseWeeksMap.get(weekStr) || null);
+              allWeeksReps.push(exerciseRepsMap.get(weekStr) || null);
+              currentDate.setUTCDate(currentDate.getUTCDate() + 7);
+            }
+
+            const labels = allWeeksDates.map(w => formatWeekDate(w));
+
+            const weightColor = progressColor;
+            const repsColor = '#3a3a3a';
+            const weightWidth = 2.5;
+
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: labels,
+                datasets: [
+                  {
+                    label: 'Reps',
+                    type: 'bar',
+                    data: allWeeksReps,
+                    backgroundColor: repsColor,
+                    borderColor: 'transparent',
+                    borderWidth: 0,
+                    barThickness: 'flex',
+                    maxBarThickness: 8,
+                    yAxisID: 'y-reps',
+                    order: 2,
+                    datalabels: {
+                      display: false
+                    }
+                  },
+                  {
+                    label: 'Weight (kg)',
+                    type: 'line',
+                    data: allWeeksData,
+                    borderColor: weightColor,
+                    backgroundColor: 'transparent',
+                    borderWidth: weightWidth,
+                    pointRadius: 3,
+                    pointBackgroundColor: weightColor,
+                    pointBorderWidth: 0,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: weightColor,
+                    tension: 0.2,
+                    fill: false,
+                    spanGaps: true,
+                    yAxisID: 'y-weight',
+                    order: 1,
+                    datalabels: {
+                      display: true,
+                      align: 'top',
+                      anchor: 'end',
+                      color: weightColor,
+                      font: {
+                        size: 9,
+                        weight: 500
+                      },
+                      formatter: (value) => value ? `${value}kg` : null
+                    }
+                  }
+                ]
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                  mode: 'index',
+                  intersect: false
+                },
+                plugins: {
+                  legend: { display: false },
+                  datalabels: {
+                    display: true
+                  },
+                  tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.95)',
+                    padding: 12,
+                    displayColors: true,
+                    borderColor: 'rgba(255, 255, 255, 0.1)',
+                    borderWidth: 1,
+                    callbacks: {
+                      title: (items) => {
+                        return items[0].label;
+                      },
+                      label: (ctx) => {
+                        if (!ctx.parsed.y) return null;
+                        if (ctx.dataset.label === 'Weight (kg)') {
+                          return `Weight: ${ctx.parsed.y}kg`;
+                        } else {
+                          return `Reps: ${ctx.parsed.y}`;
+                        }
+                      },
+                      afterBody: (items) => {
+                        const reps = items[0]?.parsed.y;
+                        const weight = items[1]?.parsed.y;
+                        if (weight && reps) {
+                          return `\nLoad: ${(weight * reps).toFixed(0)}kg`;
+                        }
+                        return '';
+                      }
+                    }
+                  }
+                },
+                scales: {
+                  x: {
+                    display: false,
+                    grid: { display: false }
+                  },
+                  'y-weight': {
+                    display: false,
+                    position: 'left',
+                    grid: { display: false }
+                  },
+                  'y-reps': {
+                    display: false,
+                    position: 'right',
+                    grid: { display: false }
+                  }
+                },
+                onHover: (event, activeElements, chart) => {
+                  if (activeElements.length > 0) {
+                    chart.data.datasets.forEach((dataset) => {
+                      if (dataset.type === 'line') {
+                        dataset.borderWidth = 3.5;
+                        dataset.pointRadius = 5;
+                      } else if (dataset.type === 'bar') {
+                        dataset.backgroundColor = '#525252';
+                      }
+                    });
+                    chart.update('none');
+                  } else {
+                    chart.data.datasets.forEach((dataset) => {
+                      if (dataset.type === 'line') {
+                        dataset.borderWidth = weightWidth;
+                        dataset.pointRadius = 3;
+                      } else if (dataset.type === 'bar') {
+                        dataset.backgroundColor = repsColor;
+                      }
+                    });
+                    chart.update('none');
+                  }
+                }
+              }
+            });
+          }, 100);
+
+          return `
+            <div class="exercise-row ${inactiveClass}" data-inactive="${exercise.isInactive}">
+              <div class="exercise-info">
+                <div class="exercise-name">${exercise.name}</div>
+                <div class="exercise-status" style="color: ${progressColor};">
+                  ${exercise.status}
+                </div>
+                <div class="exercise-subtext">
+                  ${exercise.subtext}
+                </div>
+              </div>
+              <div class="exercise-chart-container">
+                <div class="exercise-chart">
+                  <canvas id="${chartId}"></canvas>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        return `
+          <div class="muscle-group-card" id="muscle-${muscleName.toLowerCase()}">
+            <div class="muscle-group-header">
+              <div class="muscle-group-name">${muscleName}</div>
+              <div class="muscle-group-summary">${totalExercises} exercise${totalExercises !== 1 ? 's' : ''} • ${totalWorkouts} workouts</div>
+            </div>
+            <div class="muscle-group-benchmark" style="color: ${benchmarkColor};">${benchmarkText}</div>
+            <div class="exercises-list">
+              ${exercisesHTML}
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = html;
+    }
+
+    // Format week date for labels
+    function formatWeekDate(dateStr) {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    }
+
+    // Toggle inactive exercises
+    document.getElementById('hide-inactive').addEventListener('change', function(e) {
+      const inactiveRows = document.querySelectorAll('.exercise-row[data-inactive="true"]');
+      inactiveRows.forEach(row => {
+        row.style.display = e.target.checked ? 'none' : 'grid';
+      });
+    });
+
+    // Load dashboard on page load
+    window.addEventListener('DOMContentLoaded', function() {
+      const data = processWorkoutData();
+      renderProgressSummary(data);
+      renderDashboard(data);
+
+      // Hide inactive by default
+      document.querySelectorAll('.exercise-row[data-inactive="true"]').forEach(row => {
+        row.style.display = 'none';
+      });
+    });
+
+    // Chart.js default config
+    Chart.defaults.color = '#737373';
+    Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif';
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "channel_handle": "@Averagetojacked",
+  "total_batches": 3,
+  "batches": [
+    {
+      "name": "Averagetojacked_batch_001_top_performers",
+      "file": "/Users/mirlca/Library/CloudStorage/OneDrive-Teradyne/Documents/Notes/02-areas/personal/youtube-app-generator/data/batches/Averagetojacked_batch_001_top_performers.json",
+      "analyzed": false
+    },
+    {
+      "name": "Averagetojacked_batch_002_recent",
+      "file": "/Users/mirlca/Library/CloudStorage/OneDrive-Teradyne/Documents/Notes/02-areas/personal/youtube-app-generator/data/batches/Averagetojacked_batch_002_recent.json",
+      "analyzed": false
+    },
+    {
+      "name": "Averagetojacked_batch_003_random_sample",
+      "file": "/Users/mirlca/Library/CloudStorage/OneDrive-Teradyne/Documents/Notes/02-areas/personal/youtube-app-generator/data/batches/Averagetojacked_batch_003_random_sample.json",
+      "analyzed": false
+    }
+  ],
+  "analysis_workflow": [
+    "1. Analyze batch_001_top_performers → Extract core patterns",
+    "2. Analyze batch_002_recent → Identify emerging trends",
+    "3. Analyze batch_003_random_sample → Validate patterns across dataset",
+    "4. Meta-analysis → Combine findings, identify consistent patterns"
+  ]
+}
